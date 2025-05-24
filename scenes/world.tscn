@@ -6,11 +6,13 @@
 [node name="World" type="Node3D"]
 script = ExtResource("1_rwgxs")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.925037, 0.379876, 0, -0.379876, 0.925037, 0, 4.81033, 15.4865)
-script = ExtResource("2_4wyf3")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8032, 58.6319)
+
+[node name="Camera Rig" type="Node3D" parent="."]
+script = ExtResource("2_4wyf3")
+
+[node name="Camera3D" type="Camera3D" parent="Camera Rig"]
+transform = Transform3D(1, 0, 0, 0, 0.452621, 0.891703, 0, -0.891703, 0.452622, 0, 4.96952, 0)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
