@@ -12,7 +12,7 @@ func spawn_nodes(planet: Resource) -> void:
 		instance.set_position(Vector3(x, 0, z))
 		add_child(instance)
 	
-func _on_ready() -> void:
+func _ready() -> void:
 	#seed(12345)
 	var planet = preload("res://scenes/planet.tscn")
 	
