@@ -19,3 +19,8 @@ mesh = SubResource("SphereMesh_cw5of")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Object/Area3D"]
 shape = SubResource("SphereShape3D_cw5of")
+
+[node name="Info" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940535, 0)
+
+[connection signal="input_event" from="Object/Area3D" to="." method="_on_area_3d_input_event"]
