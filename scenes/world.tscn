@@ -13,6 +13,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8032, 58.6319)
 script = ExtResource("2_4wyf3")
 
 [node name="Camera3D" type="Camera3D" parent="Camera Rig"]
-transform = Transform3D(1, 0, 0, 0, 0.452621, 0.891703, 0, -0.891703, 0.452622, 0, 4.96952, 0)
+transform = Transform3D(1, 0, 0, 0, 0.879914, 0.475133, 0, -0.475133, 0.879914, 0, 4.96952, 0)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
