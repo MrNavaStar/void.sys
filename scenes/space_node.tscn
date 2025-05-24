@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm6utgsyuev2y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cw5of"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cw5of"]
+radius = 0.951168
+
+[node name="SpaceNode" type="Node3D"]
+
+[node name="Object" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Object"]
+mesh = SubResource("SphereMesh_cw5of")
+
+[node name="Area3D" type="Area3D" parent="Object"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object/Area3D"]
+shape = SubResource("SphereShape3D_cw5of")
