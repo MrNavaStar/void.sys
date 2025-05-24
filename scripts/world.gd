@@ -14,15 +14,16 @@ func is_too_close(pos: Vector3, distance: float) -> bool:
 			return true
 	return false
 
-func rand_pos() -> Vector3:
-	return Vector3(randf_range(-radius, radius), 0, randf_range(-radius, radius))
-
-func rand_pos_with_spread(spread: float) -> Vector3:
+func rand_pos_with_spread(spread: float):
 	var tries = 0
 	var pos: Vector3
-	while pos == null or is_too_close(pos, spread) or tries < 20:
-		pos = rand_pos()
+	while pos == null or is_too_close(pos, spread) and tries <= 20:
+		pos = Vector3(randf_range(-radius, radius), 0, randf_range(-radius, radius))
 		tries += 1
+	
+	if tries >= 20:
+		return null
+	
 	return pos
 
 func spawn_nodes(space_node: Resource) -> void:
