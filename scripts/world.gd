@@ -25,15 +25,15 @@ func rand_pos_with_spread(spread: float) -> Vector3:
 		tries += 1
 	return pos
 
-func spawn_nodes(planet: Resource, ship: Resource) -> void:
+func spawn_nodes(space_node: Resource) -> void:
 	for i in planets:
 		var pos = rand_pos_with_spread(planet_spread)
 		if pos == null:
 			continue
 		node_positions.append(pos)
 		
-		var instance = planet.instantiate()
-		instance.set_position(pos)
+		var instance = space_node.instantiate() as SpaceNode
+		instance.make_planet(pos)
 		add_child(instance)
 		
 	for i in ships:
@@ -42,13 +42,10 @@ func spawn_nodes(planet: Resource, ship: Resource) -> void:
 			continue
 		node_positions.append(pos)
 		
-		var instance = ship.instantiate()
-		instance.set_position(pos)
+		var instance = space_node.instantiate() as SpaceNode
+		instance.make_ship(pos)
 		add_child(instance)
 	
 func _ready() -> void:
 	#seed(12345)
-	var planet = preload("res://scenes/space_node.tscn")
-	var ship = preload("res://scenes/ship.tscn")
-	
-	spawn_nodes(planet, ship)
+	spawn_nodes(preload("res://scenes/space_node.tscn"))
