@@ -26,6 +26,7 @@ func _update_label():
 
 func make_root():
 	$Object/MeshInstance3D.mesh = BoxMesh.new()
+	allocated_compute = 8
 	is_hacked = true
 	_update_label()
 
@@ -43,7 +44,7 @@ func make_ship():
 	_update_label()
 	
 func hack():
-	if !Hacker.can_compute_action(hack_cost):
+	if is_hacked or !Hacker.can_compute_action(hack_cost):
 		return
 	allocated_compute = hack_cost
 	hack_timer.start(hack_time)
