@@ -14,6 +14,6 @@ func spawn_nodes(planet: Resource) -> void:
 	
 func _on_ready() -> void:
 	#seed(12345)
-	var planet = preload("res://planet.tscn")
+	var planet = preload("res://scenes/planet.tscn")
 	
 	spawn_nodes(planet)
