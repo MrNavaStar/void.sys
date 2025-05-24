@@ -22,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 11.6009)
 script = ExtResource("2_4wyf3")
 
 [node name="ZoomPivot" type="Node3D" parent="Camera Rig"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.766045, 0.642788, 0, -0.642788, 0.766045, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera Rig/ZoomPivot"]
 
