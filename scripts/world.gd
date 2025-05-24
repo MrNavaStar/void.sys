@@ -7,6 +7,7 @@ extends Node3D
 @export var ship_spread: int = 3
 
 var node_positions: Array
+@onready var space_nodes: Node3D = $SpaceNodes
 
 
 func is_too_close(pos: Vector3, distance: float) -> bool:
@@ -30,11 +31,11 @@ func rand_pos_with_spread(spread: float) -> Vector3:
 
 
 func spawn_node(node: PackedScene, pos: Vector3) -> SpaceNode:
-	var instance := node.instantiate() as SpaceNode
-	instance.set_position(pos)
+	var node_instance := node.instantiate() as SpaceNode
+	node_instance.set_position(pos)
 	node_positions.append(pos)
-	add_child(instance)
-	return instance
+	space_nodes.add_child(node_instance)
+	return node_instance
 
 
 func spawn_nodes(node: PackedScene) -> void:

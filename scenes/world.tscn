@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmxxff1nm6qak"]
+[gd_scene load_steps=8 format=3 uid="uid://dmxxff1nm6qak"]
 
 [ext_resource type="Script" uid="uid://d318spwk1v5ym" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://dtj8052logla3" path="res://grid.png" id="3_4wyf3"]
+[ext_resource type="Script" uid="uid://bdyl7ijpq7ii" path="res://scripts/edger.gd" id="4_k0juu"]
+[ext_resource type="Script" uid="uid://bdsvyu7l4eksf" path="res://scripts/compute_power_bar.gd" id="5_71j4m"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k0juu"]
 
@@ -13,6 +15,7 @@ uv1_scale = Vector3(1000, 1000, 1000)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_rwgxs")
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8032, 58.6319)
@@ -20,15 +23,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8032, 58.6319)
 [node name="Camera Rig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 11.6009)
 script = ExtResource("2_4wyf3")
+metadata/_edit_lock_ = true
 
 [node name="ZoomPivot" type="Node3D" parent="Camera Rig"]
 transform = Transform3D(1, 0, 0, 0, 0.766045, 0.642788, 0, -0.642788, 0.766045, 0, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="Camera Rig/ZoomPivot"]
+metadata/_edit_lock_ = true
 
 [node name="Grid" type="MeshInstance3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -1.30573, 0)
 mesh = SubResource("PlaneMesh_k0juu")
 surface_material_override/0 = SubResource("StandardMaterial3D_71j4m")
+metadata/_edit_lock_ = true
+
+[node name="SpaceNodes" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Edges" type="Node3D" parent="."]
+script = ExtResource("4_k0juu")
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 14.0
+offset_right = 68.0
+offset_bottom = 37.0
+text = "RAM"
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 13.0
+offset_right = 406.0
+offset_bottom = 40.0
+script = ExtResource("5_71j4m")
 
 [connection signal="ready" from="." to="." method="_on_ready"]

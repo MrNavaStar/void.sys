@@ -4,13 +4,13 @@ extends Node3D
 @onready var info: Label3D = $Info
 @onready var hack_timer: Timer = $"Hack Timer"
 
-@export var connected_nodes: Dictionary[SpaceNode, Edge] = {}
+var connected_nodes: Dictionary[SpaceNode, Edge] = {}
 
 var is_hacked: bool = false
-var allocated_compute: int = 0
-var hack_cost: int = 0
-var hack_time: int = 0
-var unhack_strength: int = 0
+var allocated_compute_power: float = 0
+var hack_cost: float = 0
+var hack_time: float = 0
+var unhack_strength: float = 0
 
 
 func _ready() -> void:
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if is_hacked and allocated_compute >= unhack_strength:
+	if is_hacked and allocated_compute_power >= unhack_strength:
 		hack_timer.stop()
 
 
@@ -32,7 +32,7 @@ func _update_label() -> void:
 func make_root() -> void:
 	($Object/MeshInstance3D as MeshInstance3D).mesh = BoxMesh.new()
 	Hacker.hacked_nodes.append(self)
-	allocated_compute = 8
+	allocated_compute_power = 8
 	is_hacked = true
 	_update_label()
 
@@ -55,12 +55,12 @@ func make_ship() -> void:
 
 func hack() -> void:
 	if !is_hacked and Hacker.can_compute_action(hack_cost):
-		allocated_compute = hack_cost
+		allocated_compute_power = hack_cost
 		unhack_strength = 0
 		hack_timer.start(hack_time)
 
 
-func unhack(strength: int) -> void:
+func unhack(strength: float) -> void:
 	if is_hacked:
 		unhack_strength = strength
 		hack_timer.start(hack_time)
@@ -69,15 +69,16 @@ func unhack(strength: int) -> void:
 func _on_hack_finish() -> void:
 	if !is_hacked:
 		Hacker.hacked_nodes.append(self)
-		allocated_compute = round(allocated_compute / 2)
+		allocated_compute_power = round(allocated_compute_power / 2)
 		is_hacked = true
 	else:
 		Hacker.hacked_nodes.erase(self)
-		allocated_compute = 0
+		allocated_compute_power = 0
 		is_hacked = false
 		hack_cost *= 2
 		hack_time *= 2
 
+	Hacker.update_idle_node_compute_power_use()
 	_update_label()
 
 
