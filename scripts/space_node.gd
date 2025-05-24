@@ -3,7 +3,7 @@ extends Node3D
 
 @onready var info: Label3D = $Info
 
-@export var connected_nodes: Array[SpaceNode] = []
+@export var connected_nodes: Dictionary[SpaceNode, Edge] = {}
 
 var allocated_compute: int = 0
 var hack_cost: int = 0
