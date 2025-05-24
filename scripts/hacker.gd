@@ -11,6 +11,3 @@ func get_compute_usage() -> int:
 	
 func can_compute_action(cost: int) -> bool:
 	return total_compute >= get_compute_usage() + cost
-
-func hack_node(node: SpaceNode):
-	pass
