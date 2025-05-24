@@ -10,9 +10,12 @@ script = ExtResource("1_rwgxs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8032, 58.6319)
 
 [node name="Camera Rig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 script = ExtResource("2_4wyf3")
 
-[node name="Camera3D" type="Camera3D" parent="Camera Rig"]
-transform = Transform3D(1, 0, 0, 0, 0.879914, 0.475133, 0, -0.475133, 0.879914, 0, 4.96952, 0)
+[node name="ZoomPivot" type="Node3D" parent="Camera Rig"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Camera Rig/ZoomPivot"]
 
 [connection signal="ready" from="." to="." method="_on_ready"]
