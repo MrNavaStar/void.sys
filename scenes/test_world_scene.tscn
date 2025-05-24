@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnk10j2pkokkr"]
+[gd_scene load_steps=4 format=3 uid="uid://dnk10j2pkokkr"]
 
 [ext_resource type="Script" uid="uid://bdyl7ijpq7ii" path="res://scripts/edger.gd" id="1_44m58"]
 [ext_resource type="PackedScene" uid="uid://dm6utgsyuev2y" path="res://scenes/space_node.tscn" id="2_kn1xl"]
+[ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="3_kn1xl"]
 
 [node name="TestWorldScene" type="Node3D"]
 script = ExtResource("1_44m58")
@@ -17,3 +18,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329447, 0, -2.09916)
 connected_nodes = [NodePath("../SpaceNode")]
 
 [node name="Edges" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8032, 58.6319)
+
+[node name="Camera Rig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 11.6009)
+script = ExtResource("3_kn1xl")
+
+[node name="ZoomPivot" type="Node3D" parent="Camera Rig"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Camera Rig/ZoomPivot"]
