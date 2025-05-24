@@ -1,6 +1,6 @@
 extends Node
 
-var total_compute: int = 128
+var total_compute: int = 64
 var hacked_nodes: Array[SpaceNode]
 
 func get_compute_usage() -> int:

@@ -26,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Camera3D" type="Camera3D" parent="Camera Rig/ZoomPivot"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Grid" type="MeshInstance3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -1.30573, 0)
 mesh = SubResource("PlaneMesh_k0juu")
 surface_material_override/0 = SubResource("StandardMaterial3D_71j4m")
