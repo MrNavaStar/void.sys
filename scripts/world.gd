@@ -3,7 +3,7 @@ extends Node3D
 @export var radius = 300
 @export var planets = 300
 @export var planet_spread = 20
-@export var ships = 1000
+@export var ships = 1500
 @export var ship_spread = 3
 
 var node_positions: Array
@@ -28,6 +28,8 @@ func rand_pos_with_spread(spread: float) -> Vector3:
 func spawn_nodes(planet: Resource, ship: Resource) -> void:
 	for i in planets:
 		var pos = rand_pos_with_spread(planet_spread)
+		if pos == null:
+			continue
 		node_positions.append(pos)
 		
 		var instance = planet.instantiate()
@@ -36,6 +38,8 @@ func spawn_nodes(planet: Resource, ship: Resource) -> void:
 		
 	for i in ships:
 		var pos = rand_pos_with_spread(ship_spread)
+		if pos == null:
+			continue
 		node_positions.append(pos)
 		
 		var instance = ship.instantiate()
@@ -44,7 +48,7 @@ func spawn_nodes(planet: Resource, ship: Resource) -> void:
 	
 func _ready() -> void:
 	#seed(12345)
-	var planet = preload("res://scenes/planet.tscn")
+	var planet = preload("res://scenes/space_node.tscn")
 	var ship = preload("res://scenes/ship.tscn")
 	
 	spawn_nodes(planet, ship)
