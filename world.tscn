@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmxxff1nm6qak"]
+[gd_scene load_steps=3 format=3 uid="uid://dmxxff1nm6qak"]
 
 [ext_resource type="Script" uid="uid://d318spwk1v5ym" path="res://world.gd" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://camera_controller.gd" id="2_fj7yv"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_f3sb7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.923244, 0.384215, 0, -0.384215, 0.923244, 0, 4.64962, 5.20483)
+script = ExtResource("2_fj7yv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8032, 58.6319)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
