@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmxxff1nm6qak"]
+[gd_scene load_steps=10 format=3 uid="uid://dmxxff1nm6qak"]
 
 [ext_resource type="Script" uid="uid://d318spwk1v5ym" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://dtj8052logla3" path="res://grid.png" id="3_4wyf3"]
 [ext_resource type="Script" uid="uid://bdyl7ijpq7ii" path="res://scripts/edger.gd" id="4_k0juu"]
-[ext_resource type="Script" uid="uid://bdsvyu7l4eksf" path="res://scripts/compute_power_bar.gd" id="5_71j4m"]
+[ext_resource type="Script" path="res://scripts/compute_power_bar.gd" id="5_71j4m"]
+[ext_resource type="Script" uid="uid://celeggxoxwqmy" path="res://scenes/virtual_cursor.gd" id="5_qfnet"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k0juu"]
 
@@ -13,6 +14,9 @@ transparency = 1
 albedo_texture = ExtResource("3_4wyf3")
 uv1_scale = Vector3(1000, 1000, 1000)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_qfnet"]
+radius = 20.0
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_rwgxs")
 metadata/_edit_lock_ = true
@@ -20,16 +24,16 @@ metadata/_edit_lock_ = true
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.8032, 58.6319)
 
-[node name="Camera Rig" type="Node3D" parent="."]
+[node name="CameraRig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 11.6009)
 script = ExtResource("2_4wyf3")
 metadata/_edit_lock_ = true
 
-[node name="ZoomPivot" type="Node3D" parent="Camera Rig"]
+[node name="ZoomPivot" type="Node3D" parent="CameraRig"]
 transform = Transform3D(1, 0, 0, 0, 0.766045, 0.642788, 0, -0.642788, 0.766045, 0, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="Camera3D" type="Camera3D" parent="Camera Rig/ZoomPivot"]
+[node name="Camera3D" type="Camera3D" parent="CameraRig/ZoomPivot"]
 metadata/_edit_lock_ = true
 
 [node name="Grid" type="MeshInstance3D" parent="."]
@@ -44,6 +48,14 @@ metadata/_edit_lock_ = true
 [node name="Edges" type="Node3D" parent="."]
 script = ExtResource("4_k0juu")
 metadata/_edit_lock_ = true
+
+[node name="Virtual Cursor" type="Node3D" parent="."]
+script = ExtResource("5_qfnet")
+
+[node name="Area3D" type="Area3D" parent="Virtual Cursor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Virtual Cursor/Area3D"]
+shape = SubResource("SphereShape3D_qfnet")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -74,3 +86,5 @@ offset_bottom = 40.0
 script = ExtResource("5_71j4m")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="area_entered" from="Virtual Cursor/Area3D" to="Virtual Cursor" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Virtual Cursor/Area3D" to="Virtual Cursor" method="_on_area_3d_area_exited"]

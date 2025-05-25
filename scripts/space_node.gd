@@ -71,12 +71,20 @@ func _on_hack_finish() -> void:
 		Hacker.hacked_nodes.append(self)
 		allocated_compute_power = round(allocated_compute_power / 2)
 		is_hacked = true
+		var other: SpaceNode = SpaceNode.new()
+		var edge: Edge = (get_node("../../Edges") as Edger).create_edge(self, other)
+		other.connected_nodes[self] = edge
+		connected_nodes[other] = edge
 	else:
 		Hacker.hacked_nodes.erase(self)
 		allocated_compute_power = 0
 		is_hacked = false
 		hack_cost *= 2
 		hack_time *= 2
+		for neighbour: SpaceNode in connected_nodes:
+			neighbour.connected_nodes[self].queue_free()
+			neighbour.connected_nodes.erase(self)
+		connected_nodes.clear()
 
 	Hacker.update_idle_node_compute_power_use()
 	_update_label()

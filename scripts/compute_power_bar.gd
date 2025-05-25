@@ -10,4 +10,4 @@ func _update_compute_power(usage_map: Dictionary[Hacker.PowerUses, float]) -> vo
 	for use: Hacker.PowerUses in usage_map:
 		print("%s using %f points" % [Hacker.get_poweruse_as_string(use), usage_map[use]])
 		total_usage += usage_map[use]
-	value = total_usage / Hacker.total_compute_power
+	value = total_usage / Hacker.total_compute_power * 100

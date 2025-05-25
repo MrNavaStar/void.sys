@@ -1,20 +1,12 @@
+class_name Edger
 extends Node3D
 
 @onready var edges: Node3D = self
-@onready var space_nodes: Node3D = get_node("../SpaceNodes")
+@onready var space_nodes: Node3D = get_node("../SpaceNodes") as Node3D
 @onready var edge_prefab: PackedScene = preload("res://scenes/edge.tscn")
 
 
-func _ready() -> void:
-	# for node: SpaceNode in space_nodes.get_children():
-	# 	for neighbour: SpaceNode in space_nodes.get_children():
-	# 		if neighbour != node and not node.connected_nodes.has(neighbour):
-	# 			node.connected_nodes[neighbour] = null
-
-	draw_edges()
-
-
-func _create_edge(node1: SpaceNode, node2: SpaceNode) -> void:
+func create_edge(node1: SpaceNode, node2: SpaceNode) -> Edge:
 	print("edge_created between %s and %s" % [node1.name, node2.name])
 	var edge_length := node1.position.distance_to(node2.position)
 	var edge_scene := edge_prefab.instantiate() as Edge
@@ -38,10 +30,11 @@ func _create_edge(node1: SpaceNode, node2: SpaceNode) -> void:
 	edges.add_child(edge_scene)
 	edge.look_at(node2.position)
 	edge.rotation_degrees.x = -90
+	return edge_scene
 
 
-func draw_edges() -> void:
+func draw_all_edges() -> void:
 	for node: SpaceNode in space_nodes.get_children():
 		for neighbour: SpaceNode in node.connected_nodes.keys():
 			if node.get_instance_id() < neighbour.get_instance_id():
-				_create_edge(node, neighbour)
+				create_edge(node, neighbour)
