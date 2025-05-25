@@ -11,9 +11,7 @@ func create_edge(node1: SpaceNode, node2: SpaceNode) -> Edge:
 	var edge_length := node1.position.distance_to(node2.position)
 	var edge_scene := edge_prefab.instantiate() as Edge
 
-	assert(node1.connected_nodes.has(node2))
 	node1.connected_nodes[node2] = edge_scene
-	assert(node2.connected_nodes.has(node1))
 	node2.connected_nodes[node1] = edge_scene
 
 	var ribbon_trail := RibbonTrailMesh.new()

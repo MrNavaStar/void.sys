@@ -54,6 +54,9 @@ func make_ship() -> void:
 
 
 func hack() -> void:
+	var closest_node: SpaceNode = (
+		(get_node("../../Virtual Cursor") as VirtualCursor).get_closest_node()
+	)
 	if !is_hacked and Hacker.can_compute_action(hack_cost):
 		allocated_compute_power = hack_cost
 		unhack_strength = 0
