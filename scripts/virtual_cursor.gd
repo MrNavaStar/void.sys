@@ -25,6 +25,8 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 
 
 func get_closest_node() -> SpaceNode:
+	if len(close_space_nodes) == 0:
+		return null
 	var closest: SpaceNode = close_space_nodes[0]
 	for node in close_space_nodes:
 		if node.position.direction_to(position) < closest.position:

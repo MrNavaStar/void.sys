@@ -57,6 +57,8 @@ func hack() -> void:
 	var closest_node: SpaceNode = (
 		(get_node("../../Virtual Cursor") as VirtualCursor).get_closest_node()
 	)
+	if closest_node == null:
+		return
 	if !is_hacked and Hacker.can_compute_action(hack_cost):
 		allocated_compute_power = hack_cost
 		unhack_strength = 0
