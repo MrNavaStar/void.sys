@@ -29,6 +29,6 @@ func get_closest_node() -> SpaceNode:
 		return null
 	var closest: SpaceNode = close_space_nodes[0]
 	for node in close_space_nodes:
-		if node.position.direction_to(position) < closest.position:
+		if node.position.distance_to(position) < node.position.distance_to(position):
 			closest = node
 	return closest
