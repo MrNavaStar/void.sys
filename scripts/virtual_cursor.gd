@@ -16,8 +16,7 @@ func _process(_delta: float) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	var node: SpaceNode = area.get_parent().get_parent() as SpaceNode
-	if node.is_hacked:
-		close_space_nodes.append(node)
+	close_space_nodes.append(node)
 
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
@@ -29,6 +28,9 @@ func get_closest_node() -> SpaceNode:
 		return null
 	var closest: SpaceNode = close_space_nodes[0]
 	for node in close_space_nodes:
-		if node.position.distance_to(position) < node.position.distance_to(position):
+		if (
+			node.is_hacked
+			and position.distance_to(node.position) < position.distance_to(closest.position)
+		):
 			closest = node
 	return closest

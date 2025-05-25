@@ -25,6 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940535, 0)
 billboard = 1
 
 [node name="Hack Timer" type="Timer" parent="."]
+wait_time = 0.001
 one_shot = true
 
 [connection signal="input_event" from="Object/Area3D" to="." method="_on_area_3d_input_event"]
