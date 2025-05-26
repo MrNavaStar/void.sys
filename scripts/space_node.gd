@@ -3,6 +3,7 @@ extends Node3D
 
 @onready var info: Label3D = $Info
 @onready var hack_timer: Timer = $"Hack Timer"
+@onready var virtual_cursor: VirtualCursor = get_node("../../Virtual Cursor") as VirtualCursor
 
 var connected_nodes: Dictionary[SpaceNode, Edge] = {}
 
@@ -12,6 +13,7 @@ var hack_cost: float = 0
 var hack_time: float = 0
 var unhack_strength: float = 0
 var closest_node: SpaceNode
+var range_ring: MeshInstance3D
 
 
 func _ready() -> void:
@@ -23,11 +25,7 @@ func _process(_delta: float) -> void:
 		hack_timer.stop()
 
 
-func _update_label() -> void:
-	if is_hacked:
-		info.text = "Hacked"
-	else:
-		info.text = "Hack Cost: %s Hack Time: %s" % [hack_cost, hack_time]
+#=== INITIALIZATION ===
 
 
 func make_root() -> void:
@@ -54,8 +52,11 @@ func make_ship() -> void:
 	_update_label()
 
 
+#=== LOGIC ===
+
+
 func hack() -> void:
-	closest_node = ((get_node("../../Virtual Cursor") as VirtualCursor).get_closest_node())
+	closest_node = virtual_cursor.get_closest_node_in_range()
 	if closest_node == null:
 		return
 	if !is_hacked and Hacker.can_compute_action(hack_cost):
@@ -68,6 +69,30 @@ func unhack(strength: float) -> void:
 	if is_hacked:
 		unhack_strength = strength
 		hack_timer.start(hack_time)
+
+
+func generate_ring(radius: float, difference: float) -> void:
+	range_ring = MeshInstance3D.new()
+	var torus := TorusMesh.new()
+	torus.inner_radius = radius
+	torus.outer_radius = radius + difference
+	range_ring.mesh = torus
+	$Object.add_child(range_ring)
+
+
+func delete_ring() -> void:
+	range_ring.queue_free()
+	range_ring = null
+
+
+func _update_label() -> void:
+	if is_hacked:
+		info.text = "Hacked"
+	else:
+		info.text = "Hack Cost: %s Hack Time: %s" % [hack_cost, hack_time]
+
+
+#=== CALLBACKS ===
 
 
 func _on_hack_finish() -> void:
@@ -91,6 +116,7 @@ func _on_hack_finish() -> void:
 
 	Hacker.update_idle_node_compute_power_use()
 	_update_label()
+	virtual_cursor.show_closest_ring()
 
 
 func _on_area_3d_input_event(

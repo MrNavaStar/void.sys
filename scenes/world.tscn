@@ -15,7 +15,7 @@ albedo_texture = ExtResource("3_4wyf3")
 uv1_scale = Vector3(1000, 1000, 1000)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qfnet"]
-radius = 9.64101
+radius = 9.8108
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qfnet"]
 shape = 0
@@ -55,8 +55,13 @@ metadata/_edit_lock_ = true
 
 [node name="Virtual Cursor" type="Node3D" parent="."]
 script = ExtResource("5_qfnet")
+mesh_offset = 1.5
+selection_range = 10.0
 
 [node name="Area3D" type="Area3D" parent="Virtual Cursor"]
+collision_layer = 2
+collision_mask = 2
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Virtual Cursor/Area3D"]
 shape = SubResource("SphereShape3D_qfnet")
@@ -64,7 +69,7 @@ shape = SubResource("SphereShape3D_qfnet")
 [node name="CursorPivot" type="Node3D" parent="Virtual Cursor"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Virtual Cursor/CursorPivot"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.37723, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("RibbonTrailMesh_qfnet")
 
 [node name="Control" type="Control" parent="."]
