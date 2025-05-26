@@ -1,4 +1,4 @@
-class_name VirtualCursor
+class_name VirtCursor
 extends Node3D
 
 @onready var camera: Camera3D = get_node("../CameraRig/ZoomPivot/Camera3D")

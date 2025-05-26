@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmxxff1nm6qak"]
+[gd_scene load_steps=11 format=3 uid="uid://dmxxff1nm6qak"]
 
 [ext_resource type="Script" uid="uid://d318spwk1v5ym" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="2_4wyf3"]
@@ -15,7 +15,11 @@ albedo_texture = ExtResource("3_4wyf3")
 uv1_scale = Vector3(1000, 1000, 1000)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qfnet"]
-radius = 20.0
+radius = 9.64101
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qfnet"]
+shape = 0
+size = 0.2
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_rwgxs")
@@ -56,6 +60,12 @@ script = ExtResource("5_qfnet")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Virtual Cursor/Area3D"]
 shape = SubResource("SphereShape3D_qfnet")
+
+[node name="CursorPivot" type="Node3D" parent="Virtual Cursor"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Virtual Cursor/CursorPivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.37723, 0)
+mesh = SubResource("RibbonTrailMesh_qfnet")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

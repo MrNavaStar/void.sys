@@ -17,7 +17,7 @@ func create_edge(node1: SpaceNode, node2: SpaceNode) -> Edge:
 	var ribbon_trail := RibbonTrailMesh.new()
 	ribbon_trail.size = 0.3
 	ribbon_trail.shape = RibbonTrailMesh.SHAPE_FLAT
-	ribbon_trail.sections = 0
+	ribbon_trail.sections = 2
 	ribbon_trail.section_length = edge_length / ribbon_trail.sections - 0.4
 
 	var edge := MeshInstance3D.new()

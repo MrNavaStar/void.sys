@@ -55,7 +55,7 @@ func make_ship() -> void:
 
 
 func hack() -> void:
-	closest_node = ((get_node("../../Virtual Cursor") as VirtualCursor).get_closest_node())
+	closest_node = ((get_node("../../Virtual Cursor") as VirtCursor).get_closest_node())
 	if closest_node == null:
 		return
 	if !is_hacked and Hacker.can_compute_action(hack_cost):
