@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm6utgsyuev2y"]
+[gd_scene load_steps=7 format=3 uid="uid://dm6utgsyuev2y"]
 
 [ext_resource type="Script" uid="uid://dg0qfy6s8df13" path="res://scripts/space_node.gd" id="1_4xayg"]
 
@@ -8,7 +8,13 @@
 radius = 0.951168
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4xayg"]
-radius = 4.47994
+radius = 16.1328
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2rj4j"]
+radius = 0.549614
+
+[sub_resource type="TorusMesh" id="TorusMesh_4xayg"]
+inner_radius = 1.02
 
 [node name="SpaceNode" type="Node3D"]
 script = ExtResource("1_4xayg")
@@ -23,13 +29,25 @@ mesh = SubResource("SphereMesh_cw5of")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Object/ClickHitbox"]
 shape = SubResource("SphereShape3D_cw5of")
 
-[node name="VirtualCursorHitbox" type="Area3D" parent="Object"]
+[node name="NeighboursHitbox" type="Area3D" parent="Object"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 4
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Object/VirtualCursorHitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object/NeighboursHitbox"]
 shape = SubResource("SphereShape3D_4xayg")
+
+[node name="SelfHitbox" type="Area3D" parent="Object"]
+collision_layer = 4
+collision_mask = 0
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object/SelfHitbox"]
+shape = SubResource("SphereShape3D_2rj4j")
+
+[node name="SelectableIndicator" type="MeshInstance3D" parent="Object"]
+visible = false
+mesh = SubResource("TorusMesh_4xayg")
 
 [node name="Info" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940535, 0)

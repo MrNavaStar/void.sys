@@ -38,12 +38,12 @@ func update_model() -> void:
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	var node: SpaceNode = area.get_parent().get_parent() as SpaceNode
 	close_space_nodes.append(node)
-	show_closest_ring()
+	update_closest_node()
 
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	close_space_nodes.erase(area.get_parent().get_parent() as SpaceNode)
-	show_closest_ring()
+	update_closest_node()
 
 
 func get_closest_node() -> SpaceNode:
@@ -70,14 +70,14 @@ func get_closest_node_in_range() -> SpaceNode:
 	return closest if distance < selection_range else null
 
 
-func show_closest_ring() -> void:
+func update_closest_node() -> void:
 	var closest := get_closest_node()
-	if closest == null and current_closest != null:
-		current_closest.delete_ring()
-		current_closest = null
 	if closest == current_closest:
 		return
 	if current_closest != null:
 		current_closest.delete_ring()
+		current_closest.stop_highlight_nearby()
 	current_closest = closest
-	current_closest.generate_ring(selection_range, ring_inner_size)
+	if current_closest != null:
+		current_closest.generate_ring(selection_range, ring_inner_size)
+		current_closest.highlight_nearby(selection_range)

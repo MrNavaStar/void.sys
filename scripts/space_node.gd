@@ -4,6 +4,7 @@ extends Node3D
 @onready var info: Label3D = $Info
 @onready var hack_timer: Timer = $"Hack Timer"
 @onready var virtual_cursor: VirtualCursor = get_node("../../Virtual Cursor") as VirtualCursor
+@onready var neighbours_hitbox: Area3D = $Object/NeighboursHitbox as Area3D
 
 var connected_nodes: Dictionary[SpaceNode, Edge] = {}
 
@@ -85,6 +86,43 @@ func delete_ring() -> void:
 	range_ring = null
 
 
+func highlight_nearby(hack_range: float) -> void:
+	var nearby_nodes := _get_nearby_unhacked_nodes().filter(
+		func(node: SpaceNode) -> bool: return position.distance_to(node.position) < hack_range
+	)
+	for node: SpaceNode in nearby_nodes:
+		node.highlight_self()
+
+
+func stop_highlight_nearby() -> void:
+	var nearby_nodes := _get_nearby_unhacked_nodes()
+	for node: SpaceNode in nearby_nodes:
+		node.stop_highlight_self()
+
+
+func _get_nearby_unhacked_nodes() -> Array[SpaceNode]:
+	var nearby_areas := neighbours_hitbox.get_overlapping_areas()
+	var nearby_nodes: Array[SpaceNode]
+	nearby_nodes.assign(
+		(
+			nearby_areas
+			. map(
+				func(area: Area3D) -> SpaceNode: return area.get_parent().get_parent() as SpaceNode
+			)
+			. filter(func(node: SpaceNode) -> bool: return !node.is_hacked)
+		)
+	)
+	return nearby_nodes as Array[SpaceNode]
+
+
+func highlight_self() -> void:
+	($Object/SelectableIndicator as Node3D).visible = true
+
+
+func stop_highlight_self() -> void:
+	($Object/SelectableIndicator as Node3D).visible = false
+
+
 func _update_label() -> void:
 	if is_hacked:
 		info.text = "Hacked"
@@ -116,7 +154,7 @@ func _on_hack_finish() -> void:
 
 	Hacker.update_idle_node_compute_power_use()
 	_update_label()
-	virtual_cursor.show_closest_ring()
+	virtual_cursor.update_closest_node()
 
 
 func _on_area_3d_input_event(
