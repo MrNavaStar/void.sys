@@ -1,4 +1,4 @@
-class_name VirtCursor
+class_name VirtualCursor
 extends Node3D
 
 @export var mesh_offset: float = 0
