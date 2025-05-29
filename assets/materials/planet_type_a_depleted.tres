@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://dp3rcxukwdu05"]
+
+[ext_resource type="Shader" uid="uid://ckdk8ojr0rjak" path="res://assets/materials/shaders/color_sweep.gdshader" id="1_3ueb3"]
+[ext_resource type="Shader" uid="uid://ddp3ry2q7ai38" path="res://assets/materials/shaders/wireframe_sweep.gdshader" id="1_5c8jc"]
+[ext_resource type="Shader" uid="uid://31w10womps2w" path="res://assets/materials/shaders/TypeA.gdshader" id="1_13nfk"]
+[ext_resource type="Texture2D" uid="uid://ma3jeaw42lh5" path="res://assets/nodes/TypeA_DepletedColors.png" id="2_5c8jc"]
+[ext_resource type="Texture2D" uid="uid://ilyak4uqkr2y" path="res://assets/nodes/TypeA_DepletedEmissiveColor.png" id="3_3ueb3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sl8v0"]
+render_priority = 0
+shader = ExtResource("1_3ueb3")
+shader_parameter/color = Color(0.0793781, 0.307064, 0.257737, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ueb3"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_sl8v0")
+shader = ExtResource("1_5c8jc")
+shader_parameter/color = Color(0.192029, 0.780171, 0.320052, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3ueb3")
+shader = ExtResource("1_13nfk")
+shader_parameter/tex_albedo = ExtResource("2_5c8jc")
+shader_parameter/tex_emission = ExtResource("3_3ueb3")
