@@ -23,6 +23,7 @@ func _ready() -> void:
 	pivot.rotation.x = rot_target
 
 
+# TODO: scale movement speed relative to current zoom (closer = slower)
 func _update_pos_target() -> void:
 	var input_direction := Input.get_vector("left", "right", "up", "down")
 	pos_target += (

@@ -38,7 +38,12 @@ func make_root() -> void:
 
 
 func make_planet() -> void:
-	($Object/MeshInstance3D as MeshInstance3D).mesh = SphereMesh.new()
+	var planet_scene: PackedScene = load("res://scenes/planets/planet_type_a_depleted.tscn")
+	var planet: Node3D = planet_scene.instantiate()
+	planet.rotation.x = randf_range(1, 2 * PI)
+	planet.rotation.y = randf_range(0, 2 * PI)
+	planet.rotation.z = randf_range(0, 2 * PI)
+	$Object.add_child(planet)
 	hack_cost = [32, 48, 64][randi_range(0, 2)]
 	hack_time = randi_range(8, 16)
 	_update_label()
@@ -48,6 +53,7 @@ func make_ship() -> void:
 	var meshinstance3D: MeshInstance3D = $Object/MeshInstance3D
 	meshinstance3D.mesh = CylinderMesh.new()
 	meshinstance3D.scale = Vector3(0.2, 0.2, 0.2)
+	meshinstance3D.rotation = Vector3(0, 0, PI / 2)
 	hack_cost = [8, 16, 24][randi_range(0, 2)]
 	hack_time = randi_range(3, 6)
 	_update_label()
@@ -75,6 +81,7 @@ func unhack(strength: float) -> void:
 func generate_ring(radius: float, difference: float) -> void:
 	range_ring = MeshInstance3D.new()
 	var torus := TorusMesh.new()
+	torus.material = load("res://assets/materials/emission_material.tres")
 	torus.inner_radius = radius
 	torus.outer_radius = radius + difference
 	range_ring.mesh = torus

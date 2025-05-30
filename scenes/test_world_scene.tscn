@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnk10j2pkokkr"]
 
-[ext_resource type="PackedScene" uid="uid://vuiexlyqe5tt" path="res://scenes/inherited_scenes/planet_type_a_depleted.tscn" id="2_dl56c"]
+[ext_resource type="PackedScene" uid="uid://vuiexlyqe5tt" path="res://scenes/planets/planet_type_a_depleted.tscn" id="2_dl56c"]
 [ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="3_kn1xl"]
 
 [node name="TestWorldScene" type="Node3D"]
