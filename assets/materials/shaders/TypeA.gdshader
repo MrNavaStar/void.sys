@@ -15,7 +15,7 @@ void fragment() {
 	vec4 vec4_emission = texture(tex_emission, UV);
 	vec3 base_albedo = vec3(vec4_albedo.xyz);
 	vec3 base_emission = vec3(vec4_emission.xyz);
-	
+
 	float positional_map = 0.4 * sin(TIME * 2.0 + 4.0 * world_pos.y) + 1.0;
 	float wireframe_map =  clamp(positional_map, 0, 1);
 

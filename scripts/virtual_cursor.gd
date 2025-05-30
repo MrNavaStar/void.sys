@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 	)
 	position = intersect
 	update_model()
+	update_closest_node()
 
 
 func update_model() -> void:
@@ -38,12 +39,10 @@ func update_model() -> void:
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	var node: SpaceNode = area.get_parent().get_parent() as SpaceNode
 	close_space_nodes.append(node)
-	update_closest_node()
 
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	close_space_nodes.erase(area.get_parent().get_parent() as SpaceNode)
-	update_closest_node()
 
 
 func get_closest_node() -> SpaceNode:

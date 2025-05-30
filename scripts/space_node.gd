@@ -5,10 +5,12 @@ extends Node3D
 @onready var hack_timer: Timer = $"Hack Timer"
 @onready var virtual_cursor: VirtualCursor = get_node("../../Virtual Cursor") as VirtualCursor
 @onready var neighbours_hitbox: Area3D = $Object/NeighboursHitbox as Area3D
+@onready var selectable_indicator: MeshInstance3D = $Object/SelectableIndicator as MeshInstance3D
 
 var connected_nodes: Dictionary[SpaceNode, Edge] = {}
 
 var is_hacked: bool = false
+var is_being_hacked: bool = false
 var allocated_compute_power: float = 0
 var hack_cost: float = 0
 var hack_time: float = 0
@@ -19,6 +21,7 @@ var range_ring: MeshInstance3D
 
 func _ready() -> void:
 	hack_timer.timeout.connect(_on_hack_finish)
+	generate_selectable_indicator_mesh()
 
 
 func _process(_delta: float) -> void:
@@ -27,6 +30,14 @@ func _process(_delta: float) -> void:
 
 
 #=== INITIALIZATION ===
+
+
+func generate_selectable_indicator_mesh() -> void:
+	var torus := TorusMesh.new()
+	torus.material = load("res://assets/materials/emission_material.tres")
+	torus.inner_radius = 1.5
+	torus.outer_radius = 1.6
+	selectable_indicator.mesh = torus
 
 
 func make_root() -> void:
@@ -70,6 +81,8 @@ func hack() -> void:
 		allocated_compute_power = hack_cost
 		unhack_strength = 0
 		hack_timer.start(hack_time)
+		is_being_hacked = true
+		selectable_indicator.visible = false
 
 
 func unhack(strength: float) -> void:
@@ -123,11 +136,12 @@ func _get_nearby_unhacked_nodes() -> Array[SpaceNode]:
 
 
 func highlight_self() -> void:
-	($Object/SelectableIndicator as Node3D).visible = true
+	if not is_hacked and not is_being_hacked:
+		selectable_indicator.visible = true
 
 
 func stop_highlight_self() -> void:
-	($Object/SelectableIndicator as Node3D).visible = false
+	selectable_indicator.visible = false
 
 
 func _update_label() -> void:
@@ -141,6 +155,7 @@ func _update_label() -> void:
 
 
 func _on_hack_finish() -> void:
+	is_being_hacked = false
 	if !is_hacked:
 		Hacker.hacked_nodes.append(self)
 		allocated_compute_power = round(allocated_compute_power / 2)
@@ -169,3 +184,15 @@ func _on_area_3d_input_event(
 ) -> void:
 	if event.is_action_pressed("select"):
 		hack()
+
+
+func _set_hover_color() -> void:
+	selectable_indicator.mesh.surface_set_material(
+		0, load("res://assets/materials/hover_emission_material.tres") as Material
+	)
+
+
+func _unset_hover_color() -> void:
+	selectable_indicator.mesh.surface_set_material(
+		0, load("res://assets/materials/emission_material.tres") as Material
+	)

@@ -4,13 +4,13 @@
 [ext_resource type="Material" uid="uid://di8qji5p67fvw" path="res://assets/materials/emission_material.tres" id="2_2rj4j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cw5of"]
-radius = 0.951168
+radius = 0.529905
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4xayg"]
 radius = 16.1328
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2rj4j"]
-radius = 0.549614
+radius = 0.534592
 
 [sub_resource type="TorusMesh" id="TorusMesh_4xayg"]
 material = ExtResource("2_2rj4j")
@@ -50,10 +50,12 @@ visible = false
 mesh = SubResource("TorusMesh_4xayg")
 
 [node name="Info" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940535, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4003, 0)
 billboard = 1
 
 [node name="Hack Timer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="input_event" from="Object/ClickHitbox" to="." method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Object/ClickHitbox" to="." method="_set_hover_color"]
+[connection signal="mouse_exited" from="Object/ClickHitbox" to="." method="_unset_hover_color"]
