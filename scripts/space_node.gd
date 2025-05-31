@@ -73,8 +73,21 @@ func make_ship() -> void:
 #=== LOGIC ===
 
 
+func get_closest_hacked_node() -> SpaceNode:
+	var closest: SpaceNode = null
+	var distance: float = INF
+	for node_area: Area3D in neighbours_hitbox.get_overlapping_areas():
+		var node: SpaceNode = node_area.get_parent().get_parent() as SpaceNode
+		if node.is_hacked:
+			var test_distance := position.distance_to(node.position)
+			if test_distance < distance:
+				distance = test_distance
+				closest = node
+	return closest
+
+
 func hack() -> void:
-	closest_node = virtual_cursor.get_closest_node_in_range()
+	closest_node = get_closest_hacked_node()
 	if closest_node == null:
 		return
 	if !is_hacked and Hacker.can_compute_action(hack_cost):

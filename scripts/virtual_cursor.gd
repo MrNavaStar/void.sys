@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 
 
 func update_model() -> void:
-	var target_node := get_closest_node_in_range()
+	var target_node := get_closest_hacked_node_in_range()
 	if target_node == null:
 		cursor_pivot.visible = false
 		return
@@ -48,7 +48,7 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 func get_closest_node() -> SpaceNode:
 	var closest: SpaceNode = null
 	var distance: float = INF
-	for node in close_space_nodes:
+	for node: SpaceNode in close_space_nodes:
 		if node.is_hacked:
 			var test_distance := position.distance_to(node.position)
 			if test_distance < distance:
@@ -57,7 +57,7 @@ func get_closest_node() -> SpaceNode:
 	return closest
 
 
-func get_closest_node_in_range() -> SpaceNode:
+func get_closest_hacked_node_in_range() -> SpaceNode:
 	var closest: SpaceNode = null
 	var distance: float = INF
 	for node in close_space_nodes:

@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://di8qji5p67fvw" path="res://assets/materials/emission_material.tres" id="2_2rj4j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cw5of"]
-radius = 0.529905
+radius = 1.02481
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4xayg"]
 radius = 16.1328
