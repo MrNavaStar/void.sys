@@ -1,4 +1,4 @@
-extends ProgressBar
+extends HBoxContainer
 
 
 func _ready() -> void:
@@ -6,8 +6,31 @@ func _ready() -> void:
 
 
 func _update_compute_power(usage_map: Dictionary[Hacker.PowerUses, float]) -> void:
-	var total_usage: float = 0
+	for node: Node in self.get_children():
+		node.queue_free()
+
 	for use: Hacker.PowerUses in usage_map:
-		print("%s using %f points" % [Hacker.get_poweruse_as_string(use), usage_map[use]])
-		total_usage += usage_map[use]
-	value = total_usage / Hacker.total_compute_power * 100
+		_create_sub_bar(
+			usage_map[use] / Hacker.total_compute_power,
+			Hacker.get_poweruse_as_color(use),
+			Hacker.get_poweruse_as_string(use)
+		)
+	_create_empty_space()
+
+
+func _create_sub_bar(percent: float, color: Color, title: String) -> void:
+	var bar_width: float = size.x * percent
+	var bar: SubBar = SubBar.new()
+	bar.title = title
+	bar.color = color
+	bar.custom_minimum_size = Vector2(bar_width, 0)
+	self.add_child(bar)
+
+
+func _create_empty_space() -> void:
+	var bar: SubBar = SubBar.new()
+	bar.title = "[[ ALLOCATION: UNASSIGNED ]]"
+	bar.color = Color("#ffffff44")
+	bar.text_color = Color("#ffffff")
+	bar.size_flags_horizontal = SizeFlags.SIZE_EXPAND_FILL
+	self.add_child(bar)

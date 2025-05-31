@@ -11,7 +11,6 @@ var connected_nodes: Dictionary[SpaceNode, Edge] = {}
 
 var is_hacked: bool = false
 var is_being_hacked: bool = false
-var allocated_compute_power: float = 0
 var hack_cost: float = 0
 var hack_time: float = 0
 var unhack_strength: float = 0
@@ -22,11 +21,6 @@ var range_ring: MeshInstance3D
 func _ready() -> void:
 	hack_timer.timeout.connect(_on_hack_finish)
 	generate_selectable_indicator_mesh()
-
-
-func _process(_delta: float) -> void:
-	if is_hacked and allocated_compute_power >= unhack_strength:
-		hack_timer.stop()
 
 
 #=== INITIALIZATION ===
@@ -42,8 +36,7 @@ func generate_selectable_indicator_mesh() -> void:
 
 func make_root() -> void:
 	($Object/MeshInstance3D as MeshInstance3D).mesh = BoxMesh.new()
-	Hacker.hacked_nodes.append(self)
-	allocated_compute_power = 8
+	Hacker.add_hacked_node(self)
 	is_hacked = true
 	_update_label()
 
@@ -87,11 +80,16 @@ func get_closest_hacked_node() -> SpaceNode:
 
 
 func hack() -> void:
+	if is_being_hacked:
+		return
+
 	closest_node = get_closest_hacked_node()
 	if closest_node == null:
 		return
+
 	if !is_hacked and Hacker.can_compute_action(hack_cost):
-		allocated_compute_power = hack_cost
+		(get_node("../../EnemyManager") as EnemyManager).initial_start()
+		Hacker.register_hack(hack_cost)
 		unhack_strength = 0
 		hack_timer.start(hack_time)
 		is_being_hacked = true
@@ -170,15 +168,14 @@ func _update_label() -> void:
 func _on_hack_finish() -> void:
 	is_being_hacked = false
 	if !is_hacked:
-		Hacker.hacked_nodes.append(self)
-		allocated_compute_power = round(allocated_compute_power / 2)
+		Hacker.deregister_hack(hack_cost)
+		Hacker.add_hacked_node(self)
 		is_hacked = true
 		var edge: Edge = (get_node("../../Edges") as Edger).create_edge(self, closest_node)
 		closest_node.connected_nodes[self] = edge
 		connected_nodes[closest_node] = edge
 	else:
-		Hacker.hacked_nodes.erase(self)
-		allocated_compute_power = 0
+		Hacker.remove_hacked_node(self)
 		is_hacked = false
 		hack_cost *= 2
 		hack_time *= 2
@@ -187,7 +184,6 @@ func _on_hack_finish() -> void:
 			neighbour.connected_nodes.erase(self)
 		connected_nodes.clear()
 
-	Hacker.update_idle_node_compute_power_use()
 	_update_label()
 	virtual_cursor.update_closest_node()
 

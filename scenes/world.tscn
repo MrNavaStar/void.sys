@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmxxff1nm6qak"]
+[gd_scene load_steps=15 format=3 uid="uid://dmxxff1nm6qak"]
 
 [ext_resource type="Script" uid="uid://d318spwk1v5ym" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="2_4wyf3"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://celeggxoxwqmy" path="res://scripts/virtual_cursor.gd" id="5_qfnet"]
 [ext_resource type="Material" uid="uid://di8qji5p67fvw" path="res://assets/materials/emission_material.tres" id="6_i7141"]
 [ext_resource type="Script" uid="uid://cqeasj8iuni02" path="res://scripts/enemy_manager.gd" id="8_4mrxx"]
+
+[sub_resource type="Environment" id="Environment_4mrxx"]
+background_mode = 1
+ambient_light_color = Color(0.496902, 0.803296, 0.690815, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k0juu"]
 
@@ -26,6 +30,17 @@ radius = 0.17907
 material = ExtResource("6_i7141")
 shape = 0
 size = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mrxx"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.892231, 0.892231, 0.892231, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_rwgxs")
@@ -48,10 +63,11 @@ transform = Transform3D(1, 0, 0, 0, 0.766045, 0.642788, 0, -0.642788, 0.766045, 
 metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig/ZoomPivot"]
+environment = SubResource("Environment_4mrxx")
 metadata/_edit_lock_ = true
 
 [node name="Grid" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -1.30573, 0)
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -1.4, 0)
 mesh = SubResource("PlaneMesh_k0juu")
 surface_material_override/0 = SubResource("StandardMaterial3D_71j4m")
 metadata/_edit_lock_ = true
@@ -94,7 +110,7 @@ size_flags_vertical = 3
 mouse_filter = 1
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Control"]
+[node name="RamLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 14.0
@@ -102,20 +118,33 @@ offset_right = 68.0
 offset_bottom = 37.0
 text = "RAM"
 
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
+[node name="ComputePowerBar" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 82.0
-offset_top = 13.0
-offset_right = 406.0
-offset_bottom = 40.0
+offset_left = 75.0
+offset_top = 16.0
+offset_right = 462.0
+offset_bottom = 38.0
+theme_override_constants/separation = 0
 script = ExtResource("5_71j4m")
+
+[node name="RamUseLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = 65.0
+offset_right = 133.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_4mrxx")
+text = "[[ ERROR: NO VALUE ]]"
 
 [node name="EnemyManager" type="Node3D" parent="."]
 script = ExtResource("8_4mrxx")
 
-[node name="EnemyStrengthTimer" type="Timer" parent="EnemyManager"]
+[node name="LevelTimer" type="Timer" parent="EnemyManager"]
 one_shot = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="Virtual Cursor/Area3D" to="Virtual Cursor" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Virtual Cursor/Area3D" to="Virtual Cursor" method="_on_area_3d_area_exited"]
+[connection signal="timeout" from="EnemyManager/LevelTimer" to="EnemyManager" method="_on_timer_finish"]
