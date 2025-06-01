@@ -5,7 +5,7 @@ enum PowerUses { IDLE_NODES, HACKING, DESTROYED, DEFENDING }
 @export var idle_node_cost: float = 5
 @export var destroyed_node_cost: float = 10
 @export var defense_cost: float = 5
-@export var selection_range: float = 5
+@export var selection_range: float = 8
 
 var total_compute_power: float = 64
 var compute_power_usage: Dictionary[PowerUses, float] = {

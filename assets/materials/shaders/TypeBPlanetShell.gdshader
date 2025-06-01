@@ -10,6 +10,11 @@ void vertex() {
 	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
 void fragment() {
 	vec4 vec4_albedo = texture(tex_albedo, UV);
 	vec4 vec4_emission = texture(tex_emission, UV);
@@ -18,8 +23,10 @@ void fragment() {
 
 	float positional_map = 0.4 * sin(TIME * 2.0 + 4.0 * world_pos.y) + 1.0;
 	float wireframe_map =  clamp(positional_map, 0, 1);
+	
+	
 
 	ALBEDO = base_albedo;
 	EMISSION = base_emission;
-	ALPHA = 1.0;
+	ALPHA = fresnel(1.0, NORMAL, VIEW);
 }

@@ -57,7 +57,6 @@ class SmallAttack:
 
 	func hack() -> void:
 		target.is_hacked = false
-		Hacker.deregister_attack(target)
 		target._on_hack_finish()
 
 

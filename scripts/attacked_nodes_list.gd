@@ -19,5 +19,7 @@ func _on_receive_message(node: SpaceNode) -> void:
 
 
 func _on_delete_message(node: SpaceNode) -> void:
+	if not messages.has(node):
+		return
 	messages[node].queue_free()
 	messages.erase(node)
