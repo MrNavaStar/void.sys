@@ -15,7 +15,9 @@ func _ready() -> void:
 
 
 func _show_hover() -> void:
-	use_label.text = title
+	use_label.text = (
+		"%s - %d/%d" % [title, Hacker.get_compute_power_usage(), Hacker.total_compute_power]
+	)
 	use_label.begin_bulk_theme_override()
 	use_label.add_theme_color_override("font_color", text_color)
 	use_label.add_theme_color_override("border_color", text_color)

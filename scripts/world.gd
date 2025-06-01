@@ -5,6 +5,10 @@ extends Node3D
 @export var planet_spread: int = 20
 @export var ships: int = 1500
 @export var ship_spread: int = 3
+@export var probes: int = 800
+@export var probe_spread: int = 5
+@export var asteroids: int = 1500
+@export var asteroid_spread: int = 10
 
 var node_positions: Array
 @onready var space_nodes: Node3D = $SpaceNodes
@@ -52,6 +56,18 @@ func spawn_nodes(node: PackedScene) -> void:
 		if pos == Vector3.INF:
 			continue
 		spawn_node(node, pos).make_ship()
+
+	for i in probes:
+		var pos := rand_pos_with_spread(probe_spread)
+		if pos == Vector3.INF:
+			continue
+		spawn_node(node, pos).make_probe()
+
+	for i in asteroids:
+		var pos := rand_pos_with_spread(asteroid_spread)
+		if pos == Vector3.INF:
+			continue
+		spawn_node(node, pos).make_asteroid()
 
 
 func _ready() -> void:

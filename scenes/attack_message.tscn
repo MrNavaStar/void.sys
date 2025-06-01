@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dawp7su62em6u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybylx"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.995907, 0.917497, 0.885222, 1)
+
+[node name="StatusMessage" type="Label"]
+offset_right = 72.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0.995907, 0.917497, 0.885222, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ybylx")
+text = "asdfasdf"

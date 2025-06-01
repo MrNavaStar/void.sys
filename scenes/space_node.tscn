@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dm6utgsyuev2y"]
+[gd_scene load_steps=15 format=3 uid="uid://dm6utgsyuev2y"]
 
 [ext_resource type="Script" uid="uid://dg0qfy6s8df13" path="res://scripts/space_node.gd" id="1_4xayg"]
 [ext_resource type="Material" uid="uid://di8qji5p67fvw" path="res://assets/materials/emission_material.tres" id="2_2rj4j"]
@@ -37,12 +37,36 @@ albedo_texture = SubResource("GradientTexture2D_81pyo")
 [sub_resource type="PlaneMesh" id="PlaneMesh_2rj4j"]
 material = SubResource("StandardMaterial3D_2rj4j")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81pyo"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.983731, 0.308544, 0.331982, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2rj4j"]
+material = SubResource("StandardMaterial3D_81pyo")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 1.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcnui"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.223718, 0.685067, 0.382315, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jtn2c"]
+material = SubResource("StandardMaterial3D_kcnui")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 1.0
+cap_top = false
+cap_bottom = false
+
 [node name="SpaceNode" type="Node3D"]
 script = ExtResource("1_4xayg")
 
 [node name="Object" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Object"]
 
 [node name="ClickHitbox" type="Area3D" parent="Object"]
 
@@ -72,6 +96,17 @@ mesh = SubResource("TorusMesh_4xayg")
 [node name="Grid" type="MeshInstance3D" parent="Object"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39, 0)
 mesh = SubResource("PlaneMesh_2rj4j")
+
+[node name="EnemyHackIndicator" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.220265, 0)
+visible = false
+mesh = SubResource("CylinderMesh_2rj4j")
+
+[node name="FriendlyHackIndicator" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225965, 0)
+visible = false
+mesh = SubResource("CylinderMesh_jtn2c")
+skeleton = NodePath("../EnemyHackIndicator")
 
 [node name="Info" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4003, 0)

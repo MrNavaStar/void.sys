@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyitkfviyrtfa"]
+
+[ext_resource type="PackedScene" uid="uid://h5vuyqe7ulpe" path="res://assets/nodes/Probe-TypeB-Cubesat.fbx" id="1_tdvhy"]
+[ext_resource type="Material" uid="uid://d07en0436fs11" path="res://assets/materials/tybe_b.tres" id="2_g23sx"]
+
+[node name="Probe-TypeB-Cubesat" instance=ExtResource("1_tdvhy")]
+
+[node name="pCylinderShape3" parent="." index="0"]
+material_override = ExtResource("2_g23sx")

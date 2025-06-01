@@ -1,0 +1,74 @@
+[gd_scene load_steps=14 format=4 uid="uid://dyas45bkfi0ee"]
+
+[ext_resource type="PackedScene" uid="uid://dp3vc8cefo2ep" path="res://assets/nodes/Planet-TypeB-Overpopulated.fbx" id="1_k3yct"]
+[ext_resource type="Material" uid="uid://d07en0436fs11" path="res://assets/materials/tybe_b.tres" id="2_e3yei"]
+[ext_resource type="Material" uid="uid://diodsgghl4n6u" path="res://assets/materials/type_b_lights.tres" id="3_ste46"]
+[ext_resource type="Shader" uid="uid://k1ip0t55e85q" path="res://assets/materials/shaders/TypeAFlashing.gdshader" id="3_vwpcx"]
+[ext_resource type="Texture2D" uid="uid://cvnbukuhuw2q0" path="res://assets/nodes/TypeB_OverpopulatedColors.png" id="4_5odf5"]
+[ext_resource type="Texture2D" uid="uid://dcidvre5ni7x" path="res://assets/nodes/TypeB_OverpopulatedEmissiveColors.png" id="5_2uddr"]
+[ext_resource type="Shader" uid="uid://ddp3ry2q7ai38" path="res://assets/materials/shaders/wireframe_sweep.gdshader" id="6_5m8do"]
+[ext_resource type="Shader" uid="uid://biut2ggm6k2px" path="res://assets/materials/shaders/TypeBPlanetShell.gdshader" id="7_ste46"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5odf5"]
+render_priority = 0
+shader = ExtResource("3_vwpcx")
+shader_parameter/tex_albedo = ExtResource("4_5odf5")
+shader_parameter/tex_emission = ExtResource("5_2uddr")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_24aml"]
+_surfaces = [{
+"aabb": AABB(-99.3978, -105.133, -88.8363, 196.993, 221.245, 190.492),
+"format": 34359742465,
+"index_count": 216,
+"index_data": PackedByteArray("AAAwAAIAAAADADAAAAACAAMAAQACADAAAQADAAIAAQAwAAMABAAxAAUABAAGADEABAAFAAYABwAFADEABwAGAAUABwAxAAYACAAyAAkACAAKADIACAAJAAoACwAJADIACwAKAAkACwAyAAoADAAzAA0ADAAOADMADAANAA4ADwANADMADwAOAA0ADwAzAA4AEAA0ABEAEAASADQAEAARABIAEwARADQAEwASABEAEwA0ABIAFAA1ABUAFAAWADUAFAAVABYAFwAVADUAFwAWABUAFwA1ABYAGAA2ABkAGAAaADYAGAAZABoAGwAZADYAGwAaABkAGwA2ABoAHAA3AB0AHAAeADcAHAAdAB4AHwAdADcAHwAeAB0AHwA3AB4AIAA4ACEAIAAiADgAIAAhACIAIwAhADgAIwAiACEAIwA4ACIAJAA5ACUAJAAmADkAJAAlACYAJwAlADkAJwAmACUAJwA5ACYAKAA6ACkAKAAqADoAKAApACoAKwApADoAKwAqACkAKwA6ACoALAA7AC0ALAAuADsALAAtAC4ALwAtADsALwAuAC0ALwA7AC4A"),
+"lods": [1.67965, PackedByteArray("AAABAAIAAQADAAIAAAACAAMAAAADAAEABAAFAAYABwAGAAUABwAEAAYABwAFAAQACAAJAAoACwAKAAkACwAIAAoACwAJAAgADAANAA4ADwAOAA0ADwAMAA4ADwANAAwAEAARABIAEwASABEAEwAQABIAEwARABAAFAAVABYAFwAWABUAFwAUABYAFwAVABQAGAAZABoAGwAaABkAGwAYABoAGwAZABgAHAAdAB4AHwAeAB0AHwAcAB4AHwAdABwAIAAhACIAIwAiACEAIwAgACIAIwAhACAAJAAlACYAJwAmACUAJwAkACYAJwAlACQAKAApACoAKwAqACkAKwAoACoAKwApACgALAAtAC4ALwAuAC0ALwAsAC4ALwAtACwA")],
+"name": "TypeB_Overpopulated_Mat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("eJMRQcdD5cE07cJCC+gXQRAb78HYT8tCIgLkQFx29cGqs8ZC8hc3QUop8cHMM8ZCsG/2wZppv8JUaE5Cb67uwVLUxcLWIkxCJor1wSdawcJkslpCbwAAwu/XxsKva1ZCKeB/QlKQNULojZlCN918Qi28OUII2Z9Cr2CFQmS3MUJkbpxCPA2FQjnSPEIxsZ9CUiS7QqKk6MHB2OHBuSDBQgxb5cGZYNXBRrK9QhKM/8H22ufB6zDDQoaZ8sFwpuvB8zEAQp5AysLJnf3B/YgMQkOVzMLtGwLCtVb+QaUS0MLItvLBX0YFQkhE0sI/1QPCOiJsQnOqbsLv4IvCvgdrQqfGb8LhoZLCx7h4QsNKb8K2PY3CX211Ql9GeMI8kJHCKMv9wUrkwMIr4yLBNCn2wcqAxsLhPAjBI4AKwoesw8ICnh/BnlQEwqcwycIn0CnBIGqGwk8DaEJtcWlC4vSIwny3ZUIG2HVCaz2GwmQqdEKMvW1CG/eLwhCYcUJMFXNCbGy+wuSO4kGWVBhBo2nDwmoq2EF04TZBGzLBwsDQ+EGsASZBqMvGwtKE7EEWBx9BQb5YwbSL30JYsBvBAMRzwczq40I4+PfA0203wR905EJisB7BVChhwWI56EKjuyHB67+JQvs9JkIOp2LChlmMQqXNMkLmYGLCBdyPQigfI0IOV2XCf+GPQlGlLUKKymzComWMwokMKsFL7KrC1COTwvL+MMH1+qrCyrWNwgUrDMH5ArDC3fCRwknAMMEsrLHCZWYOQfSQ1sESoshCe0YHwtaMwsKkyU5CLRyDQvmWQULaoJlCjfa+Qpxz4MHAy/bBu2X6QY3EzcIODgrC1AhtQj8pfMJZlIzCPAr7waA2xcKUg0zBavOMwigWa0K4TmdCPX/DwnBA4kF1QehAvQBzwTQs40KVdkHB/qOJQhk+KULS6W/CPvGMwviKUcHckK/C")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2uddr"]
+resource_name = "Planet_TypeB_Overpopulated_Lights_01"
+_surfaces = [{
+"aabb": AABB(-99.3978, -105.133, -88.8363, 196.993, 221.245, 190.492),
+"attribute_data": PackedByteArray("urZfP+ltcD+6tl8/5F5cP5EOYz9mZmY/ZmZmP+ReXD89vmk/ZmZmP2ZmZj/pbXA/EhZtP+ltcD8SFm0/5F5cP2ZmZj/pbXA/kQ5jP2ZmZj89vmk/ZmZmP2ZmZj/kXlw/EhZtP+ReXD8SFm0/6W1wP7q2Xz/kXlw/urZfP+ltcD9mZmY/6W1wP5EOYz9mZmY/Pb5pP2ZmZj9mZmY/5F5cPxIWbT/kXlw/EhZtP+ltcD+6tl8/5F5cP7q2Xz/pbXA/ZmZmP+ltcD+RDmM/ZmZmPz2+aT9mZmY/ZmZmP+ReXD8SFm0/5F5cPxIWbT/pbXA/urZfP+ReXD+6tl8/6W1wP2ZmZj/pbXA/kQ5jP2ZmZj89vmk/ZmZmP2ZmZj/kXlw/EhZtP+ReXD8SFm0/6W1wP7q2Xz/kXlw/urZfP+ltcD9mZmY/6W1wP5EOYz9mZmY/Pb5pP2ZmZj9mZmY/5F5cPxIWbT/kXlw/EhZtP+ltcD+6tl8/5F5cP7q2Xz/pbXA/ZmZmP+ltcD+RDmM/ZmZmPz2+aT9mZmY/ZmZmP+ReXD8SFm0/5F5cPxIWbT/pbXA/urZfP+ReXD+6tl8/6W1wP2ZmZj/pbXA/kQ5jP2ZmZj89vmk/ZmZmP2ZmZj/kXlw/EhZtP+ReXD8SFm0/6W1wP7q2Xz/kXlw/urZfP+ltcD9mZmY/6W1wP5EOYz9mZmY/Pb5pP2ZmZj9mZmY/5F5cPxIWbT/kXlw/EhZtP+ltcD+6tl8/5F5cP7q2Xz/pbXA/ZmZmP+ltcD+RDmM/ZmZmPz2+aT9mZmY/ZmZmP+ReXD8SFm0/5F5cPxIWbT/pbXA/urZfP+ReXD+6tl8/6W1wP2ZmZj/pbXA/kQ5jP2ZmZj89vmk/ZmZmP2ZmZj/kXlw/EhZtP+ReXD8SFm0/6W1wP7q2Xz/kXlw/urZfP+ltcD9mZmY/6W1wP5EOYz9mZmY/Pb5pP2ZmZj9mZmY/5F5cPxIWbT/kXlw/EhZtP+ltcD+6tl8/5F5cP7q2Xz/pbXA/5F5cP2ZmZj/pbXA/ZmZmP+ReXD9mZmY/6W1wP2ZmZj/kXlw/ZmZmP+ltcD9mZmY/5F5cP2ZmZj/pbXA/ZmZmP+ReXD9mZmY/6W1wP2ZmZj/kXlw/ZmZmP+ltcD9mZmY/5F5cP2ZmZj/pbXA/ZmZmP+ReXD9mZmY/6W1wP2ZmZj/kXlw/ZmZmP+ltcD9mZmY/5F5cP2ZmZj/pbXA/ZmZmP+ReXD9mZmY/6W1wP2ZmZj/kXlw/ZmZmP+ltcD9mZmY/"),
+"format": 34359742487,
+"index_count": 216,
+"index_data": PackedByteArray("AABgAAIAAQACAGAAAwAEAAIABQACAAQABwBhAAQABgAEAGEADwBiAAkADgAJAGIACwAKAAkACAAJAAoADABjAAoADQAKAGMAFwBkABEAFgARAGQAEwASABEAEAARABIAFABlABIAFQASAGUAHwBmABkAHgAZAGYAGwAaABkAGAAZABoAHABnABoAHQAaAGcAJwBoACEAJgAhAGgAIwAiACEAIAAhACIAJABpACIAJQAiAGkALwBqACkALgApAGoAKwAqACkAKAApACoALABrACoALQAqAGsANwBsADEANgAxAGwAMwAyADEAMAAxADIANABtADIANQAyAG0APwBuADkAPgA5AG4AOwA6ADkAOAA5ADoAPABvADoAPQA6AG8ARwBwAEEARgBBAHAAQwBCAEEAQABBAEIARABxAEIARQBCAHEATwByAEkATgBJAHIASwBKAEkASABJAEoATABzAEoATQBKAHMAVwB0AFEAVgBRAHQAUwBSAFEAUABRAFIAVAB1AFIAVQBSAHUAXwB2AFkAXgBZAHYAWwBaAFkAWABZAFoAXAB3AFoAXQBaAHcA"),
+"lods": [1.67965, PackedByteArray("AAABAAIAAwAEAAIABQACAAQABgAEAAcACAAJAAoACwAKAAkADAANAAoADgAJAA8AEAARABIAEwASABEAFAAVABIAFgARABcAGAAZABoAGwAaABkAHAAdABoAHgAZAB8AIAAhACIAIwAiACEAJAAlACIAJgAhACcAKAApACoAKwAqACkALAAtACoALgApAC8AMAAxADIAMwAyADEANAA1ADIANgAxADcAOAA5ADoAOwA6ADkAPAA9ADoAPgA5AD8AQABBAEIAQwBCAEEARABFAEIARgBBAEcASABJAEoASwBKAEkATABNAEoATgBJAE8AUABRAFIAUwBSAFEAVABVAFIAVgBRAFcAWABZAFoAWwBaAFkAXABdAFoAXgBZAF8A")],
+"material": SubResource("ShaderMaterial_5odf5"),
+"name": "TypeB_Overpopulated_Mat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 120,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_24aml")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ueb3"]
+render_priority = 1
+shader = ExtResource("6_5m8do")
+shader_parameter/color = Color(0.192029, 0.780171, 0.320052, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yrr8a"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3ueb3")
+shader = ExtResource("7_ste46")
+shader_parameter/tex_albedo = ExtResource("4_5odf5")
+shader_parameter/tex_emission = ExtResource("5_2uddr")
+
+[node name="Planet-TypeB-Overpopulated" instance=ExtResource("1_k3yct")]
+
+[node name="Planet_TypeB_Overpopulated_01" parent="." index="0"]
+material_override = ExtResource("2_e3yei")
+
+[node name="Planet_TypeB_Overpopulated_Lights_01" parent="Planet_TypeB_Overpopulated_01" index="0"]
+material_override = ExtResource("3_ste46")
+mesh = SubResource("ArrayMesh_2uddr")
+
+[node name="Planet_TypeB_Overpopulated_Smog_01" parent="Planet_TypeB_Overpopulated_01" index="1"]
+material_override = SubResource("ShaderMaterial_yrr8a")

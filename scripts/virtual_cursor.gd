@@ -2,7 +2,6 @@ class_name VirtualCursor
 extends Node3D
 
 @export var mesh_offset: float = 2
-@export var selection_range: float = 5
 @export var ring_inner_size: float = 0.1
 
 @onready var camera: Camera3D = get_node("../CameraRig/ZoomPivot/Camera3D")
@@ -61,12 +60,12 @@ func get_closest_hacked_node_in_range() -> SpaceNode:
 	var closest: SpaceNode = null
 	var distance: float = INF
 	for node in close_space_nodes:
-		if node.is_hacked:
+		if node.is_hacked and not node.is_being_hacked:
 			var test_distance := position.distance_to(node.position)
 			if test_distance < distance:
 				distance = test_distance
 				closest = node
-	return closest if distance < selection_range else null
+	return closest if distance < Hacker.selection_range else null
 
 
 func update_closest_node() -> void:
@@ -78,5 +77,5 @@ func update_closest_node() -> void:
 		current_closest.stop_highlight_nearby()
 	current_closest = closest
 	if current_closest != null:
-		current_closest.generate_ring(selection_range, ring_inner_size)
-		current_closest.highlight_nearby(selection_range)
+		current_closest.generate_ring(Hacker.selection_range, ring_inner_size)
+		current_closest.highlight_nearby(Hacker.selection_range)

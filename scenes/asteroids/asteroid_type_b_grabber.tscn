@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://l68im2cxl2ib"]
+
+[ext_resource type="PackedScene" uid="uid://ca13veyn48bo0" path="res://assets/nodes/Asteroid_TypeB_Grabber.fbx" id="1_r8h1d"]
+[ext_resource type="Material" uid="uid://d07en0436fs11" path="res://assets/materials/tybe_b.tres" id="2_scpvj"]
+
+[node name="Asteroid_TypeB_Grabber" instance=ExtResource("1_r8h1d")]
+
+[node name="Asteroid_TypeB_Grabber_01" parent="." index="0"]
+material_override = ExtResource("2_scpvj")

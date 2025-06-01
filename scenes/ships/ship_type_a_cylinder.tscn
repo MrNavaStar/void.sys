@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv7x4f0r6bgcv"]
+
+[ext_resource type="PackedScene" uid="uid://bkv4c5krrqkia" path="res://assets/nodes/Ship-TypeA-Cylinder.fbx" id="1_4t073"]
+[ext_resource type="Material" uid="uid://dp3rcxukwdu05" path="res://assets/materials/planet_type_a_depleted.tres" id="2_shepa"]
+
+[node name="Ship-TypeA-Cylinder" instance=ExtResource("1_4t073")]
+
+[node name="Ship_Depleted_01" parent="." index="0"]
+material_override = ExtResource("2_shepa")
+
+[node name="Ship_Depleted_Centrifuge_01" parent="Ship_Depleted_01" index="0"]
+material_override = ExtResource("2_shepa")
+
+[node name="Ship_Depleted_Centrifuge_02" parent="Ship_Depleted_01" index="1"]
+material_override = ExtResource("2_shepa")

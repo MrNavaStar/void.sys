@@ -13,9 +13,31 @@ var is_hacked: bool = false
 var is_being_hacked: bool = false
 var hack_cost: float = 0
 var hack_time: float = 0
-var unhack_strength: float = 0
 var closest_node: SpaceNode
 var range_ring: MeshInstance3D
+
+var planet_scenes: Array[String]
+var ship_scenes: Array[String]
+var probe_scenes: Array[String]
+var asteroid_scenes: Array[String]
+
+
+func _init() -> void:
+	planet_scenes = [
+		"res://scenes/planets/planet_type_a_depleted.tscn",
+		"res://scenes/planets/planet_type_b_overpopulated.tscn"
+	]
+	ship_scenes = [
+		"res://scenes/ships/ship_type_a_cylinder.tscn", "res://scenes/ships/ship_type_b_cone.tscn"
+	]
+	probe_scenes = [
+		"res://scenes/probes/probe_type_a_sputnik.tscn",
+		"res://scenes/probes/probe_type_b_cubesat.tscn"
+	]
+	asteroid_scenes = [
+		"res://scenes/asteroids/asteroid_type_a_tick.tscn",
+		"res://scenes/asteroids/asteroid_type_b_grabber.tscn"
+	]
 
 
 func _ready() -> void:
@@ -35,30 +57,63 @@ func generate_selectable_indicator_mesh() -> void:
 
 
 func make_root() -> void:
-	($Object/MeshInstance3D as MeshInstance3D).mesh = BoxMesh.new()
+	var scene: PackedScene = load(probe_scenes[randi_range(0, 1)])
+	var model: Node3D = scene.instantiate()
+	model.rotation.x = randf_range(0, TAU)
+	model.rotation.y = randf_range(0, TAU)
+	model.rotation.z = randf_range(0, TAU)
+	$Object.add_child(model)
 	Hacker.add_hacked_node(self)
+	hack_cost = [32, 48, 64].pick_random()
+	hack_time = randi_range(8, 16)
 	is_hacked = true
 	_update_label()
 
 
 func make_planet() -> void:
-	var planet_scene: PackedScene = load("res://scenes/planets/planet_type_a_depleted.tscn")
-	var planet: Node3D = planet_scene.instantiate()
-	planet.rotation.x = randf_range(1, 2 * PI)
-	planet.rotation.y = randf_range(0, 2 * PI)
-	planet.rotation.z = randf_range(0, 2 * PI)
-	$Object.add_child(planet)
-	hack_cost = [32, 48, 64][randi_range(0, 2)]
+	var scene: PackedScene = load(planet_scenes[randi_range(0, 1)])
+	var model: Node3D = scene.instantiate()
+	model.rotation.x = randf_range(0, TAU)
+	model.rotation.y = randf_range(0, TAU)
+	model.rotation.z = randf_range(0, TAU)
+	$Object.add_child(model)
+	hack_cost = [32, 48, 64].pick_random()
 	hack_time = randi_range(8, 16)
 	_update_label()
 
 
 func make_ship() -> void:
-	var meshinstance3D: MeshInstance3D = $Object/MeshInstance3D
-	meshinstance3D.mesh = CylinderMesh.new()
-	meshinstance3D.scale = Vector3(0.2, 0.2, 0.2)
-	meshinstance3D.rotation = Vector3(0, 0, PI / 2)
-	hack_cost = [8, 16, 24][randi_range(0, 2)]
+	var scene: PackedScene = load(ship_scenes[randi_range(0, 1)])
+	var model: Node3D = scene.instantiate()
+	model.rotation.x = randf_range(0, TAU)
+	model.rotation.y = randf_range(0, TAU)
+	model.rotation.z = randf_range(0, TAU)
+	$Object.add_child(model)
+	hack_cost = [8, 16, 24].pick_random()
+	hack_time = randi_range(3, 6)
+	_update_label()
+
+
+func make_probe() -> void:
+	var scene: PackedScene = load(probe_scenes[randi_range(0, 1)])
+	var model: Node3D = scene.instantiate()
+	model.rotation.x = randf_range(0, TAU)
+	model.rotation.y = randf_range(0, TAU)
+	model.rotation.z = randf_range(0, TAU)
+	$Object.add_child(model)
+	hack_cost = [8, 16, 24].pick_random()
+	hack_time = randi_range(3, 6)
+	_update_label()
+
+
+func make_asteroid() -> void:
+	var scene: PackedScene = load(asteroid_scenes[randi_range(0, 1)])
+	var model: Node3D = scene.instantiate()
+	model.rotation.x = randf_range(0, TAU)
+	model.rotation.y = randf_range(0, TAU)
+	model.rotation.z = randf_range(0, TAU)
+	$Object.add_child(model)
+	hack_cost = [8, 16, 24].pick_random()
 	hack_time = randi_range(3, 6)
 	_update_label()
 
@@ -73,7 +128,7 @@ func get_closest_hacked_node() -> SpaceNode:
 		var node: SpaceNode = node_area.get_parent().get_parent() as SpaceNode
 		if node.is_hacked:
 			var test_distance := position.distance_to(node.position)
-			if test_distance < distance:
+			if test_distance < distance and test_distance < Hacker.selection_range:
 				distance = test_distance
 				closest = node
 	return closest
@@ -87,19 +142,17 @@ func hack() -> void:
 	if closest_node == null:
 		return
 
-	if !is_hacked and Hacker.can_compute_action(hack_cost):
+	var can_compute: bool = Hacker.can_compute_action(hack_cost)
+	if not can_compute:
+		Hacker.send_message("NOT ENOUGH RAM")
+		return
+	if !is_hacked:
 		(get_node("../../EnemyManager") as EnemyManager).initial_start()
+		show_friendly_hack_indicator()
 		Hacker.register_hack(hack_cost)
-		unhack_strength = 0
 		hack_timer.start(hack_time)
 		is_being_hacked = true
 		selectable_indicator.visible = false
-
-
-func unhack(strength: float) -> void:
-	if is_hacked:
-		unhack_strength = strength
-		hack_timer.start(hack_time)
 
 
 func generate_ring(radius: float, difference: float) -> void:
@@ -162,6 +215,21 @@ func _update_label() -> void:
 		info.text = "Hack Cost: %s Hack Time: %s" % [hack_cost, hack_time]
 
 
+func show_friendly_hack_indicator() -> void:
+	($Object/EnemyHackIndicator as Node3D).visible = false
+	($Object/FriendlyHackIndicator as Node3D).visible = true
+
+
+func show_enemy_hack_indicator() -> void:
+	($Object/FriendlyHackIndicator as Node3D).visible = false
+	($Object/EnemyHackIndicator as Node3D).visible = true
+
+
+func hide_hack_indicators() -> void:
+	($Object/FriendlyHackIndicator as Node3D).visible = false
+	($Object/EnemyHackIndicator as Node3D).visible = false
+
+
 #=== CALLBACKS ===
 
 
@@ -175,8 +243,8 @@ func _on_hack_finish() -> void:
 		closest_node.connected_nodes[self] = edge
 		connected_nodes[closest_node] = edge
 	else:
-		Hacker.remove_hacked_node(self)
 		is_hacked = false
+		Hacker.remove_hacked_node(self)
 		hack_cost *= 2
 		hack_time *= 2
 		for neighbour: SpaceNode in connected_nodes:
@@ -184,6 +252,7 @@ func _on_hack_finish() -> void:
 			neighbour.connected_nodes.erase(self)
 		connected_nodes.clear()
 
+	hide_hack_indicators()
 	_update_label()
 	virtual_cursor.update_closest_node()
 

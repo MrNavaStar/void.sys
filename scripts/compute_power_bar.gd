@@ -16,6 +16,10 @@ func _update_compute_power(usage_map: Dictionary[Hacker.PowerUses, float]) -> vo
 			Hacker.get_poweruse_as_string(use)
 		)
 	_create_empty_space()
+	if Hacker.get_compute_power_usage() > Hacker.total_compute_power:
+		(get_node("../DebtWarning") as Control).visible = true
+	else:
+		(get_node("../DebtWarning") as Control).visible = false
 
 
 func _create_sub_bar(percent: float, color: Color, title: String) -> void:

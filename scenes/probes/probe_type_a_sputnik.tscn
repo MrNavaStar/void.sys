@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl8pu6mgen6vl"]
+
+[ext_resource type="PackedScene" uid="uid://bg7txfu8xl6bo" path="res://assets/nodes/Probe-TypeA-Sputnik.fbx" id="1_f8nxl"]
+[ext_resource type="Material" uid="uid://dp3rcxukwdu05" path="res://assets/materials/planet_type_a_depleted.tres" id="2_ewel6"]
+
+[node name="Probe-TypeA-Sputnik" instance=ExtResource("1_f8nxl")]
+
+[node name="pPyramid9" parent="." index="0"]
+material_override = ExtResource("2_ewel6")

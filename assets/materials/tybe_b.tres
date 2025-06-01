@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d07en0436fs11"]
+
+[ext_resource type="Shader" uid="uid://ddp3ry2q7ai38" path="res://assets/materials/shaders/wireframe_sweep.gdshader" id="1_igtia"]
+[ext_resource type="Shader" uid="uid://31w10womps2w" path="res://assets/materials/shaders/TypeA.gdshader" id="2_evf6e"]
+[ext_resource type="Texture2D" uid="uid://cvnbukuhuw2q0" path="res://assets/nodes/TypeB_OverpopulatedColors.png" id="3_igtia"]
+[ext_resource type="Texture2D" uid="uid://dcidvre5ni7x" path="res://assets/nodes/TypeB_OverpopulatedEmissiveColors.png" id="4_evf6e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ueb3"]
+render_priority = 1
+shader = ExtResource("1_igtia")
+shader_parameter/color = Color(0.192029, 0.780171, 0.320052, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3ueb3")
+shader = ExtResource("2_evf6e")
+shader_parameter/tex_albedo = ExtResource("3_igtia")
+shader_parameter/tex_emission = ExtResource("4_evf6e")

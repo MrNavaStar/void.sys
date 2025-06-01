@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://d15h0ytq4ml6w"]
+
+[ext_resource type="PackedScene" uid="uid://d3kvwxddcu48h" path="res://assets/nodes/Ship-TypeB-Cone.fbx" id="1_d83u0"]
+[ext_resource type="Material" uid="uid://d07en0436fs11" path="res://assets/materials/tybe_b.tres" id="2_7h77q"]
+[ext_resource type="Material" uid="uid://diodsgghl4n6u" path="res://assets/materials/type_b_lights.tres" id="3_buq2b"]
+
+[node name="Ship-TypeB-Cone" instance=ExtResource("1_d83u0")]
+
+[node name="Ship_Overpopulated_01" parent="." index="0"]
+material_override = ExtResource("2_7h77q")
+
+[node name="Ship_Overpopulated_Light_01" parent="Ship_Overpopulated_01" index="0"]
+surface_material_override/0 = ExtResource("3_buq2b")
