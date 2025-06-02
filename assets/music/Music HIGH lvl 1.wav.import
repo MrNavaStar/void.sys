@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmnrmuym4usab"
+path="res://.godot/imported/Music HIGH lvl 1.wav-409bd44a3b7b08e734105487452c2de4.sample"
+
+[deps]
+
+source_file="res://assets/music/Music HIGH lvl 1.wav"
+dest_files=["res://.godot/imported/Music HIGH lvl 1.wav-409bd44a3b7b08e734105487452c2de4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

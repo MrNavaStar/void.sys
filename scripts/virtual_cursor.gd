@@ -17,9 +17,11 @@ func _process(_delta: float) -> void:
 	var intersect: Variant = Plane.PLANE_XZ.intersects_ray(
 		camera.project_ray_origin(mouse_pos), camera.project_ray_normal(mouse_pos)
 	)
-	position = intersect
-	update_model()
-	update_closest_node()
+	
+	if intersect:
+		position = intersect
+		update_model()
+		update_closest_node()
 
 
 func update_model() -> void:
