@@ -29,7 +29,7 @@ func get_compute_power_usage() -> float:
 
 
 func is_computer_power_critical() -> bool:
-	return total_compute_power - get_compute_power_usage() <= 32
+	return total_compute_power - get_compute_power_usage() <= 8
 
 
 func can_compute_action(cost: float) -> bool:
