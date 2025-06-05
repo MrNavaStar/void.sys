@@ -220,23 +220,23 @@ script = ExtResource("8_4mrxx")
 [node name="LevelTimer" type="Timer" parent="EnemyManager"]
 one_shot = true
 
-[node name="MusicManager" type="Node2D" parent="."]
+[node name="MusicManager" type="Node" parent="."]
 script = ExtResource("11_e3hyu")
 
-[node name="Intro" type="AudioStreamPlayer2D" parent="MusicManager"]
+[node name="Intro" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("12_dss4m")
 autoplay = true
 
-[node name="MainHigh" type="AudioStreamPlayer2D" parent="MusicManager"]
+[node name="MainHigh" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("12_jhx03")
 
-[node name="MainLow" type="AudioStreamPlayer2D" parent="MusicManager"]
+[node name="MainLow" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("13_o8fc1")
 
-[node name="Hacking" type="AudioStreamPlayer2D" parent="MusicManager"]
+[node name="Hacking" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("14_o8fc1")
 
-[node name="CriticalRam" type="AudioStreamPlayer2D" parent="MusicManager"]
+[node name="CriticalRam" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("16_dss4m")
 
 [connection signal="ready" from="." to="." method="_on_ready"]

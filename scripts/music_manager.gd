@@ -4,12 +4,12 @@ var MUTE: float = -60
 var UNMUTE: float = 0
 var fade_speed: float = 0.05
 
-@onready var intro: AudioStreamPlayer2D = $Intro
-@onready var main_high: AudioStreamPlayer2D = $MainHigh
-@onready var main_low: AudioStreamPlayer2D = $MainLow
+@onready var intro: AudioStreamPlayer = $Intro
+@onready var main_high: AudioStreamPlayer = $MainHigh
+@onready var main_low: AudioStreamPlayer = $MainLow
 
-@onready var hacking: AudioStreamPlayer2D = $Hacking
-@onready var critical_ram: AudioStreamPlayer2D = $CriticalRam
+@onready var hacking: AudioStreamPlayer = $Hacking
+@onready var critical_ram: AudioStreamPlayer = $CriticalRam
 
 
 func _ready() -> void:
