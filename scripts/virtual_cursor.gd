@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 	var intersect: Variant = Plane.PLANE_XZ.intersects_ray(
 		camera.project_ray_origin(mouse_pos), camera.project_ray_normal(mouse_pos)
 	)
-	
+
 	if intersect:
 		position = intersect
 		update_model()
@@ -35,6 +35,7 @@ func update_model() -> void:
 	var distance := position.distance_to(target_node.position)
 	ribbon_mesh.section_length = ((distance - mesh_offset) / ribbon_mesh.sections)
 	cursor_mesh.position.z = -(distance - mesh_offset) / 2
+	cursor_mesh.set_instance_shader_parameter("line_length", ribbon_mesh.section_length)
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:

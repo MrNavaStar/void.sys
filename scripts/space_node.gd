@@ -41,7 +41,7 @@ func make_root(scene: PackedScene) -> void:
 	$Object.add_child(model)
 	Hacker.add_hacked_node(self)
 	hack_cost = [32, 48, 64].pick_random()
-	hack_time = randi_range(8, 16)
+	hack_time = randi_range(4, 6)
 	is_hacked = true
 	_update_label()
 
@@ -64,7 +64,7 @@ func make_ship(scene: PackedScene) -> void:
 	model.rotation.z = randf_range(0, TAU)
 	$Object.add_child(model)
 	hack_cost = [8, 16, 24].pick_random()
-	hack_time = randi_range(3, 6)
+	hack_time = randi_range(4, 6)
 	_update_label()
 
 
@@ -75,7 +75,7 @@ func make_probe(scene: PackedScene) -> void:
 	model.rotation.z = randf_range(0, TAU)
 	$Object.add_child(model)
 	hack_cost = [8, 16, 24].pick_random()
-	hack_time = randi_range(3, 6)
+	hack_time = randi_range(3, 4)
 	_update_label()
 
 
@@ -86,7 +86,7 @@ func make_asteroid(scene: PackedScene) -> void:
 	model.rotation.z = randf_range(0, TAU)
 	$Object.add_child(model)
 	hack_cost = [8, 16, 24].pick_random()
-	hack_time = randi_range(3, 6)
+	hack_time = randi_range(6, 12)
 	_update_label()
 
 
