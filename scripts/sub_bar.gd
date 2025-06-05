@@ -9,7 +9,7 @@ var text_color: Color = Color("#123123")
 
 func _ready() -> void:
 	mouse_entered.connect(_show_hover)
-	mouse_exited.connect(_hide_hover)
+	# mouse_exited.connect(_hide_hover)
 	if text_color == Color("#123123"):
 		text_color = color
 

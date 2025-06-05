@@ -5,13 +5,37 @@ extends Node3D
 @export var planet_spread: int = 20
 @export var ships: int = 1500
 @export var ship_spread: int = 3
-@export var probes: int = 800
-@export var probe_spread: int = 5
+@export var probes: int = 3000
+@export var probe_spread: int = 2
 @export var asteroids: int = 1500
 @export var asteroid_spread: int = 10
 
 var node_positions: Array
 @onready var space_nodes: Node3D = $SpaceNodes
+
+var planet_scenes: Array[PackedScene]
+var ship_scenes: Array[PackedScene]
+var probe_scenes: Array[PackedScene]
+var asteroid_scenes: Array[PackedScene]
+
+
+func _init() -> void:
+	planet_scenes = [
+		load("res://scenes/planets/planet_type_a_depleted.tscn"),
+		load("res://scenes/planets/planet_type_b_overpopulated.tscn")
+	]
+	ship_scenes = [
+		load("res://scenes/ships/ship_type_a_cylinder.tscn"),
+		load("res://scenes/ships/ship_type_b_cone.tscn")
+	]
+	probe_scenes = [
+		load("res://scenes/probes/probe_type_a_sputnik.tscn"),
+		load("res://scenes/probes/probe_type_b_cubesat.tscn")
+	]
+	asteroid_scenes = [
+		load("res://scenes/asteroids/asteroid_type_a_tick.tscn"),
+		load("res://scenes/asteroids/asteroid_type_b_grabber.tscn")
+	]
 
 
 func is_too_close(pos: Vector3, distance: float) -> bool:
@@ -43,31 +67,35 @@ func spawn_node(node: PackedScene, pos: Vector3) -> SpaceNode:
 
 
 func spawn_nodes(node: PackedScene) -> void:
-	spawn_node(node, Vector3(0, 0, 0)).make_root()
+	spawn_node(node, Vector3(0, 0, 0)).make_root(
+		probe_scenes[randi_range(0, probe_scenes.size() - 1)]
+	)
 
 	for i in planets:
 		var pos := rand_pos_with_spread(planet_spread)
 		if pos == Vector3.INF:
 			continue
-		spawn_node(node, pos).make_planet()
+		spawn_node(node, pos).make_planet(planet_scenes[randi_range(0, planet_scenes.size() - 1)])
 
 	for i in ships:
 		var pos := rand_pos_with_spread(ship_spread)
 		if pos == Vector3.INF:
 			continue
-		spawn_node(node, pos).make_ship()
+		spawn_node(node, pos).make_ship(ship_scenes[randi_range(0, ship_scenes.size() - 1)])
 
 	for i in probes:
 		var pos := rand_pos_with_spread(probe_spread)
 		if pos == Vector3.INF:
 			continue
-		spawn_node(node, pos).make_probe()
+		spawn_node(node, pos).make_probe(probe_scenes[randi_range(0, probe_scenes.size() - 1)])
 
 	for i in asteroids:
 		var pos := rand_pos_with_spread(asteroid_spread)
 		if pos == Vector3.INF:
 			continue
-		spawn_node(node, pos).make_asteroid()
+		spawn_node(node, pos).make_asteroid(
+			asteroid_scenes[randi_range(0, asteroid_scenes.size() - 1)]
+		)
 
 
 func _ready() -> void:

@@ -21,6 +21,7 @@ signal message(text: String)
 signal node_attack(node: SpaceNode)
 signal node_defended(node: SpaceNode)
 
+
 func get_compute_power_usage() -> float:
 	var total_usage: float = 0
 	for use: PowerUses in compute_power_usage:
@@ -69,8 +70,6 @@ func get_poweruse_as_color(use: PowerUses) -> Color:
 func register_hack(cost: float) -> void:
 	compute_power_usage[PowerUses.HACKING] += cost
 	compute_power_updated.emit(compute_power_usage)
-	
-	
 
 
 func deregister_hack(cost: float) -> void:

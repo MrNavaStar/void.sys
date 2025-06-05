@@ -1,0 +1,170 @@
+[gd_scene load_steps=109 format=4 uid="uid://cimn772cnycca"]
+
+[ext_resource type="PackedScene" uid="uid://bkxw4rs53kd8q" path="res://assets/vfx/hack_cylinder.fbx" id="1_f3sd8"]
+[ext_resource type="Texture2D" uid="uid://chbmtahycno74" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0000.png" id="106_qp46f"]
+[ext_resource type="Texture2D" uid="uid://7ynjvnnnv3fc" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0001.png" id="107_8a38q"]
+[ext_resource type="Texture2D" uid="uid://cpv03wpgeptcd" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0002.png" id="108_7b4em"]
+[ext_resource type="Texture2D" uid="uid://6yrueskxe1u7" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0003.png" id="109_sr5ye"]
+[ext_resource type="Texture2D" uid="uid://t50ndxgo4lrm" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0004.png" id="110_f0vf5"]
+[ext_resource type="Texture2D" uid="uid://buo10kv80loqt" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0005.png" id="111_1x81x"]
+[ext_resource type="Texture2D" uid="uid://br16aja1tuno" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0006.png" id="112_paxr6"]
+[ext_resource type="Texture2D" uid="uid://7bs7l84yyson" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0007.png" id="113_o34tt"]
+[ext_resource type="Texture2D" uid="uid://4hmrtdlwsdl5" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0008.png" id="114_k0tpk"]
+[ext_resource type="Texture2D" uid="uid://dxeedplx2ccfg" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0009.png" id="115_djpc7"]
+[ext_resource type="Texture2D" uid="uid://b3ow6iouv84vb" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0010.png" id="116_2covi"]
+[ext_resource type="Texture2D" uid="uid://bntp2ht86irho" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0011.png" id="117_w7eap"]
+[ext_resource type="Texture2D" uid="uid://g2hhth0ypxcp" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0012.png" id="118_hadlv"]
+[ext_resource type="Texture2D" uid="uid://dcpyv2vou2r6y" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0013.png" id="119_w8pu3"]
+[ext_resource type="Texture2D" uid="uid://cyosrisj8744d" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0014.png" id="120_s5nop"]
+[ext_resource type="Texture2D" uid="uid://cl41jl2t0s2ek" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0015.png" id="121_l4h0n"]
+[ext_resource type="Texture2D" uid="uid://bst2q36ruuxh" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0016.png" id="122_fwoic"]
+[ext_resource type="Texture2D" uid="uid://bywyy4ca1db01" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0017.png" id="123_cvleb"]
+[ext_resource type="Texture2D" uid="uid://bb011sdqxhrq" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0018.png" id="124_blb4w"]
+[ext_resource type="Texture2D" uid="uid://dnhid1s31xuu7" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0019.png" id="125_isrlg"]
+[ext_resource type="Texture2D" uid="uid://c1polse5shvf5" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0020.png" id="126_vo3co"]
+[ext_resource type="Texture2D" uid="uid://cr76a5qb01yj5" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0021.png" id="127_mv1m6"]
+[ext_resource type="Texture2D" uid="uid://osr10gc2xx2c" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0022.png" id="128_fmckt"]
+[ext_resource type="Texture2D" uid="uid://3727ku7kkftu" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0023.png" id="129_6xs08"]
+[ext_resource type="Texture2D" uid="uid://dkre7cys267si" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0024.png" id="130_7mydt"]
+[ext_resource type="Texture2D" uid="uid://d0yjkrdas6m8y" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0025.png" id="131_omh4g"]
+[ext_resource type="Texture2D" uid="uid://dook4m4vdtegn" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0026.png" id="132_giy4f"]
+[ext_resource type="Texture2D" uid="uid://bm8chm2phgkqn" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0027.png" id="133_x37no"]
+[ext_resource type="Texture2D" uid="uid://qt6gdvju4ohx" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0028.png" id="134_bf44x"]
+[ext_resource type="Texture2D" uid="uid://lpi7oq7i2752" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0029.png" id="135_hmlv5"]
+[ext_resource type="Texture2D" uid="uid://be5jvswhjgj3m" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0030.png" id="136_ci6uj"]
+[ext_resource type="Texture2D" uid="uid://40mebyuyowp6" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0031.png" id="137_n074x"]
+[ext_resource type="Texture2D" uid="uid://baayq1ikexsqw" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0032.png" id="138_8kccu"]
+[ext_resource type="Texture2D" uid="uid://crjkg3yf02cpm" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0033.png" id="139_c2vcn"]
+[ext_resource type="Texture2D" uid="uid://c3pn6jpwjjkse" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0034.png" id="140_oy8a5"]
+[ext_resource type="Texture2D" uid="uid://dos0isds6rny7" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0035.png" id="141_7fmni"]
+[ext_resource type="Texture2D" uid="uid://ylw52fn67ttg" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0036.png" id="142_n54ff"]
+[ext_resource type="Texture2D" uid="uid://bybegfc52cn6n" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0037.png" id="143_5hvtm"]
+[ext_resource type="Texture2D" uid="uid://bmgtx0lthxu3s" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0038.png" id="144_uqv4y"]
+[ext_resource type="Texture2D" uid="uid://bmuk6bjh8dube" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0039.png" id="145_i6bvi"]
+[ext_resource type="Texture2D" uid="uid://bbu6cxivt5uer" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0040.png" id="146_ngfs4"]
+[ext_resource type="Texture2D" uid="uid://daqpalvvngvkk" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0041.png" id="147_mbg25"]
+[ext_resource type="Texture2D" uid="uid://cswdylfgn0nxw" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0042.png" id="148_e6j8m"]
+[ext_resource type="Texture2D" uid="uid://dv8rykl03dx0i" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0043.png" id="149_7msqc"]
+[ext_resource type="Texture2D" uid="uid://xpb1m7ph7ch7" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0044.png" id="150_7vt3d"]
+[ext_resource type="Texture2D" uid="uid://dygsj67jf6bob" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0045.png" id="151_vxykk"]
+[ext_resource type="Texture2D" uid="uid://ds8wc2wtqi3x6" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0046.png" id="152_gxijy"]
+[ext_resource type="Texture2D" uid="uid://m6oxto7kchaw" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0047.png" id="153_bohlk"]
+[ext_resource type="Texture2D" uid="uid://fupybrtp73os" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0048.png" id="154_ywrqg"]
+[ext_resource type="Texture2D" uid="uid://cw0cl5duq7nqj" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0049.png" id="155_tsvyg"]
+[ext_resource type="Texture2D" uid="uid://do6jjfc61culn" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0050.png" id="156_aietl"]
+[ext_resource type="Texture2D" uid="uid://dgfp6ve4v1of" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0051.png" id="157_nvqh3"]
+[ext_resource type="Texture2D" uid="uid://dpsypfrd7ifft" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0052.png" id="158_pmg12"]
+[ext_resource type="Texture2D" uid="uid://db1oa3d0f08rt" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0053.png" id="159_224ma"]
+[ext_resource type="Texture2D" uid="uid://bdufncekt514i" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0054.png" id="160_j1tvg"]
+[ext_resource type="Texture2D" uid="uid://cbgvqicdvofyf" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0055.png" id="161_inx18"]
+[ext_resource type="Texture2D" uid="uid://ryvxx6pocx7t" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0056.png" id="162_mkwjw"]
+[ext_resource type="Texture2D" uid="uid://bhvsdvpkhuglu" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0057.png" id="163_pxyvd"]
+[ext_resource type="Texture2D" uid="uid://blsmo2ggehl1n" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0058.png" id="164_oqguc"]
+[ext_resource type="Texture2D" uid="uid://dd8y6pc7mstx4" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0059.png" id="165_xxji0"]
+[ext_resource type="Texture2D" uid="uid://soj82f0oyg4" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0060.png" id="166_gk0xk"]
+[ext_resource type="Texture2D" uid="uid://buj3mcwt8ynbm" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0061.png" id="167_2njw8"]
+[ext_resource type="Texture2D" uid="uid://buupkexpuq2bt" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0062.png" id="168_jkdrc"]
+[ext_resource type="Texture2D" uid="uid://db3cyyapxq6c4" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0063.png" id="169_vo0ma"]
+[ext_resource type="Texture2D" uid="uid://2damv7wudbla" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0064.png" id="170_810fy"]
+[ext_resource type="Texture2D" uid="uid://l5v62gluy54a" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0065.png" id="171_8qkwi"]
+[ext_resource type="Texture2D" uid="uid://w2omqnma3yl4" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0066.png" id="172_g3a6e"]
+[ext_resource type="Texture2D" uid="uid://hhjgsdlppmar" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0067.png" id="173_07emo"]
+[ext_resource type="Texture2D" uid="uid://bypiqe157kl4" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0068.png" id="174_cwcfx"]
+[ext_resource type="Texture2D" uid="uid://cxtyvqxnl0qfi" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0069.png" id="175_yy066"]
+[ext_resource type="Texture2D" uid="uid://dh3oettpmvx8" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0070.png" id="176_mt3g2"]
+[ext_resource type="Texture2D" uid="uid://denmuxsfviiya" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0071.png" id="177_2c2gf"]
+[ext_resource type="Texture2D" uid="uid://b43ogo47s1e45" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0072.png" id="178_3vgnu"]
+[ext_resource type="Texture2D" uid="uid://b1ajqhxwu5a5d" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0073.png" id="179_kcsvg"]
+[ext_resource type="Texture2D" uid="uid://cnmqvdt7pexgr" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0074.png" id="180_ci0rp"]
+[ext_resource type="Texture2D" uid="uid://dfmfk3bvwh7a2" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0075.png" id="181_lksky"]
+[ext_resource type="Texture2D" uid="uid://dh8h2wfof0hvv" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0076.png" id="182_slbg5"]
+[ext_resource type="Texture2D" uid="uid://dcn70xdi13qi5" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0077.png" id="183_08o6k"]
+[ext_resource type="Texture2D" uid="uid://tapfx6tc5j45" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0078.png" id="184_td6lg"]
+[ext_resource type="Texture2D" uid="uid://b77xobbulml43" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0079.png" id="185_aqkqh"]
+[ext_resource type="Texture2D" uid="uid://bx0a1qxjsp0mr" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0080.png" id="186_5uw6n"]
+[ext_resource type="Texture2D" uid="uid://n7osk6m7fede" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0081.png" id="187_4vsgj"]
+[ext_resource type="Texture2D" uid="uid://cl8jmmxcib3aa" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0082.png" id="188_8s0de"]
+[ext_resource type="Texture2D" uid="uid://dt3uhg67mpghn" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0083.png" id="189_tpkrm"]
+[ext_resource type="Texture2D" uid="uid://uplhv5lcmu8h" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0084.png" id="190_m64gr"]
+[ext_resource type="Texture2D" uid="uid://i6wkpyv3v2jc" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0085.png" id="191_d8t1g"]
+[ext_resource type="Texture2D" uid="uid://cthj2o61uft4k" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0086.png" id="192_xhqld"]
+[ext_resource type="Texture2D" uid="uid://tnyrfaqu7a37" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0087.png" id="193_wxpoh"]
+[ext_resource type="Texture2D" uid="uid://bqgipgdjpwqjp" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0088.png" id="194_favii"]
+[ext_resource type="Texture2D" uid="uid://cgkx8uso0mtga" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0089.png" id="195_qxkad"]
+[ext_resource type="Texture2D" uid="uid://birrvhldnsoyr" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0090.png" id="196_86eq3"]
+[ext_resource type="Texture2D" uid="uid://gxh6mb74v1yp" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0091.png" id="197_bnfbi"]
+[ext_resource type="Texture2D" uid="uid://37hjd7xucvqe" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0092.png" id="198_c2rvs"]
+[ext_resource type="Texture2D" uid="uid://c1668rw6hge6p" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0093.png" id="199_imwrf"]
+[ext_resource type="Texture2D" uid="uid://cgfjsp76myl3u" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0094.png" id="200_k2vhr"]
+[ext_resource type="Texture2D" uid="uid://3pikblmjskcp" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0095.png" id="201_amswb"]
+[ext_resource type="Texture2D" uid="uid://bi6p71pxstm0c" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0096.png" id="202_yvg63"]
+[ext_resource type="Texture2D" uid="uid://y4sl7sthj1du" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0097.png" id="203_voqrh"]
+[ext_resource type="Texture2D" uid="uid://cwvvchobkcs33" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0098.png" id="204_ao8yr"]
+[ext_resource type="Texture2D" uid="uid://di6nsxg6de7wf" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0099.png" id="205_xml6m"]
+[ext_resource type="Texture2D" uid="uid://c4te8jndjl57q" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0100.png" id="206_lv4r3"]
+[ext_resource type="Texture2D" uid="uid://0s8ril0jsesu" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0101.png" id="207_nnh40"]
+[ext_resource type="Texture2D" uid="uid://ce6pcr773dysw" path="res://assets/vfx/enemy_hack/EnemyHackFX.png.0102.png" id="208_b1nnv"]
+
+[sub_resource type="Shader" id="Shader_f1e7w"]
+code = "shader_type spatial;
+render_mode  unshaded, blend_mix, depth_draw_never, cull_disabled;
+
+uniform sampler2D animation_frames[103];
+uniform float fps = 60.0;
+uniform float time_offset = 0.0;
+
+void fragment() {
+    float time = TIME;
+    int total_frames = 103;
+    int current_frame = int(mod(time * fps, float(total_frames)));
+	
+    vec2 uv = UV;
+	uv.x = uv.x * 5.0;
+	uv.y += 0.1;
+	
+	vec4 tex = texture(animation_frames[current_frame], uv);
+    ALBEDO = tex.rgb;
+	ALPHA = tex.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a38q"]
+render_priority = 0
+shader = SubResource("Shader_f1e7w")
+shader_parameter/animation_frames = Array[Texture2D]([ExtResource("106_qp46f"), ExtResource("107_8a38q"), ExtResource("108_7b4em"), ExtResource("109_sr5ye"), ExtResource("110_f0vf5"), ExtResource("111_1x81x"), ExtResource("112_paxr6"), ExtResource("113_o34tt"), ExtResource("114_k0tpk"), ExtResource("115_djpc7"), ExtResource("116_2covi"), ExtResource("117_w7eap"), ExtResource("118_hadlv"), ExtResource("119_w8pu3"), ExtResource("120_s5nop"), ExtResource("121_l4h0n"), ExtResource("122_fwoic"), ExtResource("123_cvleb"), ExtResource("124_blb4w"), ExtResource("125_isrlg"), ExtResource("126_vo3co"), ExtResource("127_mv1m6"), ExtResource("128_fmckt"), ExtResource("129_6xs08"), ExtResource("130_7mydt"), ExtResource("131_omh4g"), ExtResource("132_giy4f"), ExtResource("133_x37no"), ExtResource("134_bf44x"), ExtResource("135_hmlv5"), ExtResource("136_ci6uj"), ExtResource("137_n074x"), ExtResource("138_8kccu"), ExtResource("139_c2vcn"), ExtResource("140_oy8a5"), ExtResource("141_7fmni"), ExtResource("142_n54ff"), ExtResource("143_5hvtm"), ExtResource("144_uqv4y"), ExtResource("145_i6bvi"), ExtResource("146_ngfs4"), ExtResource("147_mbg25"), ExtResource("148_e6j8m"), ExtResource("149_7msqc"), ExtResource("150_7vt3d"), ExtResource("151_vxykk"), ExtResource("152_gxijy"), ExtResource("153_bohlk"), ExtResource("154_ywrqg"), ExtResource("155_tsvyg"), ExtResource("156_aietl"), ExtResource("157_nvqh3"), ExtResource("158_pmg12"), ExtResource("159_224ma"), ExtResource("160_j1tvg"), ExtResource("161_inx18"), ExtResource("162_mkwjw"), ExtResource("163_pxyvd"), ExtResource("164_oqguc"), ExtResource("165_xxji0"), ExtResource("166_gk0xk"), ExtResource("167_2njw8"), ExtResource("168_jkdrc"), ExtResource("169_vo0ma"), ExtResource("170_810fy"), ExtResource("171_8qkwi"), ExtResource("172_g3a6e"), ExtResource("173_07emo"), ExtResource("174_cwcfx"), ExtResource("175_yy066"), ExtResource("176_mt3g2"), ExtResource("177_2c2gf"), ExtResource("178_3vgnu"), ExtResource("179_kcsvg"), ExtResource("180_ci0rp"), ExtResource("181_lksky"), ExtResource("182_slbg5"), ExtResource("183_08o6k"), ExtResource("184_td6lg"), ExtResource("185_aqkqh"), ExtResource("186_5uw6n"), ExtResource("187_4vsgj"), ExtResource("188_8s0de"), ExtResource("189_tpkrm"), ExtResource("190_m64gr"), ExtResource("191_d8t1g"), ExtResource("192_xhqld"), ExtResource("193_wxpoh"), ExtResource("194_favii"), ExtResource("195_qxkad"), ExtResource("196_86eq3"), ExtResource("197_bnfbi"), ExtResource("198_c2rvs"), ExtResource("199_imwrf"), ExtResource("200_k2vhr"), ExtResource("201_amswb"), ExtResource("202_yvg63"), ExtResource("203_voqrh"), ExtResource("204_ao8yr"), ExtResource("205_xml6m"), ExtResource("206_lv4r3"), ExtResource("207_nnh40"), ExtResource("208_b1nnv")])
+shader_parameter/fps = 60.0
+shader_parameter/time_offset = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tb3tu"]
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.00578502, 0.02, 0.02, 0.01157),
+"format": 34359742465,
+"index_count": 192,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAgAEAAAAAQAFAAMABgAAAAQABwADAAUABAAIAAYABQAJAAcACgAGAAgACwAHAAkACAAMAAoACQANAAsADgAKAAwADwALAA0ADAAQAA4ADQARAA8AEgAOABAAEwAPABEAEAAUABIAEQAVABMAFgASABQAFwATABUAFAAYABYAFQAZABcAGgAWABgAGwAXABkAGAAcABoAGQAdABsAHgAaABwAHwAbAB0AHAAgAB4AHQAhAB8AIgAeACAAIwAfACEAIAAkACIAIQAlACMAJgAiACQAJwAjACUAJAAoACYAJQApACcAKgAmACgAKwAnACkAKAAsACoAKQAtACsALgAqACwALwArAC0ALAAwAC4ALQAxAC8AMgAuADAAMwAvADEAMAA0ADIAMQA1ADMANgAyADQANwAzADUANAA4ADYANQA5ADcAOgA2ADgAOwA3ADkAOAA8ADoAOQA9ADsAPgA6ADwAPwA7AD0APQA+AD8APAA/AD4A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 64,
+"vertex_data": PackedByteArray("c7X/Oh2xIDw8kL07AAAAAArXIzw8kL07AAAAAArXIzw8kL27c7X/uh2xIDw8kL27c7X/Oh2xIDw8kL27c7X/uh2xIDw8kL07oct6O1FeFzw8kL07oct6u1FeFzw8kL27oct6O1FeFzw8kL27oct6u1FeFzw8kL07nAy2O106CDw8kL07nAy2u106CDw8kL27nAy2O106CDw8kL27nAy2u106CDw8kL07arTnO2q05zs8kL07arTnu2q05zs8kL27arTnO2q05zs8kL27arTnu2q05zs8kL07XToIPJwMtjs8kL07XToIvJwMtjs8kL27XToIPJwMtjs8kL27XToIvJwMtjs8kL07UV4XPKHLejs8kL07UV4XvKHLejs8kL27UV4XPKHLejs8kL27UV4XvKHLejs8kL07HbEgPHO1/zo8kL07HbEgvHO1/zo8kL27HbEgPHO1/zo8kL27HbEgvHO1/zo8kL07CtcjPAAAAAA8kL07CtcjvAAAAAA8kL27CtcjPAAAAAA8kL27CtcjvAAAAAA8kL07HbEgPHO1/7o8kL07HbEgvHO1/7o8kL27HbEgPHO1/7o8kL27HbEgvHO1/7o8kL07UV4XPKHLers8kL07UV4XvKHLers8kL27UV4XPKHLers8kL27UV4XvKHLers8kL07XToIPJwMtrs8kL07XToIvJwMtrs8kL27XToIPJwMtrs8kL27XToIvJwMtrs8kL07arTnO2q057s8kL07arTnu2q057s8kL27arTnO2q057s8kL27arTnu2q057s8kL07nAy2O106CLw8kL07nAy2u106CLw8kL27nAy2O106CLw8kL27nAy2u106CLw8kL07oct6O1FeF7w8kL07oct6u1FeF7w8kL27oct6O1FeF7w8kL27oct6u1FeF7w8kL07c7X/Oh2xILw8kL07c7X/uh2xILw8kL27c7X/Oh2xILw8kL27c7X/uh2xILw8kL07AAAAAArXI7w8kL07AAAAAArXI7w8kL27")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_564iy"]
+resource_name = "Cylinder"
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.00578502, 0.02, 0.02, 0.01157),
+"attribute_data": PackedByteArray("AAB4PwAAAAAAAIA/AAAAAAAAgD8AAIA/AAB4PwAAgD8AAHA/AAAAAAAAeD8AAAAAAAB4PwAAgD8AAHA/AACAPwAAaD8AAAAAAABwPwAAAAAAAHA/AACAPwAAaD8AAIA/AABgPwAAAAAAAGg/AAAAAAAAaD8AAIA/AABgPwAAgD8AAFg/AAAAAAAAYD8AAAAAAABgPwAAgD8AAFg/AACAPwAAUD8AAAAAAABYPwAAAAAAAFg/AACAPwAAUD8AAIA/AABIPwAAAAAAAFA/AAAAAAAAUD8AAIA/AABIPwAAgD8AAEA/AAAAAAAASD8AAAAAAABIPwAAgD8AAEA/AACAPwAAOD8AAAAAAABAPwAAAAAAAEA/AACAPwAAOD8AAIA/AAAwPwAAAAAAADg/AAAAAAAAOD8AAIA/AAAwPwAAgD8AACg/AAAAAAAAMD8AAAAAAAAwPwAAgD8AACg/AACAPwAAID8AAAAAAAAoPwAAAAAAACg/AACAPwAAID8AAIA/AAAYPwAAAAAAACA/AAAAAAAAID8AAIA/AAAYPwAAgD8AABA/AAAAAAAAGD8AAAAAAAAYPwAAgD8AABA/AACAPwAACD8AAAAAAAAQPwAAAAAAABA/AACAPwAACD8AAIA/AAAAPwAAAAAAAAg/AAAAAAAACD8AAIA/AAAAPwAAgD8AAPA+AAAAAAAAAD8AAAAAAAAAPwAAgD8AAPA+AACAPwAA4D4AAAAAAADwPgAAAAAAAPA+AACAPwAA4D4AAIA/AADQPgAAAAAAAOA+AAAAAAAA4D4AAIA/AADQPgAAgD8AAMA+AAAAAAAA0D4AAAAAAADQPgAAgD8AAMA+AACAPwAAsD4AAAAAAADAPgAAAAAAAMA+AACAPwAAsD4AAIA/AACgPgAAAAAAALA+AAAAAAAAsD4AAIA/AACgPgAAgD8AAJA+AAAAAAAAoD4AAAAAAACgPgAAgD8AAJA+AACAPwAAgD4AAAAAAACQPgAAAAAAAJA+AACAPwAAgD4AAIA/AABgPgAAAAAAAIA+AAAAAAAAgD4AAIA/AABgPgAAgD8AAEA+AAAAAAAAYD4AAAAAAABgPgAAgD8AAEA+AACAPwAAID4AAAAAAABAPgAAAAAAAEA+AACAPwAAID4AAIA/AAAAPgAAAAAAACA+AAAAAAAAID4AAIA/AAAAPgAAgD8AAMA9AAAAAAAAAD4AAAAAAAAAPgAAgD8AAMA9AACAPwAAgD0AAAAAAADAPQAAAAAAAMA9AACAPwAAgD0AAIA/AAAAPQAAAAAAAIA9AAAAAAAAgD0AAIA/AAAAPQAAgD8AAAAAAAAAAAAAAD0AAAAAAAAAPQAAgD8AAAAAAACAPw=="),
+"format": 34359742487,
+"index_count": 192,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANgA3ADQAOAA5ADoAOgA7ADgAPAA9AD4APgA/ADwAQABBAEIAQgBDAEAARABFAEYARgBHAEQASABJAEoASgBLAEgATABNAE4ATgBPAEwAUABRAFIAUgBTAFAAVABVAFYAVgBXAFQAWABZAFoAWgBbAFgAXABdAF4AXgBfAFwAYABhAGIAYgBjAGAAZABlAGYAZgBnAGQAaABpAGoAagBrAGgAbABtAG4AbgBvAGwAcABxAHIAcgBzAHAAdAB1AHYAdgB3AHQAeAB5AHoAegB7AHgAfAB9AH4AfgB/AHwA"),
+"material": SubResource("ShaderMaterial_8a38q"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 128,
+"vertex_data": PackedByteArray("c7X/Oh2xIDw8kL07AAAAAArXIzw8kL07AAAAAArXIzw8kL27c7X/Oh2xIDw8kL27oct6O1FeFzw8kL07c7X/Oh2xIDw8kL07c7X/Oh2xIDw8kL27oct6O1FeFzw8kL27nAy2O106CDw8kL07oct6O1FeFzw8kL07oct6O1FeFzw8kL27nAy2O106CDw8kL27arTnO2q05zs8kL07nAy2O106CDw8kL07nAy2O106CDw8kL27arTnO2q05zs8kL27XToIPJwMtjs8kL07arTnO2q05zs8kL07arTnO2q05zs8kL27XToIPJwMtjs8kL27UV4XPKHLejs8kL07XToIPJwMtjs8kL07XToIPJwMtjs8kL27UV4XPKHLejs8kL27HbEgPHO1/zo8kL07UV4XPKHLejs8kL07UV4XPKHLejs8kL27HbEgPHO1/zo8kL27CtcjPAAAAAA8kL07HbEgPHO1/zo8kL07HbEgPHO1/zo8kL27CtcjPAAAAAA8kL27HbEgPHO1/7o8kL07CtcjPAAAAAA8kL07CtcjPAAAAAA8kL27HbEgPHO1/7o8kL27UV4XPKHLers8kL07HbEgPHO1/7o8kL07HbEgPHO1/7o8kL27UV4XPKHLers8kL27XToIPJwMtrs8kL07UV4XPKHLers8kL07UV4XPKHLers8kL27XToIPJwMtrs8kL27arTnO2q057s8kL07XToIPJwMtrs8kL07XToIPJwMtrs8kL27arTnO2q057s8kL27nAy2O106CLw8kL07arTnO2q057s8kL07arTnO2q057s8kL27nAy2O106CLw8kL27oct6O1FeF7w8kL07nAy2O106CLw8kL07nAy2O106CLw8kL27oct6O1FeF7w8kL27c7X/Oh2xILw8kL07oct6O1FeF7w8kL07oct6O1FeF7w8kL27c7X/Oh2xILw8kL27AAAAAArXI7w8kL07c7X/Oh2xILw8kL07c7X/Oh2xILw8kL27AAAAAArXI7w8kL27c7X/uh2xILw8kL07AAAAAArXI7w8kL07AAAAAArXI7w8kL27c7X/uh2xILw8kL27oct6u1FeF7w8kL07c7X/uh2xILw8kL07c7X/uh2xILw8kL27oct6u1FeF7w8kL27nAy2u106CLw8kL07oct6u1FeF7w8kL07oct6u1FeF7w8kL27nAy2u106CLw8kL27arTnu2q057s8kL07nAy2u106CLw8kL07nAy2u106CLw8kL27arTnu2q057s8kL27XToIvJwMtrs8kL07arTnu2q057s8kL07arTnu2q057s8kL27XToIvJwMtrs8kL27UV4XvKHLers8kL07XToIvJwMtrs8kL07XToIvJwMtrs8kL27UV4XvKHLers8kL27HbEgvHO1/7o8kL07UV4XvKHLers8kL07UV4XvKHLers8kL27HbEgvHO1/7o8kL27CtcjvAAAAAA8kL07HbEgvHO1/7o8kL07HbEgvHO1/7o8kL27CtcjvAAAAAA8kL27HbEgvHO1/zo8kL07CtcjvAAAAAA8kL07CtcjvAAAAAA8kL27HbEgvHO1/zo8kL27UV4XvKHLejs8kL07HbEgvHO1/zo8kL07HbEgvHO1/zo8kL27UV4XvKHLejs8kL27XToIvJwMtjs8kL07UV4XvKHLejs8kL07UV4XvKHLejs8kL27XToIvJwMtjs8kL27arTnu2q05zs8kL07XToIvJwMtjs8kL07XToIvJwMtjs8kL27arTnu2q05zs8kL27nAy2u106CDw8kL07arTnu2q05zs8kL07arTnu2q05zs8kL27nAy2u106CDw8kL27oct6u1FeFzw8kL07nAy2u106CDw8kL07nAy2u106CDw8kL27oct6u1FeFzw8kL27c7X/uh2xIDw8kL07oct6u1FeFzw8kL07oct6u1FeFzw8kL27c7X/uh2xIDw8kL27AAAAAArXIzw8kL07c7X/uh2xIDw8kL07c7X/uh2xIDw8kL27AAAAAArXIzw8kL27eYuF9HkLvMV5i4X0eQu8xXmLhfR5C7zFeYuF9HkLvMXJnTTiyh3kzsmdNOLKHeTOyZ004sod5M7JnTTiyh3kzpWsadOVLErWlaxp05UsStaVrGnTlSxK1pWsadOVLErWsblMxrI52NyxuUzGsjnY3LG5TMayOdjcsblMxrI52NxMxrG5TUYl40zGsblNRiXjTMaxuU1GJeNMxrG5TUYl42nTlaxpU7TpadOVrGlTtOlp05WsaVO06WnTlaxpU7TpNOLJnTViGfE04smdNWIZ8TTiyZ01YhnxNOLJnTViGfGF9HmLhXRC+oX0eYuFdEL6hfR5i4V0QvqF9HmLhXRC+oX0hXR5i0L6hfSFdHmLQvqF9IV0eYtC+oX0hXR5i0L6NOI1YsmdGfE04jViyZ0Z8TTiNWLJnRnxNOI1YsmdGfFp02lTlay06WnTaVOVrLTpadNpU5WstOlp02lTlay06UzGTUaxuSXjTMZNRrG5JeNMxk1Gsbkl40zGTUaxuSXjsbmyOUzG2NyxubI5TMbY3LG5sjlMxtjcsbmyOUzG2NyVrJUsadNK1pWslSxp00rWlayVLGnTStaVrJUsadNK1smdyh004uTOyZ3KHTTi5M7JncodNOLkzsmdyh004uTOeYt5C4X0vMV5i3kLhfS8xXmLeQuF9LzFeYt5C4X0vMWFdHkLhfRCuoV0eQuF9EK6hXR5C4X0QrqFdHkLhfRCujViyh004hqxNWLKHTTiGrE1YsodNOIasTViyh004hqxaVOVLGnTtKlpU5UsadO0qWlTlSxp07SpaVOVLGnTtKlNRrI5TMYmo01GsjlMxiajTUayOUzGJqNNRrI5TMYmo7I5TUaxudicsjlNRrG52JyyOU1GsbnYnLI5TUaxudiclSxpU5WsSpaVLGlTlaxKlpUsaVOVrEqWlSxpU5WsSpbKHTViyZ3kjsodNWLJneSOyh01Ysmd5I7KHTViyZ3kjnkLhXR5i7yFeQuFdHmLvIV5C4V0eYu8hXkLhXR5i7yFeQt5i4V0vIV5C3mLhXS8hXkLeYuFdLyFeQt5i4V0vIXKHcmdNWLkjsodyZ01YuSOyh3JnTVi5I7KHcmdNWLkjpUslaxpU0qWlSyVrGlTSpaVLJWsaVNKlpUslaxpU0qWsjmxuU1G2JyyObG5TUbYnLI5sblNRticsjmxuU1G2JxNRkzGsjkmo01GTMayOSajTUZMxrI5JqNNRkzGsjkmo2lTadOVLLSpaVNp05UstKlpU2nTlSy0qWlTadOVLLSpNWI04sodGrE1YjTiyh0asTViNOLKHRqxNWI04sodGrGFdIX0eQtCuoV0hfR5C0K6hXSF9HkLQrqFdIX0eQtCug==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tb3tu")
+
+[node name="hack_cylinder" instance=ExtResource("1_f3sd8")]
+
+[node name="Cylinder" parent="." index="0"]
+mesh = SubResource("ArrayMesh_564iy")

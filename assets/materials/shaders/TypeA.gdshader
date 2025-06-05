@@ -21,5 +21,5 @@ void fragment() {
 
 	ALBEDO = base_albedo;
 	EMISSION = base_emission;
-	ALPHA = wireframe_map;
+	//ALPHA = wireframe_map;
 }

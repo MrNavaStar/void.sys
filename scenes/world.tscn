@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://bdsvyu7l4eksf" path="res://scripts/compute_power_bar.gd" id="5_71j4m"]
 [ext_resource type="Script" uid="uid://celeggxoxwqmy" path="res://scripts/virtual_cursor.gd" id="5_qfnet"]
 [ext_resource type="Material" uid="uid://di8qji5p67fvw" path="res://assets/materials/emission_material.tres" id="6_i7141"]
-[ext_resource type="Script" path="res://scripts/enemy_manager.gd" id="8_4mrxx"]
-[ext_resource type="Script" path="res://scripts/message_container.gd" id="8_7r4gi"]
-[ext_resource type="Script" path="res://scripts/attacked_nodes_list.gd" id="9_w7kh3"]
+[ext_resource type="Script" uid="uid://cqeasj8iuni02" path="res://scripts/enemy_manager.gd" id="8_4mrxx"]
+[ext_resource type="Script" uid="uid://ngxsbn2xsvec" path="res://scripts/message_container.gd" id="8_7r4gi"]
+[ext_resource type="Script" uid="uid://cy1q8vulhyhyh" path="res://scripts/attacked_nodes_list.gd" id="9_w7kh3"]
 [ext_resource type="Script" uid="uid://t8q4ycyyra11" path="res://scripts/music_manager.gd" id="11_e3hyu"]
 [ext_resource type="AudioStream" uid="uid://cqxcnkpo07osk" path="res://assets/music/Intro Music V2.wav" id="12_dss4m"]
 [ext_resource type="AudioStream" uid="uid://dmnrmuym4usab" path="res://assets/music/Music HIGH lvl 1.wav" id="12_jhx03"]
@@ -68,7 +68,13 @@ script = ExtResource("1_rwgxs")
 ships = 3000
 metadata/_edit_lock_ = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="above" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.800648, 0.039958, 0.597801, -0.599135, 0.0533974, 0.798865, 0, -0.997774, 0.0666928, 0, 1.71952, 1.19209e-07)
+light_color = Color(0.817366, 0.877734, 0.855226, 1)
+light_energy = 0.497
+light_indirect_energy = 3.493
+
+[node name="green" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.627229, -0.778835, 0, 0.778835, 0.627229, 0, 0, 0)
 light_color = Color(0.669092, 0.845121, 0.698641, 1)
 light_energy = 1.039
@@ -148,7 +154,6 @@ theme_override_constants/separation = 0
 script = ExtResource("5_71j4m")
 
 [node name="RamUseLabel" type="Label" parent="Control"]
-visible = false
 layout_mode = 0
 offset_left = 34.0
 offset_top = 65.0

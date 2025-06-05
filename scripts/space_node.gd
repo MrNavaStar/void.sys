@@ -16,29 +16,6 @@ var hack_time: float = 0
 var closest_node: SpaceNode
 var range_ring: MeshInstance3D
 
-var planet_scenes: Array[String]
-var ship_scenes: Array[String]
-var probe_scenes: Array[String]
-var asteroid_scenes: Array[String]
-
-
-func _init() -> void:
-	planet_scenes = [
-		"res://scenes/planets/planet_type_a_depleted.tscn",
-		"res://scenes/planets/planet_type_b_overpopulated.tscn"
-	]
-	ship_scenes = [
-		"res://scenes/ships/ship_type_a_cylinder.tscn", "res://scenes/ships/ship_type_b_cone.tscn"
-	]
-	probe_scenes = [
-		"res://scenes/probes/probe_type_a_sputnik.tscn",
-		"res://scenes/probes/probe_type_b_cubesat.tscn"
-	]
-	asteroid_scenes = [
-		"res://scenes/asteroids/asteroid_type_a_tick.tscn",
-		"res://scenes/asteroids/asteroid_type_b_grabber.tscn"
-	]
-
 
 func _ready() -> void:
 	hack_timer.timeout.connect(_on_hack_finish)
@@ -56,8 +33,7 @@ func generate_selectable_indicator_mesh() -> void:
 	selectable_indicator.mesh = torus
 
 
-func make_root() -> void:
-	var scene: PackedScene = load(probe_scenes[randi_range(0, 1)])
+func make_root(scene: PackedScene) -> void:
 	var model: Node3D = scene.instantiate()
 	model.rotation.x = randf_range(0, TAU)
 	model.rotation.y = randf_range(0, TAU)
@@ -70,8 +46,7 @@ func make_root() -> void:
 	_update_label()
 
 
-func make_planet() -> void:
-	var scene: PackedScene = load(planet_scenes[randi_range(0, 1)])
+func make_planet(scene: PackedScene) -> void:
 	var model: Node3D = scene.instantiate()
 	model.rotation.x = randf_range(0, TAU)
 	model.rotation.y = randf_range(0, TAU)
@@ -82,8 +57,7 @@ func make_planet() -> void:
 	_update_label()
 
 
-func make_ship() -> void:
-	var scene: PackedScene = load(ship_scenes[randi_range(0, 1)])
+func make_ship(scene: PackedScene) -> void:
 	var model: Node3D = scene.instantiate()
 	model.rotation.x = randf_range(0, TAU)
 	model.rotation.y = randf_range(0, TAU)
@@ -94,8 +68,7 @@ func make_ship() -> void:
 	_update_label()
 
 
-func make_probe() -> void:
-	var scene: PackedScene = load(probe_scenes[randi_range(0, 1)])
+func make_probe(scene: PackedScene) -> void:
 	var model: Node3D = scene.instantiate()
 	model.rotation.x = randf_range(0, TAU)
 	model.rotation.y = randf_range(0, TAU)
@@ -106,8 +79,7 @@ func make_probe() -> void:
 	_update_label()
 
 
-func make_asteroid() -> void:
-	var scene: PackedScene = load(asteroid_scenes[randi_range(0, 1)])
+func make_asteroid(scene: PackedScene) -> void:
 	var model: Node3D = scene.instantiate()
 	model.rotation.x = randf_range(0, TAU)
 	model.rotation.y = randf_range(0, TAU)

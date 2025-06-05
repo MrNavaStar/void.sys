@@ -23,8 +23,8 @@ void fragment() {
 
 	float positional_map = 0.4 * sin(TIME * 2.0 + 4.0 * world_pos.y) + 1.0;
 	float wireframe_map =  clamp(positional_map, 0, 1);
-	
-	
+
+
 
 	ALBEDO = base_albedo;
 	EMISSION = base_emission;
