@@ -25,7 +25,7 @@ func _overclock() -> void:
 
 func _overclock_used() -> void:
 	disabled = true
-	text = "COOLING DOWN..."
+	text = "COOLING DOWN"
 	(get_node("../ProgressBar") as ProgressBar).visible = true
 	_start_progress_bar()
 

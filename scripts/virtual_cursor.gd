@@ -55,7 +55,7 @@ func get_closest_node() -> SpaceNode:
 	var closest: SpaceNode = null
 	var distance: float = INF
 	for node: SpaceNode in close_space_nodes:
-		if node.is_hacked:
+		if node.is_hacked and not node.is_being_hacked:
 			var test_distance := position.distance_to(node.position)
 			if test_distance < distance:
 				distance = test_distance

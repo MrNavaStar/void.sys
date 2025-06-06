@@ -73,11 +73,14 @@ func start_small_enemy_attack(enemy_timer: SmallEnemyTimer) -> void:
 		return
 	attack.start(node)
 	small_attacks[enemy_timer] = attack
+	(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
 
 
 func stop_small_enemy_attack(enemy_timer: SmallEnemyTimer) -> void:
-	small_attacks[enemy_timer].stop()
-	small_attacks.erase(enemy_timer)
+	if small_attacks.has(enemy_timer):
+		small_attacks[enemy_timer].stop()
+		small_attacks.erase(enemy_timer)
+	(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
 
 
 func _get_untargeted_leaf_node() -> SpaceNode:

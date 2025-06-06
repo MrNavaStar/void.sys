@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dm6utgsyuev2y"]
+[gd_scene load_steps=12 format=3 uid="uid://dm6utgsyuev2y"]
 
 [ext_resource type="Script" uid="uid://dg0qfy6s8df13" path="res://scripts/space_node.gd" id="1_4xayg"]
-[ext_resource type="Material" uid="uid://di8qji5p67fvw" path="res://assets/materials/emission_material.tres" id="2_2rj4j"]
+[ext_resource type="Material" uid="uid://db8la2sefnk3p" path="res://assets/materials/overclock_emission_material.tres" id="2_0k5l7"]
 [ext_resource type="PackedScene" uid="uid://bytwaevds7ytl" path="res://assets/vfx/friendly_hack_cylinder.tscn" id="3_81pyo"]
+[ext_resource type="Material" uid="uid://hx4ko6gwmsk6" path="res://assets/materials/space_node_shadow_green.tres" id="3_jtn2c"]
 [ext_resource type="PackedScene" uid="uid://cimn772cnycca" path="res://assets/vfx/enemy_hack_cylinder.tscn" id="4_kcnui"]
+[ext_resource type="FontFile" uid="uid://c3pta1wb8ykrv" path="res://assets/ui/fonts/carbon-font-family/Carbon Bold.ttf" id="6_0k5l7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cw5of"]
 radius = 1.02481
@@ -15,29 +17,12 @@ radius = 16.1328
 radius = 0.534592
 
 [sub_resource type="TorusMesh" id="TorusMesh_4xayg"]
-material = ExtResource("2_2rj4j")
+material = ExtResource("2_0k5l7")
 inner_radius = 1.5
 outer_radius = 1.6
 
-[sub_resource type="Gradient" id="Gradient_2rj4j"]
-interpolation_mode = 2
-interpolation_color_space = 2
-offsets = PackedFloat32Array(0, 0.182137, 0.412109, 0.763083)
-colors = PackedColorArray(0.344438, 0.671296, 0.308792, 1, 0.344841, 0.670864, 0.30941, 0.389629, 0.345043, 0.670648, 0.309719, 0.0841073, 0.345098, 0.670588, 0.309804, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_81pyo"]
-gradient = SubResource("Gradient_2rj4j")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.78565, 0.298972)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rj4j"]
-transparency = 1
-shading_mode = 0
-albedo_texture = SubResource("GradientTexture2D_81pyo")
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_2rj4j"]
-material = SubResource("StandardMaterial3D_2rj4j")
+material = ExtResource("3_jtn2c")
 
 [node name="SpaceNode" type="Node3D"]
 script = ExtResource("1_4xayg")
@@ -45,6 +30,7 @@ script = ExtResource("1_4xayg")
 [node name="Object" type="Node3D" parent="."]
 
 [node name="ClickHitbox" type="Area3D" parent="Object"]
+transform = Transform3D(1.26928, 0, 0, 0, 1.26928, 0, 0, 0, 1.26928, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Object/ClickHitbox"]
 shape = SubResource("SphereShape3D_cw5of")
@@ -66,6 +52,12 @@ input_ray_pickable = false
 shape = SubResource("SphereShape3D_2rj4j")
 
 [node name="SelectableIndicator" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1.06778, 0, 0, 0, 1.06778, 0, 0, 0, 1.06778, 0, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_4xayg")
+
+[node name="OverclockIndicator" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(1.06778, 0, 0, 0, 1.06778, 0, 0, 0, 1.06778, 0, 0, 0)
 visible = false
 mesh = SubResource("TorusMesh_4xayg")
 
@@ -74,16 +66,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39, 0)
 mesh = SubResource("PlaneMesh_2rj4j")
 
 [node name="FriendlyHackIndicator" parent="Object" instance=ExtResource("3_81pyo")]
-transform = Transform3D(1.55744, 0, 0, 0, 2.06813, 0, 0, 0, 1.55744, 0, 0.611389, 0)
+transform = Transform3D(1.43494, 0, 0, 0, 1.90547, 0, 0, 0, 1.43494, 0, 0.611389, 0)
 visible = false
 
 [node name="EnemyHackIndicator" parent="Object" instance=ExtResource("4_kcnui")]
-transform = Transform3D(1.55744, 0, 0, 0, 2.06813, 0, 0, 0, 1.55744, 0, 0.611389, 0)
+transform = Transform3D(1.43494, 0, 0, 0, 1.90547, 0, 0, 0, 1.43494, 0, 0.611389, 0)
 visible = false
 
 [node name="Info" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4003, 0)
 billboard = 1
+modulate = Color(0.815539, 0.986205, 0.864671, 1)
+text = "test"
+font = ExtResource("6_0k5l7")
+font_size = 80
 
 [node name="Hack Timer" type="Timer" parent="."]
 one_shot = true

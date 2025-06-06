@@ -17,6 +17,7 @@ var compute_power_usage: Dictionary[PowerUses, float] = {
 	PowerUses.DEFENDING: 0,
 }
 var _hacked_nodes: Array[SpaceNode]
+var _being_hacked_nodes: Array[SpaceNode]
 var is_overclocked: bool = false
 var is_overclocked_coolingdown: bool = false
 
@@ -75,13 +76,15 @@ func get_poweruse_as_color(use: PowerUses) -> Color:
 			return Color("#ffffff")
 
 
-func register_hack(cost: float) -> void:
+func register_hack(cost: float, node: SpaceNode) -> void:
 	compute_power_usage[PowerUses.HACKING] += cost
+	_being_hacked_nodes.append(node)
 
 
-func deregister_hack(cost: float) -> void:
+func deregister_hack(cost: float, node: SpaceNode) -> void:
 	compute_power_usage[PowerUses.HACKING] -= cost
 	assert(compute_power_usage[PowerUses.HACKING] >= 0)
+	_being_hacked_nodes.erase(node)
 
 
 func add_hacked_node(node: SpaceNode) -> void:
@@ -105,12 +108,14 @@ func remove_hacked_node_free(node: SpaceNode) -> void:
 
 func register_attack(node: SpaceNode) -> void:
 	compute_power_usage[PowerUses.DEFENDING] += defense_cost
+	_being_hacked_nodes.append(node)
 	node_attack.emit(node)
 
 
 func deregister_attack(node: SpaceNode) -> void:
 	compute_power_usage[PowerUses.DEFENDING] -= defense_cost
 	assert(compute_power_usage[PowerUses.DEFENDING] >= 0)
+	_being_hacked_nodes.erase(node)
 	node_defended.emit(node)
 
 
@@ -134,12 +139,16 @@ func prime_overclock() -> void:
 	if is_overclocked_coolingdown == false:
 		is_overclocked = true
 		(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
+		for node: SpaceNode in _being_hacked_nodes:
+			node.overclock_indicator.visible = true
 
 
 func unprime_overclock() -> void:
 	if is_overclocked_coolingdown == false:
 		is_overclocked = false
 		(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
+		for node: SpaceNode in _being_hacked_nodes:
+			node.overclock_indicator.visible = false
 
 
 func use_overclock() -> void:
@@ -149,6 +158,8 @@ func use_overclock() -> void:
 		is_overclocked = false
 		is_overclocked_coolingdown = true
 		(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
+		for node: SpaceNode in _being_hacked_nodes:
+			node.overclock_indicator.visible = false
 		var timer: Timer = Timer.new()
 		timer.timeout.connect(
 			func() -> void:
