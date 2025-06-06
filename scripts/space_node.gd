@@ -139,17 +139,16 @@ func hack() -> void:
 
 func unhack() -> void:
 	Hacker.remove_hacked_node(self)
-	Hacker.update_ram_display()
 	_unhack_cleanup()
 
 
 func unhack_free() -> void:
 	Hacker.remove_hacked_node_free(self)
-	Hacker.update_ram_display()
 	_unhack_cleanup()
 
 
 func _unhack_cleanup() -> void:
+	Hacker.update_ram_display()
 	is_hacked = false
 	hack_cost *= 2
 	hack_time *= 2
@@ -271,7 +270,8 @@ func _on_area_3d_input_event(
 	if event.is_action_pressed("select"):
 		hack()
 	if event.is_action_pressed("secondary"):
-		show_menu()
+		if is_hacked and not is_being_hacked:
+			show_menu()
 
 
 func _set_hover_color() -> void:

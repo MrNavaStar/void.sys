@@ -2,14 +2,6 @@ extends Node3D
 
 @onready var space_node: SpaceNode = get_parent()
 
-
-func _on_unhack_pressed() -> void:
-	if not space_node.is_hacked and not space_node.is_being_hacked:
-		return
-	space_node.unhack()
-	queue_free()
-
-
 # Used for checking if the mouse is inside the Area3D.
 var is_mouse_inside: bool = false
 # The last processed input touch/mouse event. To calculate relative movement.
@@ -26,6 +18,20 @@ func _ready() -> void:
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	node_area.mouse_exited.connect(_mouse_exited_area)
 	node_area.input_event.connect(_mouse_input_event)
+	_start_delete_timer()
+
+
+func _on_unhack_pressed() -> void:
+	if space_node.is_hacked and not space_node.is_being_hacked:
+		space_node.unhack_free()
+	queue_free()
+
+
+func _start_delete_timer() -> void:
+	var timer: Timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(func() -> void: queue_free())
+	timer.start(3)
 
 
 func _process(_delta: float) -> void:

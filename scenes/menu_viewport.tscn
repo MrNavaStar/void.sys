@@ -21,6 +21,7 @@ size = Vector2(2, 1)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qw6k"]
+size = Vector3(1.73853, 0.589844, 0.0898438)
 
 [node name="MenuViewport" type="Node3D"]
 script = ExtResource("1_7qw6k")
@@ -32,6 +33,7 @@ mesh = SubResource("PlaneMesh_kcnui")
 [node name="Area3D" type="Area3D" parent="Menu"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Menu/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00159621, -0.022969, 0)
 shape = SubResource("BoxShape3D_7qw6k")
 
 [node name="SubViewport" type="SubViewport" parent="."]
