@@ -2,7 +2,7 @@ shader_type spatial;
 render_mode unshaded, blend_mix, depth_draw_never, cull_disabled;
 
 uniform sampler2D animation_frames[103];
-uniform float fps = 60.0;
+uniform float fps = 240.0;
 
 instance uniform float line_length = 0.2;
 

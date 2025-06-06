@@ -23,11 +23,9 @@ func _ready() -> void:
 
 func _enemy_timer_timeout() -> void:
 	attack_timer.start(randf_range(attack_time_min, attack_time_max))
-	print("%s starting enemy attack" % name)
 	(get_parent().get_parent() as EnemyManager).start_small_enemy_attack(self)
 	start(randf_range(wait_time_min, wait_time_max))
 
 
 func _on_attack_timer_end() -> void:
-	print("%s stopping enemy attack" % name)
 	(get_parent().get_parent() as EnemyManager).stop_small_enemy_attack(self)

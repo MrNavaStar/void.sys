@@ -81,20 +81,12 @@ visible = false
 transform = Transform3D(1.55744, 0, 0, 0, 2.06813, 0, 0, 0, 1.55744, 0, 0.611389, 0)
 visible = false
 
-[node name="Sprite3D" type="Sprite3D" parent="Object"]
-
 [node name="Info" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4003, 0)
 billboard = 1
 
 [node name="Hack Timer" type="Timer" parent="."]
 one_shot = true
-
-[node name="SubViewport" type="SubViewport" parent="."]
-
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
-offset_right = 4.0
-offset_bottom = 27.0
 
 [connection signal="input_event" from="Object/ClickHitbox" to="." method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Object/ClickHitbox" to="." method="_set_hover_color"]

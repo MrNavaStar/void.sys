@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://5go3nc7x84ad"]
+
+[ext_resource type="FontFile" uid="uid://yrk6l5r8cnpx" path="res://assets/ui/fonts/carbon-font-family/Carbon Regular.ttf" id="1_amlv4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2q5q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amlv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amlv4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.815539, 0.986205, 0.864671, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7eh4"]
+bg_color = Color(0.815539, 0.986205, 0.864671, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2q5q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.815539, 0.986205, 0.864671, 1)
+corner_detail = 1
+
+[resource]
+default_font = ExtResource("1_amlv4")
+default_font_size = 30
+Button/colors/font_color = Color(0.815539, 0.986205, 0.864671, 1)
+Button/colors/font_focus_color = Color(0.815539, 0.986205, 0.864671, 1)
+Button/colors/font_hover_color = Color(0.815539, 0.986205, 0.864671, 1)
+Button/colors/font_hover_pressed_color = Color(0.815539, 0.986205, 0.864671, 1)
+Button/colors/font_pressed_color = Color(0.815539, 0.986205, 0.864671, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_j2q5q")
+Button/styles/hover = SubResource("StyleBoxEmpty_amlv4")
+Button/styles/normal = SubResource("StyleBoxFlat_amlv4")
+Button/styles/pressed = SubResource("StyleBoxFlat_i7eh4")
+Label/colors/font_color = Color(0.815539, 0.986205, 0.864671, 1)
+Panel/styles/panel = SubResource("StyleBoxFlat_j2q5q")

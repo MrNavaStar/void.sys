@@ -69,27 +69,27 @@ func get_poweruse_as_color(use: PowerUses) -> Color:
 
 func register_hack(cost: float) -> void:
 	compute_power_usage[PowerUses.HACKING] += cost
-	compute_power_updated.emit(compute_power_usage)
 
 
 func deregister_hack(cost: float) -> void:
 	compute_power_usage[PowerUses.HACKING] -= cost
-	assert(get_compute_power_usage() >= 0)
-	compute_power_updated.emit(compute_power_usage)
+	assert(compute_power_usage[PowerUses.HACKING] >= 0)
 
 
 func add_hacked_node(node: SpaceNode) -> void:
 	_hacked_nodes.append(node)
 	compute_power_usage[PowerUses.IDLE_NODES] += idle_node_cost
-	compute_power_updated.emit(compute_power_usage)
 
 
 func remove_hacked_node(node: SpaceNode) -> void:
+	compute_power_usage[PowerUses.DESTROYED] += destroyed_node_cost
+	remove_hacked_node_free(node)
+
+
+func remove_hacked_node_free(node: SpaceNode) -> void:
 	_hacked_nodes.erase(node)
 	compute_power_usage[PowerUses.IDLE_NODES] -= idle_node_cost
-	compute_power_usage[PowerUses.DESTROYED] += destroyed_node_cost
-	assert(get_compute_power_usage() >= 0)
-	compute_power_updated.emit(compute_power_usage)
+	assert(compute_power_usage[PowerUses.IDLE_NODES] >= 0)
 	message.emit("CONNECTION TO NODE LOST")
 	if _hacked_nodes.size() == 0:
 		print("GAME OVER")
@@ -97,16 +97,25 @@ func remove_hacked_node(node: SpaceNode) -> void:
 
 func register_attack(node: SpaceNode) -> void:
 	compute_power_usage[PowerUses.DEFENDING] += defense_cost
-	assert(get_compute_power_usage() <= total_compute_power)
-	compute_power_updated.emit(compute_power_usage)
 	node_attack.emit(node)
 
 
 func deregister_attack(node: SpaceNode) -> void:
 	compute_power_usage[PowerUses.DEFENDING] -= defense_cost
-	assert(get_compute_power_usage() >= 0)
-	compute_power_updated.emit(compute_power_usage)
+	assert(compute_power_usage[PowerUses.DEFENDING] >= 0)
 	node_defended.emit(node)
+
+
+func increase_ram_total(amount: float) -> void:
+	total_compute_power += amount
+
+
+func decrease_ram_total(amount: float) -> void:
+	total_compute_power -= amount
+
+
+func update_ram_display() -> void:
+	compute_power_updated.emit(compute_power_usage)
 
 
 func send_message(text: String) -> void:

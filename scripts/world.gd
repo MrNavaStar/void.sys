@@ -6,7 +6,7 @@ extends Node3D
 @export var ships: int = 1500
 @export var ship_spread: int = 3
 @export var probes: int = 3000
-@export var probe_spread: int = 2
+@export var probe_spread: int = 3
 @export var asteroids: int = 1500
 @export var asteroid_spread: int = 10
 

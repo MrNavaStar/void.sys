@@ -1,0 +1,35 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://4ce1kd8pxqdh"
+path="res://.godot/imported/Carbon ThinItalic.ttf-274f981f5c00cf523915338c5db0d238.fontdata"
+
+[deps]
+
+source_file="res://assets/ui/fonts/carbon-font-family/Carbon ThinItalic.ttf"
+dest_files=["res://.godot/imported/Carbon ThinItalic.ttf-274f981f5c00cf523915338c5db0d238.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

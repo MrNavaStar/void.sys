@@ -38,25 +38,31 @@ func create_enemy_timer() -> void:
 
 class SmallAttack:
 	var target: SpaceNode
+	var started: bool = false
 
 	func start(node: SpaceNode) -> void:
 		target = node
+		started = false
 		if Hacker.can_compute_action(Hacker.defense_cost):
 			target.is_being_hacked = true
 			Hacker.register_attack(target)
+			Hacker.update_ram_display()
 			target.show_enemy_hack_indicator()
+			started = true
 			return
 		# if not enough ram to start
 		# immediately hack target
 		hack()
 
 	func stop() -> void:
+		if started == false:
+			return
 		target.is_being_hacked = false
 		Hacker.deregister_attack(target)
+		Hacker.update_ram_display()
 		target.hide_hack_indicators()
 
 	func hack() -> void:
-		target.is_hacked = false
 		target._on_hack_finish()
 
 

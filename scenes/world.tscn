@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dmxxff1nm6qak"]
+[gd_scene load_steps=26 format=3 uid="uid://dmxxff1nm6qak"]
 
 [ext_resource type="Script" uid="uid://d318spwk1v5ym" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="2_4wyf3"]
@@ -7,8 +7,10 @@
 [ext_resource type="Script" uid="uid://bdsvyu7l4eksf" path="res://scripts/compute_power_bar.gd" id="5_71j4m"]
 [ext_resource type="Script" uid="uid://celeggxoxwqmy" path="res://scripts/virtual_cursor.gd" id="5_qfnet"]
 [ext_resource type="Material" uid="uid://c1yv207dbtoqb" path="res://assets/vfx/edge_shader.tres" id="6_dss4m"]
+[ext_resource type="Theme" uid="uid://5go3nc7x84ad" path="res://new_theme.tres" id="7_7t5mc"]
 [ext_resource type="Script" uid="uid://cqeasj8iuni02" path="res://scripts/enemy_manager.gd" id="8_4mrxx"]
 [ext_resource type="Script" uid="uid://ngxsbn2xsvec" path="res://scripts/message_container.gd" id="8_7r4gi"]
+[ext_resource type="FontFile" uid="uid://c3pta1wb8ykrv" path="res://assets/ui/fonts/carbon-font-family/Carbon Bold.ttf" id="8_lakw3"]
 [ext_resource type="Script" uid="uid://cy1q8vulhyhyh" path="res://scripts/attacked_nodes_list.gd" id="9_w7kh3"]
 [ext_resource type="Script" uid="uid://t8q4ycyyra11" path="res://scripts/music_manager.gd" id="11_e3hyu"]
 [ext_resource type="AudioStream" uid="uid://cqxcnkpo07osk" path="res://assets/music/Intro Music V2.wav" id="12_dss4m"]
@@ -134,6 +136,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+theme = ExtResource("7_7t5mc")
 metadata/_edit_lock_ = true
 
 [node name="RamLabel" type="Label" parent="Control"]
@@ -142,23 +145,25 @@ offset_left = 24.0
 offset_top = 14.0
 offset_right = 68.0
 offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("8_lakw3")
 text = "RAM"
 
 [node name="ComputePowerBar" type="HBoxContainer" parent="Control"]
+clip_contents = true
 layout_mode = 0
-offset_left = 75.0
+offset_left = 105.0
 offset_top = 16.0
-offset_right = 462.0
-offset_bottom = 38.0
+offset_right = 703.0
+offset_bottom = 50.0
 theme_override_constants/separation = 0
 script = ExtResource("5_71j4m")
 
 [node name="RamUseLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 34.0
-offset_top = 65.0
-offset_right = 210.0
-offset_bottom = 94.0
+offset_top = 95.0
+offset_right = 351.0
+offset_bottom = 132.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4mrxx")
 text = "[[ ERROR: NO VALUE ]]"
@@ -204,12 +209,11 @@ grow_vertical = 0
 script = ExtResource("9_w7kh3")
 
 [node name="DebtWarning" type="Label" parent="Control"]
-visible = false
 layout_mode = 0
 offset_left = 34.0
-offset_top = 127.0
-offset_right = 156.0
-offset_bottom = 156.0
+offset_top = 167.0
+offset_right = 524.0
+offset_bottom = 204.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_w7kh3")
 text = "[[ WARNING: OVERCLOCKING RAM ]]"

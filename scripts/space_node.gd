@@ -6,6 +6,8 @@ extends Node3D
 @onready var virtual_cursor: VirtualCursor = get_node("../../Virtual Cursor") as VirtualCursor
 @onready var neighbours_hitbox: Area3D = $Object/NeighboursHitbox as Area3D
 @onready var selectable_indicator: MeshInstance3D = $Object/SelectableIndicator as MeshInstance3D
+@onready var progress_viewport_scene: PackedScene = load("res://scenes/progress_bar_viewport.tscn")
+@onready var menu_viewport_scene: PackedScene = load("res://scenes/menu_viewport.tscn")
 
 var connected_nodes: Dictionary[SpaceNode, Edge] = {}
 
@@ -13,8 +15,10 @@ var is_hacked: bool = false
 var is_being_hacked: bool = false
 var hack_cost: float = 0
 var hack_time: float = 0
+var ram_gain: float = 0
 var closest_node: SpaceNode
 var range_ring: MeshInstance3D
+var menu: Node3D = null
 
 
 func _ready() -> void:
@@ -40,6 +44,7 @@ func make_root(scene: PackedScene) -> void:
 	model.rotation.z = randf_range(0, TAU)
 	$Object.add_child(model)
 	Hacker.add_hacked_node(self)
+	Hacker.update_ram_display()
 	hack_cost = [32, 48, 64].pick_random()
 	hack_time = randi_range(4, 6)
 	is_hacked = true
@@ -52,6 +57,7 @@ func make_planet(scene: PackedScene) -> void:
 	model.rotation.y = randf_range(0, TAU)
 	model.rotation.z = randf_range(0, TAU)
 	$Object.add_child(model)
+	ram_gain = 60
 	hack_cost = [32, 48, 64].pick_random()
 	hack_time = randi_range(8, 16)
 	_update_label()
@@ -122,9 +128,44 @@ func hack() -> void:
 		(get_node("../../EnemyManager") as EnemyManager).initial_start()
 		show_friendly_hack_indicator()
 		Hacker.register_hack(hack_cost)
+		Hacker.update_ram_display()
 		hack_timer.start(hack_time)
 		is_being_hacked = true
 		selectable_indicator.visible = false
+		var progress_viewport: ProgressViewport = progress_viewport_scene.instantiate()
+		add_child(progress_viewport)
+		progress_viewport.start_timer(hack_time)
+
+
+func unhack() -> void:
+	Hacker.remove_hacked_node(self)
+	Hacker.update_ram_display()
+	_unhack_cleanup()
+
+
+func unhack_free() -> void:
+	Hacker.remove_hacked_node_free(self)
+	Hacker.update_ram_display()
+	_unhack_cleanup()
+
+
+func _unhack_cleanup() -> void:
+	is_hacked = false
+	hack_cost *= 2
+	hack_time *= 2
+	for neighbour: SpaceNode in connected_nodes:
+		neighbour.connected_nodes[self].queue_free()
+		neighbour.connected_nodes.erase(self)
+	connected_nodes.clear()
+	_update_label()
+	virtual_cursor.update_closest_node()
+
+
+func show_menu() -> void:
+	if menu != null:
+		menu.queue_free()
+	menu = menu_viewport_scene.instantiate()
+	add_child(menu)
 
 
 func generate_ring(radius: float, difference: float) -> void:
@@ -208,25 +249,20 @@ func hide_hack_indicators() -> void:
 func _on_hack_finish() -> void:
 	is_being_hacked = false
 	if !is_hacked:
+		print("finishing hack")
 		Hacker.deregister_hack(hack_cost)
 		Hacker.add_hacked_node(self)
+		Hacker.increase_ram_total(ram_gain)
+		Hacker.update_ram_display()
 		is_hacked = true
 		var edge: Edge = (get_node("../../Edges") as Edger).create_edge(self, closest_node)
 		closest_node.connected_nodes[self] = edge
 		connected_nodes[closest_node] = edge
+		_update_label()
+		virtual_cursor.update_closest_node()
 	else:
-		is_hacked = false
-		Hacker.remove_hacked_node(self)
-		hack_cost *= 2
-		hack_time *= 2
-		for neighbour: SpaceNode in connected_nodes:
-			neighbour.connected_nodes[self].queue_free()
-			neighbour.connected_nodes.erase(self)
-		connected_nodes.clear()
-
+		unhack()
 	hide_hack_indicators()
-	_update_label()
-	virtual_cursor.update_closest_node()
 
 
 func _on_area_3d_input_event(
@@ -234,6 +270,8 @@ func _on_area_3d_input_event(
 ) -> void:
 	if event.is_action_pressed("select"):
 		hack()
+	if event.is_action_pressed("secondary"):
+		show_menu()
 
 
 func _set_hover_color() -> void:

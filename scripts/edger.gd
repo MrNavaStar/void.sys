@@ -7,7 +7,6 @@ extends Node3D
 
 
 func create_edge(node1: SpaceNode, node2: SpaceNode) -> Edge:
-	print("edge_created between %s and %s" % [node1.name, node2.name])
 	var edge_length := node1.position.distance_to(node2.position)
 	var edge_scene := edge_prefab.instantiate() as Edge
 
