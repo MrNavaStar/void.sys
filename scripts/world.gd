@@ -22,19 +22,23 @@ var asteroid_scenes: Array[PackedScene]
 func _init() -> void:
 	planet_scenes = [
 		load("res://scenes/planets/planet_type_a_depleted.tscn"),
-		load("res://scenes/planets/planet_type_b_overpopulated.tscn")
+		load("res://scenes/planets/planet_type_b_overpopulated.tscn"),
+		load("res://scenes/planets/planet_type_c_drought.tscn")
 	]
 	ship_scenes = [
 		load("res://scenes/ships/ship_type_a_cylinder.tscn"),
-		load("res://scenes/ships/ship_type_b_cone.tscn")
+		load("res://scenes/ships/ship_type_b_cone.tscn"),
+		load("res://scenes/ships/ship_type_c_saucer.tscn")
 	]
 	probe_scenes = [
 		load("res://scenes/probes/probe_type_a_sputnik.tscn"),
-		load("res://scenes/probes/probe_type_b_cubesat.tscn")
+		load("res://scenes/probes/probe_type_b_cubesat.tscn"),
+		load("res://scenes/probes/probe_type_c_dish.tscn")
 	]
 	asteroid_scenes = [
 		load("res://scenes/asteroids/asteroid_type_a_tick.tscn"),
-		load("res://scenes/asteroids/asteroid_type_b_grabber.tscn")
+		load("res://scenes/asteroids/asteroid_type_b_grabber.tscn"),
+		load("res://scenes/asteroids/asteroid_type_c_geophage.tscn")
 	]
 
 

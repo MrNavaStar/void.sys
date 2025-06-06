@@ -6,4 +6,5 @@
 [node name="Probe-TypeA-Sputnik" instance=ExtResource("1_f8nxl")]
 
 [node name="pPyramid9" parent="." index="0"]
+transform = Transform3D(0.0114639, 0, 0, 0, 0.0114639, 0, 0, 0, 0.0114639, 0, 0, 0)
 material_override = ExtResource("2_ewel6")

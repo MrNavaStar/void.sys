@@ -1,8 +1,8 @@
 class_name EnemyManager
 extends Node3D
 
-@export var level_duration: int = 20
-@export var max_level: int = 5
+@export var level_duration: int = 15
+@export var max_level: int = 8
 
 var started: bool = false
 var current_level: int = 0

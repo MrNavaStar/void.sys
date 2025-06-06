@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhq5iv4bonc15"
+path="res://.godot/imported/UI sfx rise a.wav-7cdd85474e5b49fb0df1c4a1ed7884d3.sample"
+
+[deps]
+
+source_file="res://assets/sfx/UI sfx rise a.wav"
+dest_files=["res://.godot/imported/UI sfx rise a.wav-7cdd85474e5b49fb0df1c4a1ed7884d3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

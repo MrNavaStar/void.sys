@@ -79,6 +79,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o8yiw")
 
 [node name="Asteroid_TypeA_Tick" instance=ExtResource("1_ko21m")]
+transform = Transform3D(1.21095, 0, 0, 0, 1.21095, 0, 0, 0, 1.21095, 0, 0, 0)
 
 [node name="Asteroid_TypeA_Tick_01" parent="." index="0"]
 mesh = SubResource("ArrayMesh_evex3")

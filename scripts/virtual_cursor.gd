@@ -25,7 +25,11 @@ func _process(_delta: float) -> void:
 
 
 func update_model() -> void:
-	var target_node := get_closest_hacked_node_in_range()
+	var target_node: SpaceNode
+	if Hacker.is_overclocked:
+		target_node = get_closest_hacked_node_in_range(Hacker.overclock_selection_range)
+	else:
+		target_node = get_closest_hacked_node_in_range()
 	if target_node == null:
 		cursor_pivot.visible = false
 		return
@@ -59,7 +63,7 @@ func get_closest_node() -> SpaceNode:
 	return closest
 
 
-func get_closest_hacked_node_in_range() -> SpaceNode:
+func get_closest_hacked_node_in_range(selection_range: float = Hacker.selection_range) -> SpaceNode:
 	var closest: SpaceNode = null
 	var distance: float = INF
 	for node in close_space_nodes:
@@ -68,17 +72,21 @@ func get_closest_hacked_node_in_range() -> SpaceNode:
 			if test_distance < distance:
 				distance = test_distance
 				closest = node
-	return closest if distance < Hacker.selection_range else null
+	return closest if distance < selection_range else null
 
 
-func update_closest_node() -> void:
+func update_closest_node(ignore: bool = false) -> void:
 	var closest := get_closest_node()
-	if closest == current_closest:
+	if closest == current_closest and not ignore:
 		return
 	if current_closest != null:
 		current_closest.delete_ring()
 		current_closest.stop_highlight_nearby()
 	current_closest = closest
 	if current_closest != null:
-		current_closest.generate_ring(Hacker.selection_range, ring_inner_size)
-		current_closest.highlight_nearby(Hacker.selection_range)
+		if Hacker.is_overclocked:
+			current_closest.generate_ring(Hacker.overclock_selection_range, ring_inner_size)
+			current_closest.highlight_nearby(Hacker.overclock_selection_range)
+		else:
+			current_closest.generate_ring(Hacker.selection_range, ring_inner_size)
+			current_closest.highlight_nearby(Hacker.selection_range)

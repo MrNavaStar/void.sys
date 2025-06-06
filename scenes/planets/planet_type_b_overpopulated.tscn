@@ -62,6 +62,7 @@ shader_parameter/tex_albedo = ExtResource("4_5odf5")
 shader_parameter/tex_emission = ExtResource("5_2uddr")
 
 [node name="Planet-TypeB-Overpopulated" instance=ExtResource("1_k3yct")]
+transform = Transform3D(1.09032, 0, 0, 0, 1.09032, 0, 0, 0, 1.09032, 0, 0, 0)
 
 [node name="Planet_TypeB_Overpopulated_01" parent="." index="0"]
 material_override = ExtResource("2_e3yei")

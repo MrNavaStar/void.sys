@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbpfh50061uql"]
+
+[ext_resource type="PackedScene" uid="uid://usj84hlb47pn" path="res://assets/nodes/Planet-TypeC-Drought.fbx" id="1_ggspi"]
+[ext_resource type="Material" uid="uid://clh2anfchdlgt" path="res://assets/materials/tybe_c.tres" id="2_4srcj"]
+
+[node name="Planet-TypeC-Drought" instance=ExtResource("1_ggspi")]
+
+[node name="Planet_TypeC_Drought_01" parent="." index="0"]
+transform = Transform3D(0.0133508, 0, 0, 0, 0.0133508, 0, 0, 0, 0.0133508, 0, 0, 0)
+material_override = ExtResource("2_4srcj")

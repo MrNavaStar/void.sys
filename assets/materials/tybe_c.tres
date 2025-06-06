@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://clh2anfchdlgt"]
+
+[ext_resource type="Shader" uid="uid://ddp3ry2q7ai38" path="res://assets/materials/shaders/wireframe_sweep.gdshader" id="1_ulyos"]
+[ext_resource type="Shader" uid="uid://crpu2jneyokmi" path="res://assets/materials/shaders/TypeC.gdshader" id="2_0a0rw"]
+[ext_resource type="Texture2D" uid="uid://n1j0p6xe2jcj" path="res://assets/nodes/TypeC_DroughtColors.png" id="3_0a0rw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ueb3"]
+render_priority = 1
+shader = ExtResource("1_ulyos")
+shader_parameter/color = Color(0.192029, 0.780171, 0.320052, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3ueb3")
+shader = ExtResource("2_0a0rw")
+shader_parameter/tex_albedo = ExtResource("3_0a0rw")

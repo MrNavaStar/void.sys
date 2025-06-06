@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://d07en0436fs11" path="res://assets/materials/tybe_b.tres" id="2_scpvj"]
 
 [node name="Asteroid_TypeB_Grabber" instance=ExtResource("1_r8h1d")]
+transform = Transform3D(1.09522, 0, 0, 0, 1.09522, 0, 0, 0, 1.09522, 0, 0, 0)
 
 [node name="Asteroid_TypeB_Grabber_01" parent="." index="0"]
 material_override = ExtResource("2_scpvj")

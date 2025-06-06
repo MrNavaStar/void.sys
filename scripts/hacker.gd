@@ -6,6 +6,8 @@ enum PowerUses { IDLE_NODES, HACKING, DESTROYED, DEFENDING }
 @export var destroyed_node_cost: float = 10
 @export var defense_cost: float = 5
 @export var selection_range: float = 8
+@export var overclock_selection_range: float = 14
+@export var overclock_cooldown: float = 20
 
 var total_compute_power: float = 64
 var compute_power_usage: Dictionary[PowerUses, float] = {
@@ -15,11 +17,17 @@ var compute_power_usage: Dictionary[PowerUses, float] = {
 	PowerUses.DEFENDING: 0,
 }
 var _hacked_nodes: Array[SpaceNode]
+var is_overclocked: bool = false
+var is_overclocked_coolingdown: bool = false
+
+@onready var sfx_manager: SFXManager = get_node("/root/World/SFXManager")
 
 signal compute_power_updated(power: float)
 signal message(text: String)
 signal node_attack(node: SpaceNode)
 signal node_defended(node: SpaceNode)
+signal overclock_ready
+signal overclock_used
 
 
 func get_compute_power_usage() -> float:
@@ -120,3 +128,33 @@ func update_ram_display() -> void:
 
 func send_message(text: String) -> void:
 	message.emit(text)
+
+
+func prime_overclock() -> void:
+	if is_overclocked_coolingdown == false:
+		is_overclocked = true
+		(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
+
+
+func unprime_overclock() -> void:
+	if is_overclocked_coolingdown == false:
+		is_overclocked = false
+		(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
+
+
+func use_overclock() -> void:
+	if is_overclocked == true:
+		message.emit("OVERCLOCKING")
+		overclock_used.emit()
+		is_overclocked = false
+		is_overclocked_coolingdown = true
+		var timer: Timer = Timer.new()
+		timer.timeout.connect(
+			func() -> void:
+				is_overclocked_coolingdown = false
+				message.emit("OVERCLOCK READY")
+				overclock_ready.emit()
+				sfx_manager.play_rise_a()
+		)
+		add_child(timer)
+		timer.start(overclock_cooldown)

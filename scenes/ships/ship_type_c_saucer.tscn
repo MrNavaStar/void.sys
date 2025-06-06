@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://goqno1672xg3"]
+
+[ext_resource type="PackedScene" uid="uid://b6lt7inkxbxok" path="res://assets/nodes/Ship-TypeC-Saucer.fbx" id="1_hvx7f"]
+[ext_resource type="Material" uid="uid://clh2anfchdlgt" path="res://assets/materials/tybe_c.tres" id="2_f5ugj"]
+
+[node name="Ship-TypeC-Saucer" instance=ExtResource("1_hvx7f")]
+transform = Transform3D(1.15082, 0, 0, 0, 1.15082, 0, 0, 0, 1.15082, 0, 0, 0)
+
+[node name="Ship_Drought_01" parent="." index="0"]
+material_override = ExtResource("2_f5ugj")
+
+[node name="Ship_Drought_Core_01" parent="Ship_Drought_01" index="0"]
+material_override = ExtResource("2_f5ugj")

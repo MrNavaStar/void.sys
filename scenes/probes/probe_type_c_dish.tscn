@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvc2bu361340y"]
+
+[ext_resource type="PackedScene" uid="uid://42mtwc0uapta" path="res://assets/nodes/Probe-TypeC-Dish.fbx" id="1_6gmyd"]
+[ext_resource type="Material" uid="uid://clh2anfchdlgt" path="res://assets/materials/tybe_c.tres" id="2_qgsnc"]
+
+[node name="Probe-TypeC-Dish" instance=ExtResource("1_6gmyd")]
+
+[node name="pCylinder10" parent="." index="0"]
+transform = Transform3D(0.0107807, 0, 0, 0, 0.0107807, 0, 0, 0, 0.0107807, 0, -2.19824e-16, 0)
+material_override = ExtResource("2_qgsnc")

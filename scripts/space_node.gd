@@ -8,6 +8,7 @@ extends Node3D
 @onready var selectable_indicator: MeshInstance3D = $Object/SelectableIndicator as MeshInstance3D
 @onready var progress_viewport_scene: PackedScene = load("res://scenes/progress_bar_viewport.tscn")
 @onready var menu_viewport_scene: PackedScene = load("res://scenes/menu_viewport.tscn")
+@onready var sfx_manager: SFXManager = get_node("/root/World/SFXManager")
 
 var connected_nodes: Dictionary[SpaceNode, Edge] = {}
 
@@ -99,14 +100,14 @@ func make_asteroid(scene: PackedScene) -> void:
 #=== LOGIC ===
 
 
-func get_closest_hacked_node() -> SpaceNode:
+func get_closest_hacked_node(selection_range: float = Hacker.selection_range) -> SpaceNode:
 	var closest: SpaceNode = null
 	var distance: float = INF
 	for node_area: Area3D in neighbours_hitbox.get_overlapping_areas():
 		var node: SpaceNode = node_area.get_parent().get_parent() as SpaceNode
 		if node.is_hacked:
 			var test_distance := position.distance_to(node.position)
-			if test_distance < distance and test_distance < Hacker.selection_range:
+			if test_distance < distance and test_distance < selection_range:
 				distance = test_distance
 				closest = node
 	return closest
@@ -116,7 +117,10 @@ func hack() -> void:
 	if is_being_hacked:
 		return
 
-	closest_node = get_closest_hacked_node()
+	if Hacker.is_overclocked:
+		closest_node = get_closest_hacked_node(Hacker.overclock_selection_range)
+	else:
+		closest_node = get_closest_hacked_node()
 	if closest_node == null:
 		return
 
@@ -125,6 +129,8 @@ func hack() -> void:
 		Hacker.send_message("NOT ENOUGH RAM")
 		return
 	if !is_hacked:
+		Hacker.use_overclock()
+		sfx_manager.play_high_boop()
 		(get_node("../../EnemyManager") as EnemyManager).initial_start()
 		show_friendly_hack_indicator()
 		Hacker.register_hack(hack_cost)
@@ -168,6 +174,8 @@ func show_menu() -> void:
 
 
 func generate_ring(radius: float, difference: float) -> void:
+	if range_ring != null:
+		range_ring.queue_free()
 	range_ring = MeshInstance3D.new()
 	var torus := TorusMesh.new()
 	torus.material = load("res://assets/materials/emission_material.tres")
@@ -248,6 +256,7 @@ func hide_hack_indicators() -> void:
 func _on_hack_finish() -> void:
 	is_being_hacked = false
 	if !is_hacked:
+		sfx_manager.play_rise_a()
 		print("finishing hack")
 		Hacker.deregister_hack(hack_cost)
 		Hacker.add_hacked_node(self)
@@ -260,6 +269,7 @@ func _on_hack_finish() -> void:
 		_update_label()
 		virtual_cursor.update_closest_node()
 	else:
+		sfx_manager.play_rise_c()
 		unhack()
 	hide_hack_indicators()
 
@@ -275,6 +285,7 @@ func _on_area_3d_input_event(
 
 
 func _set_hover_color() -> void:
+	sfx_manager.play_low_boop()
 	selectable_indicator.mesh.surface_set_material(
 		0, load("res://assets/materials/hover_emission_material.tres") as Material
 	)

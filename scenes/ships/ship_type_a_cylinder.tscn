@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://dp3rcxukwdu05" path="res://assets/materials/planet_type_a_depleted.tres" id="2_shepa"]
 
 [node name="Ship-TypeA-Cylinder" instance=ExtResource("1_4t073")]
+transform = Transform3D(1.06991, 0, 0, 0, 1.06991, 0, 0, 0, 1.06991, 0, 0, 0)
 
 [node name="Ship_Depleted_01" parent="." index="0"]
 material_override = ExtResource("2_shepa")

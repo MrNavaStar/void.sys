@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://diodsgghl4n6u" path="res://assets/materials/type_b_lights.tres" id="3_buq2b"]
 
 [node name="Ship-TypeB-Cone" instance=ExtResource("1_d83u0")]
+transform = Transform3D(0.864439, 0, 0, 0, 0.864439, 0, 0, 0, 0.864439, 0, 0, 0)
 
 [node name="Ship_Overpopulated_01" parent="." index="0"]
 material_override = ExtResource("2_7h77q")
