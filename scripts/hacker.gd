@@ -148,6 +148,7 @@ func use_overclock() -> void:
 		overclock_used.emit()
 		is_overclocked = false
 		is_overclocked_coolingdown = true
+		(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
 		var timer: Timer = Timer.new()
 		timer.timeout.connect(
 			func() -> void:

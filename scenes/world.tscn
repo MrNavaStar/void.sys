@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dmxxff1nm6qak"]
+[gd_scene load_steps=30 format=3 uid="uid://dmxxff1nm6qak"]
 
 [ext_resource type="Script" uid="uid://d318spwk1v5ym" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="2_4wyf3"]
@@ -66,6 +66,12 @@ expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lf6f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7iits"]
+bg_color = Color(0.815539, 0.986205, 0.864671, 1)
+corner_detail = 1
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_rwgxs")
@@ -235,6 +241,42 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "OVERCLOCK"
 script = ExtResource("12_2lf6f")
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = 424.0
+offset_right = 74.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.00373)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_2lf6f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7iits")
+show_percentage = false
+
+[node name="Panel" type="Panel" parent="Control/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -18.5
+offset_right = 81.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_7t5mc")
 
 [node name="EnemyManager" type="Node3D" parent="."]
 script = ExtResource("8_4mrxx")
