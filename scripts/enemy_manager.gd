@@ -2,7 +2,6 @@ class_name EnemyManager
 extends Node3D
 
 @export var level_duration: int = 15
-@export var max_level: int = 8
 
 var started: bool = false
 var current_level: int = 0
@@ -25,8 +24,6 @@ func initial_start() -> void:
 func _on_timer_finish() -> void:
 	current_level += 1
 	create_enemy_timer()
-	if current_level >= max_level:
-		return
 	level_timer.start(level_duration)
 
 
