@@ -4,24 +4,21 @@ enum PowerUses { IDLE_NODES, HACKING, DESTROYED, DEFENDING }
 
 @export var idle_node_cost: float = 5
 @export var destroyed_node_cost: float = 10
-@export var defense_cost: float = 5
+@export var base_defense_cost: float = 5
+@export var scaling_defense_cost: float = 2
 @export var selection_range: float = 8
 @export var overclock_selection_range: float = 14
 @export var overclock_cooldown: float = 20
 
+const base_compute_power: float = 64
+
 var total_compute_power: float = 64
-var compute_power_usage: Dictionary[PowerUses, float] = {
-	PowerUses.IDLE_NODES: 0,
-	PowerUses.HACKING: 0,
-	PowerUses.DESTROYED: 0,
-	PowerUses.DEFENDING: 0,
-}
+var compute_power_usage: Dictionary[PowerUses, float] = {}
 var _hacked_nodes: Array[SpaceNode]
 var _being_hacked_nodes: Array[SpaceNode]
 var is_overclocked: bool = false
 var is_overclocked_coolingdown: bool = false
-
-@onready var sfx_manager: SFXManager = get_node("/root/World/SFXManager")
+var sfx_manager: SFXManager
 
 signal compute_power_updated(power: float)
 signal message(text: String)
@@ -29,6 +26,25 @@ signal node_attack(node: SpaceNode)
 signal node_defended(node: SpaceNode)
 signal overclock_ready
 signal overclock_used
+
+
+func _ready() -> void:
+	reset()
+
+
+func reset() -> void:
+	total_compute_power = base_compute_power
+	compute_power_usage = {
+		PowerUses.IDLE_NODES: 0,
+		PowerUses.HACKING: 0,
+		PowerUses.DESTROYED: 0,
+		PowerUses.DEFENDING: 0,
+	}
+	_hacked_nodes.clear()
+	_being_hacked_nodes.clear()
+	is_overclocked = false
+	is_overclocked_coolingdown = false
+	sfx_manager = get_node("/root/World/SFXManager")
 
 
 func get_compute_power_usage() -> float:
@@ -44,6 +60,10 @@ func is_computer_power_critical() -> bool:
 
 func can_compute_action(cost: float) -> bool:
 	return total_compute_power >= get_compute_power_usage() + cost
+
+
+func get_defense_cost(current_level: int) -> float:
+	return base_defense_cost + scaling_defense_cost * current_level
 
 
 func get_poweruse_as_string(use: PowerUses) -> String:
@@ -64,16 +84,16 @@ func get_poweruse_as_string(use: PowerUses) -> String:
 func get_poweruse_as_color(use: PowerUses) -> Color:
 	match use:
 		PowerUses.IDLE_NODES:
-			return Color("#E0C429")
+			return Color("#A680FF")
 		PowerUses.HACKING:
-			return Color("#2FE0A2")
+			return Color("#9DFF80")
 		PowerUses.DESTROYED:
-			return Color("#E05D59")
+			return Color("#FF8080")
 		PowerUses.DEFENDING:
-			return Color("#99BBF3")
+			return Color("#FFC180")
 		_:
 			printerr("Unknown poweruses enum color")
-			return Color("#ffffff")
+			return Color("#000000")
 
 
 func register_hack(cost: float, node: SpaceNode) -> void:
@@ -103,18 +123,32 @@ func remove_hacked_node_free(node: SpaceNode) -> void:
 	assert(compute_power_usage[PowerUses.IDLE_NODES] >= 0)
 	message.emit("CONNECTION TO NODE LOST")
 	if _hacked_nodes.size() == 0:
-		print("GAME OVER")
+		game_over()
 
 
-func register_attack(node: SpaceNode) -> void:
-	compute_power_usage[PowerUses.DEFENDING] += defense_cost
+func game_over() -> void:
+	get_tree().paused = true
+	var score: int = calculate_score()
+	print("GAME OVER")
+	var game_over_node: GameOver = get_node("/root/World/GameOver")
+	game_over_node.score = score
+	game_over_node.run()
+
+
+var attacks: Dictionary[SpaceNode, float] = {}
+
+
+func register_attack(node: SpaceNode, cost: float) -> void:
+	attacks[node] = cost
+	compute_power_usage[PowerUses.DEFENDING] += attacks[node]
 	_being_hacked_nodes.append(node)
 	node_attack.emit(node)
 
 
 func deregister_attack(node: SpaceNode) -> void:
-	compute_power_usage[PowerUses.DEFENDING] -= defense_cost
+	compute_power_usage[PowerUses.DEFENDING] -= attacks[node]
 	assert(compute_power_usage[PowerUses.DEFENDING] >= 0)
+	attacks.erase(node)
 	_being_hacked_nodes.erase(node)
 	node_defended.emit(node)
 
@@ -170,3 +204,8 @@ func use_overclock() -> void:
 		)
 		add_child(timer)
 		timer.start(overclock_cooldown)
+
+
+func calculate_score() -> int:
+	var current_level: int = (get_node("/root/World/EnemyManager") as EnemyManager).current_level
+	return int(current_level * (total_compute_power - base_compute_power))

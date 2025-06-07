@@ -8,11 +8,13 @@ var current_level: int = 0
 var small_attacks: Dictionary[SmallEnemyTimer, SmallAttack]
 
 @onready var level_timer: Timer = $LevelTimer as Timer
-@onready var timer_label: Label = get_node("../Control/EnemyTimer") as Label
+@onready var timer_label: Label = get_node("../Control/ThreatBar/EnemyTimer") as Label
+@onready var threat_level_label: Label = get_node("../Control/ThreatBar/EnemyLabel") as Label
 
 
 func _process(_delta: float) -> void:
-	timer_label.text = "level %d - %f" % [current_level, level_timer.time_left]
+	threat_level_label.text = "Threat Level: %d" % current_level
+	timer_label.text = "Increases in %.1fs" % level_timer.time_left
 
 
 func initial_start() -> void:
@@ -37,12 +39,13 @@ class SmallAttack:
 	var target: SpaceNode
 	var started: bool = false
 
-	func start(node: SpaceNode) -> void:
+	func start(node: SpaceNode, current_level: int) -> void:
 		target = node
 		started = false
-		if Hacker.can_compute_action(Hacker.defense_cost):
+		var hack_cost: float = Hacker.get_defense_cost(current_level)
+		if Hacker.can_compute_action(hack_cost):
 			target.is_being_hacked = true
-			Hacker.register_attack(target)
+			Hacker.register_attack(target, hack_cost)
 			Hacker.update_ram_display()
 			target.show_enemy_hack_indicator()
 			started = true
@@ -68,7 +71,7 @@ func start_small_enemy_attack(enemy_timer: SmallEnemyTimer) -> void:
 	var node: SpaceNode = _get_untargeted_node()
 	if node == null:
 		return
-	attack.start(node)
+	attack.start(node, current_level)
 	small_attacks[enemy_timer] = attack
 	(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
 

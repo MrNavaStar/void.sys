@@ -140,6 +140,7 @@ func hack() -> void:
 		is_being_hacked = true
 		selectable_indicator.visible = false
 		var progress_viewport: ProgressViewport = progress_viewport_scene.instantiate()
+		progress_viewport.name = "progress_viewport"
 		add_child(progress_viewport)
 		progress_viewport.start_timer(hack_time)
 
@@ -260,7 +261,7 @@ func _update_label() -> void:
 	if is_hacked:
 		info.text = "Hacked"
 	else:
-		info.text = "Hack Cost: %s Hack Time: %s" % [hack_cost, hack_time]
+		info.text = "Cost: %s Time: %s" % [hack_cost, hack_time]
 
 
 func show_friendly_hack_indicator() -> void:
@@ -305,6 +306,9 @@ func _on_hack_finish() -> void:
 		($Object/Grid as MeshInstance3D).set_surface_override_material(
 			0, load("res://assets/materials/space_node_shadow_blue.tres") as Material
 		)
+		var progress_viewport: Node3D = get_node_or_null("progress_viewport")
+		if progress_viewport != null:
+			progress_viewport.queue_free()
 	else:
 		sfx_manager.play_rise_c()
 		unhack()

@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+@export var max_messages: int = 5
+
 var messages: Dictionary[SpaceNode, Label] = {}
 
 @onready
@@ -15,7 +17,8 @@ func _on_receive_message(node: SpaceNode) -> void:
 	var message: Label = attack_message_scene.instantiate() as Label
 	message.text = "%s FIREWALL ACTIVATED" % node.name.to_upper()
 	messages[node] = message
-	add_child(message)
+	if get_child_count() < max_messages:
+		add_child(message)
 
 
 func _on_delete_message(node: SpaceNode) -> void:

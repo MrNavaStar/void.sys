@@ -18,10 +18,10 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_kcnui")
 size = Vector2(2, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jtn2c"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3611"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0k5l7"]
-bg_color = Color(0.815539, 0.986205, 0.864671, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0n1p"]
+bg_color = Color(0.235294, 1, 0, 1)
 corner_detail = 1
 
 [node name="ProgressBarViewport" type="Node3D"]
@@ -54,8 +54,8 @@ grow_vertical = 2
 scale = Vector2(1, 1.00373)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxEmpty_jtn2c")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0k5l7")
+theme_override_styles/background = SubResource("StyleBoxEmpty_r3611")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s0n1p")
 show_percentage = false
 
 [node name="Panel" type="Panel" parent="SubViewport/ProgressBar"]

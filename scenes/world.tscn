@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dmxxff1nm6qak"]
+[gd_scene load_steps=38 format=3 uid="uid://dmxxff1nm6qak"]
 
 [ext_resource type="Script" uid="uid://d318spwk1v5ym" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://dh1g20iil02r" path="res://scripts/camera_controller.gd" id="2_4wyf3"]
@@ -8,18 +8,22 @@
 [ext_resource type="Script" uid="uid://celeggxoxwqmy" path="res://scripts/virtual_cursor.gd" id="5_qfnet"]
 [ext_resource type="Material" uid="uid://c1yv207dbtoqb" path="res://assets/vfx/edge_shader.tres" id="6_dss4m"]
 [ext_resource type="Theme" uid="uid://5go3nc7x84ad" path="res://new_theme.tres" id="7_7t5mc"]
+[ext_resource type="FontFile" uid="uid://wjtu4bx40lck" path="res://assets/ui/fonts/carbon-font-family/Carbon RegularItalic.ttf" id="8_2lf6f"]
 [ext_resource type="Script" uid="uid://cqeasj8iuni02" path="res://scripts/enemy_manager.gd" id="8_4mrxx"]
 [ext_resource type="Script" uid="uid://ngxsbn2xsvec" path="res://scripts/message_container.gd" id="8_7r4gi"]
-[ext_resource type="FontFile" uid="uid://c3pta1wb8ykrv" path="res://assets/ui/fonts/carbon-font-family/Carbon Bold.ttf" id="8_lakw3"]
 [ext_resource type="Script" uid="uid://cy1q8vulhyhyh" path="res://scripts/attacked_nodes_list.gd" id="9_w7kh3"]
+[ext_resource type="FontFile" uid="uid://cg5deua2g0n48" path="res://assets/ui/fonts/carbon-font-family/Carbon BoldItalic.ttf" id="10_ctatt"]
 [ext_resource type="Script" uid="uid://t8q4ycyyra11" path="res://scripts/music_manager.gd" id="11_e3hyu"]
-[ext_resource type="Script" uid="uid://dufy1n3nrtb20" path="res://scenes/overclock_button.gd" id="12_2lf6f"]
+[ext_resource type="Script" uid="uid://dufy1n3nrtb20" path="res://scripts/overclock_button.gd" id="12_2lf6f"]
 [ext_resource type="AudioStream" uid="uid://cqxcnkpo07osk" path="res://assets/music/Intro Music V2.wav" id="12_dss4m"]
 [ext_resource type="AudioStream" uid="uid://dmnrmuym4usab" path="res://assets/music/Music HIGH lvl 1.wav" id="12_jhx03"]
 [ext_resource type="AudioStream" uid="uid://dtegfcpx1lr4p" path="res://assets/music/Music LOW lvl 1.wav" id="13_o8fc1"]
 [ext_resource type="AudioStream" uid="uid://c16h6fdk8ccdy" path="res://assets/music/Dynamic Layer Hacking.wav" id="14_o8fc1"]
 [ext_resource type="AudioStream" uid="uid://covmh5abwms2f" path="res://assets/music/Dynamic Layer CRITICAL RAM.wav" id="16_dss4m"]
+[ext_resource type="AudioStream" uid="uid://q3i02v04t2ss" path="res://assets/music/Music HIGH lvl 2.wav" id="17_oo54l"]
+[ext_resource type="AudioStream" uid="uid://c2t8tkyjtdc7k" path="res://assets/music/Music HIGH lvl 3.wav" id="18_kpybi"]
 [ext_resource type="Script" uid="uid://cgb4tuei3aomu" path="res://scripts/sfx.gd" id="19_pm21f"]
+[ext_resource type="Script" uid="uid://iqi80ooejyp5" path="res://scripts/game_over.gd" id="23_kpybi"]
 
 [sub_resource type="Environment" id="Environment_4mrxx"]
 background_mode = 1
@@ -43,35 +47,74 @@ material = ExtResource("6_dss4m")
 shape = 0
 size = 0.3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mrxx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2lf6f"]
+content_margin_left = 10.0
+content_margin_right = 10.0
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.892231, 0.892231, 0.892231, 1)
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
+border_width_left = 2
+border_width_top = 2
+border_color = Color(0.235294, 1, 0, 1)
+shadow_color = Color(0.65098, 0.501961, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo54l"]
+content_margin_left = 10.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.235294, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpybi"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.235294, 1, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7kh3"]
 bg_color = Color(0.398006, 0.0204399, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.892231, 0.892231, 0.892231, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.235294, 1, 0, 1)
 expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lf6f"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7iits"]
-bg_color = Color(0.815539, 0.986205, 0.864671, 1)
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.235294, 1, 0, 1)
 corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctatt"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.235294, 1, 0, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgqkh"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_munwf"]
+bg_color = Color(0.1449, 0.21, 0.18396, 0.937255)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_rwgxs")
@@ -148,46 +191,140 @@ mouse_filter = 1
 theme = ExtResource("7_7t5mc")
 metadata/_edit_lock_ = true
 
-[node name="RamLabel" type="Label" parent="Control"]
+[node name="RamBar" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 14.0
-offset_right = 68.0
-offset_bottom = 37.0
-theme_override_fonts/font = ExtResource("8_lakw3")
-text = "RAM"
+offset_left = 37.0
+offset_top = 35.0
+offset_right = 739.0
+offset_bottom = 104.0
+theme = ExtResource("7_7t5mc")
+theme_override_constants/separation = 0
 
-[node name="ComputePowerBar" type="HBoxContainer" parent="Control"]
-clip_contents = true
-layout_mode = 0
-offset_left = 105.0
-offset_top = 16.0
-offset_right = 703.0
-offset_bottom = 50.0
+[node name="VBoxLeft" type="VBoxContainer" parent="Control/RamBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RamContainer" type="PanelContainer" parent="Control/RamBar/VBoxLeft"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2lf6f")
+
+[node name="RamLabel" type="Label" parent="Control/RamBar/VBoxLeft/RamContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+text = "RAM Usage"
+
+[node name="RamUseContainer" type="PanelContainer" parent="Control/RamBar/VBoxLeft"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oo54l")
+
+[node name="RamUseLabel" type="Label" parent="Control/RamBar/VBoxLeft/RamUseContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+text = "0 / 120"
+
+[node name="VBoxRight" type="VBoxContainer" parent="Control/RamBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/RamBar/VBoxRight"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpybi")
+
+[node name="ComputePowerBar" type="HBoxContainer" parent="Control/RamBar/VBoxRight/PanelContainer"]
+custom_minimum_size = Vector2(598, 19)
+layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("5_71j4m")
 
-[node name="RamUseLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 95.0
-offset_right = 351.0
-offset_bottom = 132.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_4mrxx")
-text = "[[ ERROR: NO VALUE ]]"
+[node name="PanelContainer2" type="PanelContainer" parent="Control/RamBar/VBoxRight"]
+layout_mode = 2
 
-[node name="EnemyTimer" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -70.0
-offset_top = 24.0
-offset_right = -30.0
-offset_bottom = 47.0
-grow_horizontal = 0
-horizontal_alignment = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/RamBar/VBoxRight/PanelContainer2"]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="Container" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(21, 21)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.65098, 0.501961, 1, 1)
+
+[node name="Label" type="Label" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_font_sizes/font_size = 20
+text = "Controlled"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(21, 21)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.615686, 1, 0.501961, 1)
+
+[node name="Label" type="Label" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_font_sizes/font_size = 20
+text = "Hacking"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(21, 21)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(1, 0.756863, 0.501961, 1)
+
+[node name="Label" type="Label" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_font_sizes/font_size = 20
+text = "Firewall"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(21, 21)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(1, 0.501961, 0.501961, 1)
+
+[node name="Label" type="Label" parent="Control/RamBar/VBoxRight/PanelContainer2/HBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_font_sizes/font_size = 20
+text = "Hostile"
+
+[node name="DebtWarning" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 135.0
+offset_right = 149.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("10_ctatt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w7kh3")
+text = "NO RAM"
 
 [node name="MessageContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
@@ -217,16 +354,6 @@ grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("9_w7kh3")
 
-[node name="DebtWarning" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 167.0
-offset_right = 524.0
-offset_bottom = 204.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_w7kh3")
-text = "[[ WARNING: OVERCLOCKING RAM ]]"
-
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 7
@@ -234,10 +361,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -73.0
-offset_right = 94.0
-offset_bottom = -28.0
+offset_left = -108.0
+offset_top = -76.0
+offset_right = 108.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "OVERCLOCK"
@@ -260,8 +387,6 @@ grow_vertical = 2
 scale = Vector2(1, 1.00373)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxEmpty_2lf6f")
-theme_override_styles/fill = SubResource("StyleBoxFlat_7iits")
 show_percentage = false
 
 [node name="Panel" type="Panel" parent="Control/ProgressBar"]
@@ -287,6 +412,74 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ThreatBar" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -585.0
+offset_top = 33.0
+offset_right = -42.0
+offset_bottom = 73.0
+grow_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="EnemyLabel" type="Label" parent="Control/ThreatBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7iits")
+text = "Threat Level: 0"
+horizontal_alignment = 2
+
+[node name="EnemyTimer" type="Label" parent="Control/ThreatBar"]
+custom_minimum_size = Vector2(303, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctatt")
+text = "Increases in 10.0s"
+
+[node name="Panel" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -253.0
+offset_top = 93.0
+offset_right = -42.0
+offset_bottom = 213.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xgqkh")
+text = "WASD - Move"
+
+[node name="Label2" type="Label" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xgqkh")
+text = "SCROLL - ZOOM"
+
+[node name="Label3" type="Label" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xgqkh")
+text = "LMB - Hack Node"
+
+[node name="Label4" type="Label" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_2lf6f")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xgqkh")
+text = "RMB - Unhack Node"
+
 [node name="EnemyManager" type="Node3D" parent="."]
 script = ExtResource("8_4mrxx")
 
@@ -294,6 +487,7 @@ script = ExtResource("8_4mrxx")
 one_shot = true
 
 [node name="MusicManager" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("11_e3hyu")
 
 [node name="Intro" type="AudioStreamPlayer" parent="MusicManager"]
@@ -301,8 +495,18 @@ stream = ExtResource("12_dss4m")
 autoplay = true
 bus = &"Music"
 
-[node name="MainHigh" type="AudioStreamPlayer" parent="MusicManager"]
+[node name="MainHighLVL1" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("12_jhx03")
+bus = &"Music"
+
+[node name="MainHighLVL2" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource("17_oo54l")
+volume_db = -60.0
+bus = &"Music"
+
+[node name="MainHighLVL3" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource("18_kpybi")
+volume_db = -60.0
 bus = &"Music"
 
 [node name="MainLow" type="AudioStreamPlayer" parent="MusicManager"]
@@ -311,18 +515,151 @@ bus = &"Music"
 
 [node name="Hacking" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("14_o8fc1")
+volume_db = -60.0
 bus = &"Music"
 
 [node name="CriticalRam" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource("16_dss4m")
+volume_db = -60.0
 bus = &"Music"
 
 [node name="SFXManager" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
 script = ExtResource("19_pm21f")
 
+[node name="GameOver" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_7t5mc")
+script = ExtResource("23_kpybi")
+
+[node name="Background" type="Panel" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_munwf")
+metadata/_edit_lock_ = true
+
+[node name="GameOver" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -484.0
+offset_top = 60.0
+offset_right = 484.0
+offset_bottom = 261.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 200
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.5
+offset_top = 269.0
+offset_right = 184.5
+offset_bottom = 330.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "SCORE: 0"
+horizontal_alignment = 1
+
+[node name="Thanks" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -62.0
+offset_right = 34.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "thanks for playing!"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -123.0
+offset_top = -147.0
+offset_right = 125.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart Game"
+
+[node name="Scores" type="VBoxContainer" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 360.0
+offset_right = 200.0
+offset_bottom = 803.0
+grow_horizontal = 2
+theme_override_constants/separation = 15
+
+[node name="LineEdit" type="LineEdit" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = -242.0
+offset_right = -99.0
+offset_bottom = -193.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "YOU"
+
+[node name="Submit" type="Button" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -242.0
+offset_right = 286.0
+offset_bottom = -193.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "SUBMIT SCORE"
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="Virtual Cursor/Area3D" to="Virtual Cursor" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Virtual Cursor/Area3D" to="Virtual Cursor" method="_on_area_3d_area_exited"]
 [connection signal="pressed" from="Control/Button" to="Control/Button" method="_overclock"]
 [connection signal="timeout" from="EnemyManager/LevelTimer" to="EnemyManager" method="_on_timer_finish"]
+[connection signal="pressed" from="GameOver/Restart" to="GameOver" method="restart_game"]
+[connection signal="text_changed" from="GameOver/LineEdit" to="GameOver" method="edit_name"]
+[connection signal="pressed" from="GameOver/Submit" to="GameOver" method="submit_score"]

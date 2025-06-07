@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://caf6snhjv420k"]
+[gd_scene load_steps=4 format=3 uid="uid://caf6snhjv420k"]
+
+[ext_resource type="Theme" uid="uid://5go3nc7x84ad" path="res://new_theme.tres" id="1_0pn5e"]
+[ext_resource type="FontFile" uid="uid://wjtu4bx40lck" path="res://assets/ui/fonts/carbon-font-family/Carbon RegularItalic.ttf" id="2_8synh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybylx"]
 content_margin_left = 10.0
@@ -10,11 +13,13 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.815539, 0.986205, 0.864671, 1)
+border_color = Color(0.235294, 1, 0, 1)
 
 [node name="StatusMessage" type="Label"]
 offset_right = 72.0
 offset_bottom = 29.0
-theme_override_colors/font_color = Color(0.815539, 0.986205, 0.864671, 1)
+theme = ExtResource("1_0pn5e")
+theme_override_colors/font_color = Color(0.235294, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_8synh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ybylx")
 text = "asdfasdf"
