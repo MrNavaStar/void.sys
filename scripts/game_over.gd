@@ -45,6 +45,8 @@ func add_player_score() -> void:
 
 func read_scores() -> Array[Score]:
 	var scores_out: Array[Score] = []
+	if not FileAccess.file_exists(save_path):
+		return scores_out
 	var file: FileAccess = FileAccess.open(save_path, FileAccess.READ)
 	while file.get_position() < file.get_length():
 		var new_score: Score = Score.new()
