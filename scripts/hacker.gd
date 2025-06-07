@@ -201,6 +201,7 @@ func use_overclock() -> void:
 				message.emit("OVERCLOCK READY")
 				overclock_ready.emit()
 				sfx_manager.play_rise_a()
+				timer.queue_free()
 		)
 		add_child(timer)
 		timer.start(overclock_cooldown)
