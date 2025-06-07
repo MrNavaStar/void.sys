@@ -178,6 +178,12 @@ shape = SubResource("SphereShape3D_qfnet")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("RibbonTrailMesh_qfnet")
 
+[node name="EnemyManager" type="Node3D" parent="."]
+script = ExtResource("8_4mrxx")
+
+[node name="LevelTimer" type="Timer" parent="EnemyManager"]
+one_shot = true
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -480,12 +486,6 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_xgqkh")
 text = "RMB - Unhack Node"
 
-[node name="EnemyManager" type="Node3D" parent="."]
-script = ExtResource("8_4mrxx")
-
-[node name="LevelTimer" type="Timer" parent="EnemyManager"]
-one_shot = true
-
 [node name="MusicManager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("11_e3hyu")
@@ -658,8 +658,8 @@ text = "SUBMIT SCORE"
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="Virtual Cursor/Area3D" to="Virtual Cursor" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Virtual Cursor/Area3D" to="Virtual Cursor" method="_on_area_3d_area_exited"]
-[connection signal="pressed" from="Control/Button" to="Control/Button" method="_overclock"]
 [connection signal="timeout" from="EnemyManager/LevelTimer" to="EnemyManager" method="_on_timer_finish"]
+[connection signal="pressed" from="Control/Button" to="Control/Button" method="_overclock"]
 [connection signal="pressed" from="GameOver/Restart" to="GameOver" method="restart_game"]
 [connection signal="text_changed" from="GameOver/LineEdit" to="GameOver" method="edit_name"]
 [connection signal="pressed" from="GameOver/Submit" to="GameOver" method="submit_score"]

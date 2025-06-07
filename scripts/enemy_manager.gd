@@ -6,15 +6,29 @@ extends Node3D
 var started: bool = false
 var current_level: int = 0
 var small_attacks: Dictionary[SmallEnemyTimer, SmallAttack]
+var t: float = 0
+var lerp_target: Color = Color("#3e8c4b")
+var old_color: Color = Color("#3e8c4b")
+var done_lerp: bool = true
 
 @onready var level_timer: Timer = $LevelTimer as Timer
 @onready var timer_label: Label = get_node("../Control/ThreatBar/EnemyTimer") as Label
 @onready var threat_level_label: Label = get_node("../Control/ThreatBar/EnemyLabel") as Label
+@onready var grid_material: BaseMaterial3D = (
+	(get_node("../Grid") as MeshInstance3D).get_surface_override_material(0) as BaseMaterial3D
+)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	threat_level_label.text = "Threat Level: %d" % current_level
 	timer_label.text = "Increases in %.1fs" % level_timer.time_left
+
+	t += delta * 0.4
+	grid_material.emission = lerp(old_color, lerp_target, t)
+	if t >= 1:
+		t = 0
+		old_color = lerp_target
+		done_lerp = true
 
 
 func initial_start() -> void:
@@ -25,6 +39,16 @@ func initial_start() -> void:
 
 func _on_timer_finish() -> void:
 	current_level += 1
+	if current_level >= 10:
+		if done_lerp == true:
+			t = 0
+			lerp_target = Color("#d13946")
+			done_lerp = false
+	elif current_level >= 5:
+		if done_lerp == true:
+			t = 0
+			lerp_target = Color("#9d6f2b")
+			done_lerp = false
 	create_enemy_timer()
 	level_timer.start(level_duration)
 
