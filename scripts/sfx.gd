@@ -6,13 +6,13 @@ extends AudioStreamPlayer
 var rises: AudioStreamRandomizer
 var boops: AudioStreamRandomizer
 
-@onready var risea: AudioStream = AudioStreamWAV.load_from_file("res://assets/sfx/UI sfx rise a.wav")
-@onready var riseb: AudioStream = AudioStreamWAV.load_from_file("res://assets/sfx/UI sfx rise b.wav")
-@onready var risec: AudioStream = AudioStreamWAV.load_from_file("res://assets/sfx/UI sfx rise c.wav")
+@onready var risea: AudioStream = load("res://assets/sfx/UI sfx rise a.wav")
+@onready var riseb: AudioStream = load("res://assets/sfx/UI sfx rise b.wav")
+@onready var risec: AudioStream = load("res://assets/sfx/UI sfx rise c.wav")
 
-@onready var boop1: AudioStream = AudioStreamWAV.load_from_file("res://assets/sfx/UI sfx high.wav")
-@onready var boop2: AudioStream = AudioStreamWAV.load_from_file("res://assets/sfx/UI sfx mid.wav")
-@onready var boop3: AudioStream = AudioStreamWAV.load_from_file("res://assets/sfx/UI sfx low.wav")
+@onready var boop1: AudioStream = load("res://assets/sfx/UI sfx high.wav")
+@onready var boop2: AudioStream = load("res://assets/sfx/UI sfx mid.wav")
+@onready var boop3: AudioStream = load("res://assets/sfx/UI sfx low.wav")
 
 
 func _ready() -> void:
