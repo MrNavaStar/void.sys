@@ -85,6 +85,7 @@ class SmallAttack:
 		Hacker.deregister_attack(target)
 		Hacker.update_ram_display()
 		target.hide_hack_indicators()
+		target.start_hack_protection()
 
 	func hack() -> void:
 		target._on_hack_finish()
@@ -107,29 +108,10 @@ func stop_small_enemy_attack(enemy_timer: SmallEnemyTimer) -> void:
 	(get_node("/root/World/Virtual Cursor") as VirtualCursor).update_closest_node(true)
 
 
-func _get_untargeted_leaf_node() -> SpaceNode:
-	var filtered_nodes := Hacker._hacked_nodes.filter(
-		func(node: SpaceNode) -> bool:
-			return node.connected_nodes.size() == 1 and not node.is_being_hacked
-	)
-	if filtered_nodes.size() == 0:
-		return null
-	return filtered_nodes[randi_range(0, filtered_nodes.size() - 1)]
-
-
-func _get_untargeted_internal_node() -> SpaceNode:
-	var filtered_nodes := Hacker._hacked_nodes.filter(
-		func(node: SpaceNode) -> bool:
-			return node.connected_nodes.size() > 1 and not node.is_being_hacked
-	)
-	if filtered_nodes.size() == 0:
-		return null
-	return filtered_nodes[randi_range(0, filtered_nodes.size() - 1)]
-
-
 func _get_untargeted_node() -> SpaceNode:
 	var filtered_nodes := Hacker._hacked_nodes.filter(
-		func(node: SpaceNode) -> bool: return not node.is_being_hacked
+		func(node: SpaceNode) -> bool:
+			return not node.is_being_hacked and not node.is_hack_protected
 	)
 	if filtered_nodes.size() == 0:
 		return null

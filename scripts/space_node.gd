@@ -21,6 +21,8 @@ var ram_gain: float = 0
 var closest_node: SpaceNode
 var range_ring: MeshInstance3D
 var menu: Node3D = null
+var is_hack_protected: bool = false
+var hack_protection_duration: float = 5
 
 
 func _ready() -> void:
@@ -278,6 +280,18 @@ func hide_hack_indicators() -> void:
 	($Object/FriendlyHackIndicator as Node3D).visible = false
 	($Object/EnemyHackIndicator as Node3D).visible = false
 	overclock_indicator.visible = false
+
+
+func start_hack_protection() -> void:
+	is_hack_protected = true
+	var timer: Timer = Timer.new()
+	timer.timeout.connect(
+		func() -> void:
+			is_hack_protected = false
+			timer.queue_free()
+	)
+	add_child(timer)
+	timer.start(hack_protection_duration)
 
 
 #=== CALLBACKS ===
